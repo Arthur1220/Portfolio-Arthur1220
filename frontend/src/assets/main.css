@@ -1,0 +1,68 @@
+/* 1. Definição das Variáveis de Cor (Theming) */
+:root {
+  /* Tema Claro (Padrão) */
+  --color-primary: #00c78c; /* Verde como cor de destaque */
+  --color-primary-hover: #00a372;
+  --color-text: #2c3e50;
+  --color-background: #ffffff;
+  --color-heading: #222831;
+  --color-card-background: #f9f9f9;
+  --color-border: #e0e0e0;
+}
+
+/* Sobrescreve as variáveis quando o tema escuro estiver ativo */
+[data-theme='dark'] {
+  --color-primary: #00c78c;
+  --color-primary-hover: #00e09e;
+  --color-text: #e0e0e0;
+  --color-background: #121212;
+  --color-heading: #ffffff;
+  --color-card-background: #1e1e1e;
+  --color-border: #2c2c2c;
+}
+
+/* 2. Reset Básico e Estilos Globais */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Habilita a rolagem suave para os links de âncora */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-heading);
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
