@@ -36,6 +36,19 @@ const messages = {
       category4: 'Blockchain',
       category5: 'Ferramentas'
     },
+    contact: {
+      title: 'Contato',
+      subtitle: 'Entre em contato',
+      direct_title: 'Fale comigo',
+      form_title: 'Escreva uma mensagem',
+      email_cta: 'Mandar mensagem',
+      whatsapp_cta: 'Mandar mensagem',
+      name_label: 'Nome',
+      email_label: 'Email',
+      message_label: 'Mensagem',
+      submit_button: 'Enviar Mensagem',
+      alt_text: 'Ou, se preferir, me contate diretamente:'
+    },
   },
   en: {
     nav: {
@@ -70,7 +83,20 @@ const messages = {
       category3: 'DevOps & Databases',
       category4: 'Blockchain',
       category5: 'Tools'
-    }
+    },
+    contact: {
+      title: 'Contact',
+      subtitle: 'Get in touch',
+      direct_title: 'Talk to me',
+      form_title: 'Write a message',
+      email_cta: 'Send message',
+      whatsapp_cta: 'Send message',
+      name_label: 'Name',
+      email_label: 'Email',
+      message_label: 'Message',
+      submit_button: 'Send Message',
+      alt_text: 'Or, if you prefer, contact me directly:'
+    },
   }
 };
 
