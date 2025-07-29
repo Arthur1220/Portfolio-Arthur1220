@@ -10,7 +10,11 @@ const messages = {
       guestbook: 'Livro de Visitas',
       contact: 'Contato',
     },
-    // Adicione outras traduções aqui no futuro
+    hero: {
+      greeting: 'Olá, eu sou',
+      name: 'Arthur Marques Azevedo',
+      title: 'Desenvolvedor Back-end/Full-stack & Blockchain',
+    },
   },
   en: {
     nav: {
@@ -20,7 +24,11 @@ const messages = {
       guestbook: 'Guestbook',
       contact: 'Contact',
     },
-    // Add other translations here in the future
+    hero: {
+      greeting: 'Hello, I am',
+      name: 'Arthur Marques Azevedo',
+      title: 'Back-end/Full-stack & Blockchain Developer',
+    },
   }
 };
 
