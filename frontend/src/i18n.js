@@ -32,9 +32,9 @@ const messages = {
       subtitle: 'Meu nível técnico',
       category1: 'Linguagens',
       category2: 'Frameworks & Bibliotecas',
-      category3: 'DevOps & Bancos de Dados',
+      category3: 'Bancos de Dados',
       category4: 'Blockchain',
-      category5: 'Ferramentas'
+      category5: 'DevOps & Ferramentas'
     },
     contact: {
       title: 'Contato',
@@ -47,7 +47,10 @@ const messages = {
       email_label: 'Email',
       message_label: 'Mensagem',
       submit_button: 'Enviar Mensagem',
-      alt_text: 'Ou, se preferir, me contate diretamente:'
+      alt_text: 'Ou, se preferir, me contate diretamente:',
+      email_desc: 'Envie um email detalhado.',
+      whatsapp_desc: 'Inicie uma conversa rápida.',
+      linkedin_desc: 'Visite meu perfil profissional.',
     },
   },
   en: {
@@ -80,9 +83,9 @@ const messages = {
       subtitle: 'My technical level',
       category1: 'Languages',
       category2: 'Frameworks & Libraries',
-      category3: 'DevOps & Databases',
+      category3: 'Databases',
       category4: 'Blockchain',
-      category5: 'Tools'
+      category5: 'DevOps & Tools'
     },
     contact: {
       title: 'Contact',
@@ -95,7 +98,10 @@ const messages = {
       email_label: 'Email',
       message_label: 'Message',
       submit_button: 'Send Message',
-      alt_text: 'Or, if you prefer, contact me directly:'
+      alt_text: 'Or, if you prefer, contact me directly:',
+      email_desc: 'Send a detailed email.',
+      whatsapp_desc: 'Start a quick conversation.',
+      linkedin_desc: 'Visit my professional profile.',
     },
   }
 };

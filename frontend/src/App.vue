@@ -26,14 +26,11 @@ import ContactSection from './components/sections/ContactSection.vue';
 </template>
 
 <style scoped>
-/*
- * Aqui você pode adicionar estilos que se aplicam a este layout principal.
-*/
 .main-content {
-  padding-top: 4rem; /* Espaço para o Header fixo, ajuste conforme a altura do seu header */
+  padding-top: 4rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  max-width: 1200px; /* Limita a largura máxima do conteúdo para melhor legibilidade */
-  margin: 0 auto; /* Centraliza o conteúdo principal na página */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 </style>

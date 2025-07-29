@@ -1,7 +1,7 @@
 /* 1. Definição das Variáveis de Cor (Theming) */
 :root {
   /* Tema Claro (Padrão) */
-  --color-primary: #009c15;
+  --color-primary: #235218;
   --color-primary-hover: #00a372;
   --color-text: #2c3e50;
   --color-background: #ffffff;
@@ -13,7 +13,7 @@
 
 /* Sobrescreve as variáveis quando o tema escuro estiver ativo */
 [data-theme='dark'] {
-  --color-primary: #009c15;
+  --color-primary: #235218;
   --color-primary-hover: #00e09e;
   --color-text: #e0e0e0;
   --color-background: #121212;

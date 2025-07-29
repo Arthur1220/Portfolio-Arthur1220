@@ -1,16 +1,13 @@
 <script setup>
-// 1. NÃO HÁ MAIS IMPORTAÇÃO DE ÍCONES AQUI.
-
-// 2. A estrutura de dados agora contém as CLASSES CSS de cada ícone.
-// A lista completa de classes está em https://devicon.dev/
 const mainSkillCategories = [
   {
     title: 'category1',
     skills: [
       { name: 'Python', icon: 'devicon-python-plain' },
-      { name: 'JavaScript', icon: 'devicon-javascript-plain' },
       { name: 'SQL', icon: 'devicon-azuresqldatabase-plain' },
-      { name: 'C/C++', icon: 'devicon-cplusplus-plain' },
+      { name: 'JavaScript', icon: 'devicon-javascript-plain' },
+      { name: 'C', icon: 'devicon-cplusplus-plain' },
+      { name: 'C++', icon: 'devicon-c-plain' },
     ]
   },
   {
@@ -21,19 +18,14 @@ const mainSkillCategories = [
       { name: 'Vue.js', icon: 'devicon-vuejs-plain' },
       { name: 'Node.js', icon: 'devicon-nodejs-plain' },
       { name: 'Express.js', icon: 'devicon-express-original' },
-      { name: 'OpenZeppelin', icon: 'devicon-openzeppelin-plain' },
     ]
   },
   {
     title: 'category3',
     skills: [
-      { name: 'Docker', icon: 'devicon-docker-plain' },
-      { name: 'GitHub Actions', icon: 'devicon-githubactions-plain' },
       { name: 'PostgreSQL', icon: 'devicon-postgresql-plain' },
       { name: 'MySQL', icon: 'devicon-mysql-plain' },
       { name: 'MongoDB', icon: 'devicon-mongodb-plain' },
-      { name: 'AWS', icon: 'devicon-amazonwebservices-plain' },
-      { name: 'Linux', icon: 'devicon-linux-plain' },
     ]
   },
   {
@@ -41,7 +33,7 @@ const mainSkillCategories = [
     skills: [
       { name: 'Solidity', icon: 'devicon-solidity-plain' },
       { name: 'Hardhat', icon: 'devicon-hardhat-plain' },
-      { name: 'Ethereum', icon: 'devicon-ethereum-original' },
+      { name: 'OpenZeppelin', icon: 'devicon-openzeppelin-plain' },
     ]
   }
 ];
@@ -49,9 +41,13 @@ const mainSkillCategories = [
 const toolSkills = {
   title: 'category5',
   skills: [
+    { name: 'GitHub Actions', icon: 'devicon-githubactions-plain' },
     { name: 'Git', icon: 'devicon-git-plain' },
     { name: 'Postman', icon: 'devicon-postman-plain' },
     { name: 'VS Code', icon: 'devicon-vscode-plain' },
+    { name: 'Docker', icon: 'devicon-docker-plain' },
+    { name: 'AWS', icon: 'devicon-amazonwebservices-plain' },
+    { name: 'Linux', icon: 'devicon-linux-plain' },
   ]
 };
 </script>
@@ -105,10 +101,12 @@ const toolSkills = {
 }
 .section-title {
   font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  color: var(--color-heading);
+  margin-bottom: 0rem;
 }
 .section-subtitle {
   font-size: 1.1rem;
+  color: var(--color-text);
   opacity: 0.7;
   margin-bottom: 4rem;
 }
@@ -124,6 +122,11 @@ const toolSkills = {
   padding: 2rem;
   border-radius: 8px;
   text-align: left;
+}
+.skill-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .card-title {
   font-size: 1.3rem;
@@ -142,9 +145,6 @@ const toolSkills = {
   align-items: center;
   gap: 0.75rem;
   transition: transform 0.2s ease;
-}
-.skill-item:hover {
-  transform: translateX(5px);
 }
 .skill-item span {
   font-size: 1rem;
