@@ -1,13 +1,14 @@
 /* 1. Definição das Variáveis de Cor (Theming) */
 :root {
   /* Tema Claro (Padrão) */
-  --color-primary: #009c15; /* Verde como cor de destaque */
+  --color-primary: #009c15;
   --color-primary-hover: #00a372;
   --color-text: #2c3e50;
   --color-background: #ffffff;
   --color-heading: #222831;
   --color-card-background: #f9f9f9;
   --color-border: #e0e0e0;
+  --color-pattern: rgba(0, 0, 0, 0.06);
 }
 
 /* Sobrescreve as variáveis quando o tema escuro estiver ativo */
@@ -19,6 +20,7 @@
   --color-heading: #ffffff;
   --color-card-background: #1e1e1e;
   --color-border: #2c2c2c;
+  --color-pattern: rgba(255, 255, 255, 0.05);
 }
 
 /* 2. Reset Básico e Estilos Globais */
@@ -43,6 +45,14 @@ body {
   background-color: var(--color-background);
   color: var(--color-text);
   transition: background-color 0.3s ease, color 0.3s ease;
+
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--color-pattern),
+    var(--color-pattern) 1px,
+    transparent 1px,
+    transparent 40px /* Altere este valor para mais ou menos espaço entre as linhas */
+  );
 }
 
 h1, h2, h3, h4, h5, h6 {
