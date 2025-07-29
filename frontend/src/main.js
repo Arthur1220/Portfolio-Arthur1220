@@ -1,5 +1,6 @@
 import './assets/main.css'
-import i18n from './i18n' // 👈 IMPORTE O ARQUIVO I18N
+import 'devicon/devicon.min.css'
+import i18n from './i18n'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

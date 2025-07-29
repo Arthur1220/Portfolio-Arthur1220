@@ -27,6 +27,15 @@ const messages = {
       description: 'Desenvolvedor Back-end/Full-stack com foco em Python + Django e Vue.js, e experiência em projetos com sistemas blockchain (Solidity, Hardhat) e automação de APIs REST. Busco atuar no desenvolvimento de soluções de software seguras, escaláveis e de alto impacto.',
       download_button: 'Baixar Currículo'
     },
+    skills: {
+      title: 'Habilidades',
+      subtitle: 'Meu nível técnico',
+      category1: 'Linguagens',
+      category2: 'Frameworks & Bibliotecas',
+      category3: 'DevOps & Bancos de Dados',
+      category4: 'Blockchain',
+      category5: 'Ferramentas'
+    },
   },
   en: {
     nav: {
@@ -53,6 +62,15 @@ const messages = {
       description: 'Back-end/Full-stack developer focused on Python + Django and Vue.js, with experience in projects involving blockchain systems (Solidity, Hardhat) and REST API automation. I aim to develop secure, scalable, and high-impact software solutions.',
       download_button: 'Download Resume'
     },
+    skills: {
+      title: 'Skills',
+      subtitle: 'My technical level',
+      category1: 'Languages',
+      category2: 'Frameworks & Libraries',
+      category3: 'DevOps & Databases',
+      category4: 'Blockchain',
+      category5: 'Tools'
+    }
   }
 };
 
