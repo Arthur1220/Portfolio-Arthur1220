@@ -3,6 +3,7 @@ import { ethers } from 'ethers';
 
 // Lê os dados do arquivo .env
 const contractAddress = import.meta.env.VITE_GUESTBOOK_CONTRACT_ADDRESS;
+const rpcUrl = import.meta.env.VITE_RPC_URL;
 const contractABI = [
     {
       "anonymous": false,
@@ -90,72 +91,58 @@ const contractABI = [
 let provider;
 let contract;
 
-// Helper para formatar endereços
-const formatAddress = (addr) => `${addr.slice(0, 6)}...${addr.slice(-4)}`;
-
-/**
- * Inicializa o provedor e a instância do contrato (se o MetaMask estiver presente)
- */
+// Função de inicialização mais segura
 const initialize = () => {
-    // Tenta usar a carteira do navegador (MetaMask) primeiro
-    if (typeof window.ethereum !== 'undefined') {
-        provider = new ethers.BrowserProvider(window.ethereum);
+    try {
+        if (typeof window.ethereum !== 'undefined') {
+            provider = new ethers.BrowserProvider(window.ethereum);
+            console.log("Provedor da carteira (MetaMask) encontrado.");
+        } else if (rpcUrl) {
+            provider = new ethers.JsonRpcProvider(rpcUrl);
+            console.log("Conectado em modo de apenas leitura via RPC.");
+        } else {
+            console.warn("Nenhum provedor Web3 ou URL de RPC foi configurado. O Guestbook não poderá buscar mensagens.");
+            return; // Sai da função se não houver como se conectar
+        }
+        contract = new ethers.Contract(contractAddress, contractABI, provider);
+    } catch (error) {
+        console.error("Falha ao inicializar o serviço de blockchain:", error);
     }
-    // Se não houver carteira, usa nosso RPC da Alchemy para um acesso de "apenas leitura"
-    else if (rpcUrl) {
-        provider = new ethers.JsonRpcProvider(rpcUrl);
-        console.log("Conectado em modo de apenas leitura via RPC.");
-    }
-    else {
-        console.error("Nenhum provedor Web3 (MetaMask) ou URL de RPC encontrado.");
-        return false;
-    }
-
-    contract = new ethers.Contract(contractAddress, contractABI, provider);
-    return true;
 };
 
-/**
- * Solicita a conexão da carteira do usuário e retorna o endereço.
- */
 export const connectWallet = async () => {
-    if (!provider) initialize();
-    if (!provider) throw new Error("MetaMask não está instalado.");
+    if (!window.ethereum) throw new Error("MetaMask não está instalado.");
 
+    // Recria o provedor para garantir que é o da carteira
+    provider = new ethers.BrowserProvider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     const signer = await provider.getSigner();
+    contract = new ethers.Contract(contractAddress, contractABI, signer); // Reconecta o contrato com o assinante
     return await signer.getAddress();
 };
 
-/**
- * Busca e formata todas as mensagens do smart contract.
- */
 export const getMessages = async () => {
-    if (!contract) initialize();
-    if (!contract) throw new Error("Serviço não inicializado.");
+    // Adiciona uma verificação de segurança
+    if (!contract) return []; // Retorna uma lista vazia se o contrato não foi inicializado
 
     const fetchedMessages = await contract.getAllMessages();
     return [...fetchedMessages].map(msg => ({
-        author: formatAddress(msg.author),
+        author: `${msg.author.slice(0, 6)}...${msg.author.slice(-4)}`,
         message: msg.message,
         timestamp: new Date(Number(msg.timestamp) * 1000).toLocaleString()
     })).reverse();
 };
 
-/**
- * Envia uma nova mensagem para o smart contract.
- * @param {string} messageText O texto da mensagem a ser enviada.
- */
 export const addMessage = async (messageText) => {
-    if (!contract || !provider) throw new Error("Carteira não conectada ou serviço não inicializado.");
+    if (!contract) throw new Error("Contrato não inicializado.");
 
     const signer = await provider.getSigner();
+    if (!signer) throw new Error("Carteira não conectada para assinar a transação.");
+
     const contractWithSigner = contract.connect(signer);
     const tx = await contractWithSigner.addMessage(messageText);
-
-    // Espera a transação ser confirmada
     await tx.wait();
 };
 
-// Inicializa o serviço assim que o arquivo é carregado
+// Inicializa o serviço ao carregar
 initialize();
