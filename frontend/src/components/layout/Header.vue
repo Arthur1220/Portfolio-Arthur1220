@@ -23,8 +23,8 @@ function toggleMenu() {
 
       <nav class="main-nav" :class="{ 'is-open': isMenuOpen }">
         <a href="#about" @click="isMenuOpen = false">{{ $t('nav.about') }}</a>
-        <a href="#skills" @click="isMenuOpen = false">{{ $t('nav.skills') }}</a>
         <a href="#projects" @click="isMenuOpen = false">{{ $t('nav.projects') }}</a>
+        <a href="#skills" @click="isMenuOpen = false">{{ $t('nav.skills') }}</a>
         <a href="#guestbook" @click="isMenuOpen = false">{{ $t('nav.guestbook') }}</a>
         <a href="#contact" @click="isMenuOpen = false">{{ $t('nav.contact') }}</a>
 
