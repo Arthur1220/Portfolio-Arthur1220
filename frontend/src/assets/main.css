@@ -53,6 +53,8 @@ body {
     transparent 1px,
     transparent 40px /* Altere este valor para mais ou menos espaço entre as linhas */
   );
+
+  border-left: 5px solid var(--color-primary);
 }
 
 h1, h2, h3, h4, h5, h6 {
