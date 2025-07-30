@@ -38,7 +38,7 @@ const messages = {
       view_all_github: 'Ver todos os projetos no GitHub',
       project_list: {
         rastreabilidade: {
-          title: 'Sistema de Rastreabilidade Animal com Blockchain (TCC)',
+          title: 'Sistema de Rastreabilidade Animal com Blockchain',
           description: 'Plataforma full-stack para rastreabilidade imutável no agronegócio, solucionando o problema de fraude. A principal inovação é uma arquitetura de carteira custodial no back-end que abstrai 100% da complexidade da Web3 para o usuário final.'
         },
         calculadora: {
@@ -60,7 +60,7 @@ const messages = {
       category4: 'Blockchain',
       category5: 'DevOps & Ferramentas'
     },
-    guestbook: { // A chave 'guestbook' estava faltando na sua nav
+    guestbook: {
       title: 'Livro de Visitas',
       subtitle: 'Deixe sua marca na blockchain! Conecte sua carteira na rede Polygon Amoy de teste e envie uma mensagem.',
       connect_wallet: 'Conectar Carteira',
