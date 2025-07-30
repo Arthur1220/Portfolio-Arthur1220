@@ -7,6 +7,8 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import path from 'path'
 import vueI18n from '@intlify/unplugin-vue-i18n/vite'
 
+const __dirname = __dirname(fileURLToPath(import.meta.url))
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
