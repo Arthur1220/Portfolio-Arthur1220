@@ -40,7 +40,7 @@ const projects = [
 </script>
 
 <template>
-  <section id="projects" class="projects-section">
+  <section id="projects" class="projects-section" data-aos="fade-up">
     <div class="section-container">
       <h2 class="section-title">{{ $t('projects.title') }}</h2>
       <p class="section-subtitle">{{ $t('projects.subtitle') }}</p>

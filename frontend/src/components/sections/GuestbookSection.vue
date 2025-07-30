@@ -31,7 +31,7 @@ const formatAddress = (addr) => `${addr.slice(0, 6)}...${addr.slice(-4)}`;
 </script>
 
 <template>
-  <section id="guestbook" class="guestbook-section">
+  <section id="guestbook" class="guestbook-section" data-aos="fade-up">
     <h2 class="section-title">{{ $t('guestbook.title') }}</h2>
     <p class="section-subtitle">{{ $t('guestbook.subtitle') }}</p>
 

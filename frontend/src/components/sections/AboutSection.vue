@@ -20,7 +20,7 @@ const resumeFilename = computed(() => {
 </script>
 
 <template>
-  <section id="about" class="about-section">
+  <section id="about" class="about-section" data-aos="fade-up">
     <h2 class="section-title">{{ $t('about.title') }}</h2>
     <p class="section-subtitle">{{ $t('about.subtitle') }}</p>
 

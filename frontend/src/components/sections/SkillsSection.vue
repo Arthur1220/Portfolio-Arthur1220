@@ -53,7 +53,7 @@ const toolSkills = {
 </script>
 
 <template>
-  <section id="skills" class="skills-section">
+  <section id="skills" class="skills-section" data-aos="fade-up">
     <h2 class="section-title">{{ $t('skills.title') }}</h2>
     <p class="section-subtitle">{{ $t('skills.subtitle') }}</p>
 

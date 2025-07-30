@@ -15,6 +15,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "aos": "^2.3.4",
     "devicon": "^2.17.0",
     "ethers": "^6.15.0",
     "lucide-vue-next": "^0.532.0",

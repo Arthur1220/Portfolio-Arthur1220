@@ -12,6 +12,8 @@ import ProjectsSection from './components/sections/ProjectsSection.vue';
 import GuestbookSection from './components/sections/GuestbookSection.vue';
 import ContactSection from './components/sections/ContactSection.vue';
 
+import ScrollToTopButton from './components/ui/ScrollToTopButton.vue';
+
 const { locale } = useI18n();
 
 watch(locale, () => {
@@ -38,6 +40,7 @@ watch(locale, () => {
   </main>
 
   <Footer />
+  <ScrollToTopButton />
 </template>
 
 <style scoped>

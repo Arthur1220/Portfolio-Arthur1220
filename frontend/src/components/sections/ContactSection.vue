@@ -3,7 +3,7 @@ import { Linkedin, Mail, MessageCircle } from 'lucide-vue-next';
 </script>
 
 <template>
-  <section id="contact" class="contact-section">
+  <section id="contact" class="contact-section" data-aos="fade-up">
     <div class="contact-container">
       <h2 class="section-title">{{ $t('contact.title') }}</h2>
       <p class="section-subtitle">{{ $t('contact.subtitle') }}</p>
