@@ -40,7 +40,7 @@ onUnmounted(() => {
 <style scoped>
 .scroll-to-top-btn {
   position: fixed;
-  bottom: 2rem;
+  bottom: 5rem;
   right: 2rem;
   z-index: 1000;
 
