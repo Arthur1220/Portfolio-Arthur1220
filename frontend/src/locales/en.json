@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "guestbook": "Guestbook",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hello, I am",
+    "name": "Arthur Marques Azevedo",
+    "title": "Back-end/Full-stack & Blockchain Developer"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "A brief introduction",
+    "highlight1_title": "Problem Solver",
+    "highlight1_desc": "Analytical approach to overcome complex challenges.",
+    "highlight2_title": "Security Mindset",
+    "highlight2_desc": "Focus on building secure and robust applications.",
+    "highlight3_title": "Continuous Learner",
+    "highlight3_desc": "Always learning to evolve and adapt.",
+    "description": "Back-end/Full-stack developer focused on Python + Django and Vue.js, with experience in projects involving blockchain systems (Solidity, Hardhat) and REST API automation. I aim to develop secure, scalable, and high-impact software solutions.",
+    "download_button": "Download Resume",
+    "education_degree": "B.Sc. in Computer Science",
+    "education_university": "State University of Santa Cruz (UESC)"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Below are some of my main works. Some are open-source, while others are private or conceptual projects.",
+    "view_code": "View Code",
+    "live_demo": "Live Demo",
+    "private_repo": "Private Repository",
+    "view_all_github": "View All Projects on GitHub",
+    "project_list": {
+      "rastreabilidade": {
+        "title": "Animal Traceability System with Blockchain",
+        "description": "A full-stack platform for immutable traceability in the agribusiness sector, solving the fraud problem. The main innovation is a back-end custodial wallet architecture that abstracts 100% of Web3 complexity for the end-user."
+      },
+      "calculadora": {
+        "title": "Nutritional Calculator for Sheep and Goats",
+        "description": "A free-access web platform to perform nutritional requirement calculations for sheep and goats. I built a secure and containerized RESTful API with Docker, deployed on an AWS EC2 instance."
+      },
+      "estimativa": {
+        "title": "Weight Estimation via 3D Imaging (Tech Initiation)",
+        "description": "A Python system to capture 3D images of sheep (Intel RealSense) and store metadata with SQLAlchemy, automating data collection for future weight regression models. As an academic research project, the code cannot be disclosed."
+      }
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "My technical level",
+    "category1": "Languages",
+    "category2": "Frameworks & Libraries",
+    "category3": "Databases",
+    "category4": "Blockchain",
+    "category5": "DevOps & Tools"
+  },
+  "guestbook": {
+    "title": "On-Chain Guestbook",
+    "subtitle": "Leave your mark on the blockchain! Connect your wallet on the Polygon Amoy testnet and send a message.",
+    "connect_wallet": "Connect Wallet",
+    "placeholder": "Your message...",
+    "send_message": "Send Message On-Chain",
+    "sending": "Sending transaction...",
+    "success": "Message sent successfully!",
+    "no_messages": "No messages yet. Be the first!",
+    "view_contract": "View Contract on Polygonscan"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in touch",
+    "direct_title": "Talk to me",
+    "email_desc": "Send a detailed email.",
+    "whatsapp_desc": "Start a quick conversation.",
+    "linkedin_desc": "Visit my professional profile."
+  }
+}
