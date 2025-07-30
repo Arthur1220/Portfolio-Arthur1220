@@ -1,10 +1,6 @@
 # netlify.toml
+
 [build]
-  # Diretório base onde seu projeto frontend está
   base = "frontend/"
-
-  # Comando que o Netlify deve rodar para construir o site
   command = "npm run build"
-
-  # Pasta que será publicada após o build
-  publish = "frontend/dist"
+  publish = "dist"
