@@ -82,14 +82,12 @@ const toolSkills = {
 </template>
 
 <style scoped>
-/* O único ajuste no CSS é no seletor .skill-icon */
 .skill-icon {
-  font-size: 28px; /* Controla o tamanho do ícone */
-  color: var(--color-primary); /* Controla a cor */
+  font-size: 28px;
+  color: var(--color-primary);
   flex-shrink: 0;
 }
 
-/* O resto do seu CSS permanece o mesmo */
 .skills-section {
   display: flex;
   flex-direction: column;
@@ -108,7 +106,7 @@ const toolSkills = {
   font-size: 1.1rem;
   color: var(--color-text);
   opacity: 0.7;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 .skills-grid {
   display: grid;

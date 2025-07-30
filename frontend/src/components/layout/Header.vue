@@ -1,12 +1,10 @@
 <script setup>
 import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
 import ThemeSwitcher from '../ui/ThemeSwitcher.vue';
 import LanguageSwitcher from '../ui/LanguageSwitcher.vue';
 import { Menu, X } from 'lucide-vue-next';
 
 const isMenuOpen = ref(false);
-const { locale } = useI18n();
 
 function toggleMenu() {
   isMenuOpen.value = !isMenuOpen.value;
@@ -24,31 +22,11 @@ function toggleMenu() {
       </div>
 
       <nav class="main-nav" :class="{ 'is-open': isMenuOpen }">
-        <a href="#about" @click="isMenuOpen = false">
-          <Transition name="fade" mode="out-in">
-            <span :key="locale + 'about'">{{ $t('nav.about') }}</span>
-          </Transition>
-        </a>
-        <a href="#skills" @click="isMenuOpen = false">
-          <Transition name="fade" mode="out-in">
-            <span :key="locale + 'skills'">{{ $t('nav.skills') }}</span>
-          </Transition>
-        </a>
-        <a href="#projects" @click="isMenuOpen = false">
-          <Transition name="fade" mode="out-in">
-            <span :key="locale + 'projects'">{{ $t('nav.projects') }}</span>
-          </Transition>
-        </a>
-        <a href="#guestbook" @click="isMenuOpen = false">
-          <Transition name="fade" mode="out-in">
-            <span :key="locale + 'guestbook'">{{ $t('nav.guestbook') }}</span>
-          </Transition>
-        </a>
-        <a href="#contact" @click="isMenuOpen = false">
-          <Transition name="fade" mode="out-in">
-            <span :key="locale + 'contact'">{{ $t('nav.contact') }}</span>
-          </Transition>
-        </a>
+        <a href="#about" @click="isMenuOpen = false">{{ $t('nav.about') }}</a>
+        <a href="#skills" @click="isMenuOpen = false">{{ $t('nav.skills') }}</a>
+        <a href="#projects" @click="isMenuOpen = false">{{ $t('nav.projects') }}</a>
+        <a href="#guestbook" @click="isMenuOpen = false">{{ $t('nav.guestbook') }}</a>
+        <a href="#contact" @click="isMenuOpen = false">{{ $t('nav.contact') }}</a>
 
         <div class="mobile-controls">
           <ThemeSwitcher />

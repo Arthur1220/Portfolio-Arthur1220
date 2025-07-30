@@ -1,4 +1,7 @@
 <script setup>
+import { watch } from 'vue';
+import { useI18n } from 'vue-i18n';
+
 import Header from './components/layout/Header.vue';
 import Footer from './components/layout/Footer.vue';
 
@@ -8,6 +11,18 @@ import SkillsSection from './components/sections/SkillsSection.vue';
 import ProjectsSection from './components/sections/ProjectsSection.vue';
 import GuestbookSection from './components/sections/GuestbookSection.vue';
 import ContactSection from './components/sections/ContactSection.vue';
+
+const { locale } = useI18n();
+
+watch(locale, () => {
+  // Adiciona a classe para iniciar o "fade out"
+  document.getElementById('app').classList.add('is-translating');
+
+  // Remove a classe após um pequeno intervalo para permitir o "fade in"
+  setTimeout(() => {
+    document.getElementById('app').classList.remove('is-translating');
+  }, 150); // Metade do tempo da transição do CSS
+});
 </script>
 
 <template>

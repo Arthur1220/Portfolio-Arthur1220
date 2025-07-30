@@ -90,7 +90,7 @@ import { Linkedin, Mail, MessageCircle } from 'lucide-vue-next';
   font-size: 1.1rem;
   color: var(--color-text);
   opacity: 0.7;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 .contact-layout-grid {
   display: grid;
@@ -195,17 +195,18 @@ import { Linkedin, Mail, MessageCircle } from 'lucide-vue-next';
 .submit-button {
   width: 100%;
   padding: 1rem;
-  background-color: var(--color-primary);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
+  background-color: var(--color-card-background);
+  color: var(--color-text);
+  border: 1px solid var(--color-primary);
+  border-radius: 30px;
   font-weight: 600;
   cursor: pointer;
-  transition: filter 0.3s ease;
+  transition: all 0.3s ease;
 }
 .submit-button:hover {
-  filter: brightness(1.1);
+  background-color: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
 }
 
 /* RESPONSIVIDADE */

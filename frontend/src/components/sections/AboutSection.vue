@@ -1,6 +1,5 @@
 <script setup>
-// Importa os ícones que vamos usar
-import { Lightbulb, Shield, BookOpen, DownloadCloud } from 'lucide-vue-next';
+import { Lightbulb, Shield, BookOpen, DownloadCloud, GraduationCap } from 'lucide-vue-next';
 </script>
 
 <template>
@@ -8,27 +7,29 @@ import { Lightbulb, Shield, BookOpen, DownloadCloud } from 'lucide-vue-next';
     <h2 class="section-title">{{ $t('about.title') }}</h2>
     <p class="section-subtitle">{{ $t('about.subtitle') }}</p>
 
+    <div class="education-highlight">
+      <GraduationCap :size="32" class="icon" />
+      <div class="education-text">
+        <h3>{{ $t('about.education_degree') }} </h3>
+        <p>{{ $t('about.education_university') }} </p>
+      </div>
+    </div>
+
     <div class="highlights">
       <div class="highlight-card">
         <Lightbulb :size="32" class="icon" />
         <h3>{{ $t('about.highlight1_title') }}</h3>
-        <p>
-          {{ $t('about.highlight1_desc') }}
-        </p>
+        <p>{{ $t('about.highlight1_desc') }}</p>
       </div>
       <div class="highlight-card">
         <Shield :size="32" class="icon" />
         <h3>{{ $t('about.highlight2_title') }}</h3>
-        <p>
-          {{ $t('about.highlight2_desc') }}
-        </p>
+        <p>{{ $t('about.highlight2_desc') }}</p>
       </div>
       <div class="highlight-card">
         <BookOpen :size="32" class="icon" />
         <h3>{{ $t('about.highlight3_title') }}</h3>
-        <p>
-          {{ $t('about.highlight3_desc') }}
-        </p>
+        <p>{{ $t('about.highlight3_desc') }}</p>
       </div>
     </div>
 
@@ -64,14 +65,14 @@ import { Lightbulb, Shield, BookOpen, DownloadCloud } from 'lucide-vue-next';
   font-size: 1.1rem;
   color: var(--color-text);
   opacity: 0.7;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .highlights {
   display: flex;
   gap: 2rem;
   width: 100%;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .highlight-card {
@@ -88,7 +89,7 @@ import { Lightbulb, Shield, BookOpen, DownloadCloud } from 'lucide-vue-next';
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-.highlight-card .icon {
+.icon {
   color: var(--color-primary);
   margin-bottom: 1rem;
 }
@@ -100,6 +101,38 @@ import { Lightbulb, Shield, BookOpen, DownloadCloud } from 'lucide-vue-next';
 }
 
 .highlight-card p {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.education-highlight {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: var(--color-card-background);
+  border-left: 4px solid var(--color-primary);
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 900px;
+  text-align: left;
+  margin-bottom: 3rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.education-highlight:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.education-text h3 {
+  font-size: 1.2rem;
+  color: var(--color-heading);
+  margin-bottom: 0.5rem;
+}
+
+.education-text p {
   font-size: 0.9rem;
   color: var(--color-text);
   line-height: 1.5;
@@ -120,7 +153,7 @@ import { Lightbulb, Shield, BookOpen, DownloadCloud } from 'lucide-vue-next';
   padding: 0.8rem 1.8rem;
   background-color: var(--color-card-background);
   color: var(--color-text);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-primary);
   border-radius: 30px;
   font-weight: 600;
   transition: all 0.3s ease;

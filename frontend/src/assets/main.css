@@ -76,3 +76,13 @@ img {
   max-width: 100%;
   display: block;
 }
+
+/* Animação Global para Troca de Idioma */
+#app.is-translating {
+  transform: translateY(10px);
+  opacity: 0;
+}
+
+#app {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
