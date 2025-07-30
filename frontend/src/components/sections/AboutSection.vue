@@ -1,5 +1,22 @@
 <script setup>
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { Lightbulb, Shield, BookOpen, DownloadCloud, GraduationCap } from 'lucide-vue-next';
+
+const { locale } = useI18n();
+
+const resumeUrl = computed(() => {
+  // Se o idioma for 'pt', usa o arquivo _PT.pdf. Caso contrário, usa o _EN.pdf.
+  if (locale.value === 'pt') {
+    return '/Curriculo_Arthur_Azevedo_PT.pdf';
+  } else {
+    return '/Curriculo_Arthur_Azevedo_EN.pdf';
+  }
+});
+
+const resumeFilename = computed(() => {
+  return `Currículo - Arthur Azevedo (${locale.value.toUpperCase()}).pdf`;
+});
 </script>
 
 <template>
@@ -37,7 +54,7 @@ import { Lightbulb, Shield, BookOpen, DownloadCloud, GraduationCap } from 'lucid
       {{ $t('about.description') }}
     </p>
 
-    <a href="/curriculo.pdf" download class="download-button">
+    <a :href="resumeUrl" :download="resumeFilename" class="download-button">
       <DownloadCloud :size="20" />
       <span>{{ $t('about.download_button') }}</span>
     </a>
