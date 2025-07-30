@@ -68,7 +68,8 @@ const messages = {
       send_message: 'Enviar Mensagem On-Chain',
       sending: 'Enviando transação...',
       success: 'Mensagem enviada com sucesso!',
-      no_messages: 'Nenhuma mensagem ainda. Seja o primeiro!'
+      no_messages: 'Nenhuma mensagem ainda. Seja o primeiro!',
+      view_contract: 'Ver Contrato na Polygonscan'
     },
     contact: {
       title: 'Contato',
@@ -153,7 +154,8 @@ const messages = {
       send_message: 'Send Message On-Chain',
       sending: 'Sending transaction...',
       success: 'Message sent successfully!',
-      no_messages: 'No messages yet. Be the first!'
+      no_messages: 'No messages yet. Be the first!',
+      view_contract: 'View Contract on Polygonscan'
     },
     contact: {
       title: 'Contact',
