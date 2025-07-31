@@ -54,7 +54,7 @@ import { Linkedin, Mail, MessageCircle } from 'lucide-vue-next';
 }
 .contact-container {
   width: 100%;
-  max-width: 800px; /* Largura ajustada para o novo layout */
+  max-width: 800px;
   text-align: center;
 }
 .section-title {
@@ -67,7 +67,6 @@ import { Linkedin, Mail, MessageCircle } from 'lucide-vue-next';
   margin-bottom: 3rem;
 }
 
-/* O grid de 2 colunas foi removido */
 .column-title {
   font-size: 1.5rem;
   font-weight: 600;
@@ -75,17 +74,16 @@ import { Linkedin, Mail, MessageCircle } from 'lucide-vue-next';
   text-align: center;
 }
 
-/* --- CARDS DE CONTATO --- */
 .contact-cards-container {
   display: flex;
-  justify-content: center; /* Centraliza os cards */
-  flex-wrap: wrap; /* Permite que os cards quebrem a linha em telas menores */
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 1.5rem;
 }
 
 .contact-card {
   width: 100%;
-  max-width: 350px; /* Largura máxima para cada card */
+  max-width: 350px;
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -129,6 +127,4 @@ import { Linkedin, Mail, MessageCircle } from 'lucide-vue-next';
   margin: 0;
   opacity: 0.8;
 }
-
-/* --- ESTILOS DO FORMULÁRIO REMOVIDOS --- */
 </style>

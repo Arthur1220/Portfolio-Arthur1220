@@ -34,7 +34,7 @@ const currentYear = new Date().getFullYear();
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Permite quebra de linha em telas muito pequenas */
+  flex-wrap: wrap;
   gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -61,11 +61,10 @@ const currentYear = new Date().getFullYear();
   transform: translateY(-3px);
 }
 
-/* Responsividade para telas menores */
 @media (max-width: 576px) {
   .footer-content {
-    flex-direction: column; /* Empilha os elementos verticalmente */
-    justify-content: center; /* Centraliza o conteúdo */
+    flex-direction: column;
+    justify-content: center;
   }
 }
 </style>

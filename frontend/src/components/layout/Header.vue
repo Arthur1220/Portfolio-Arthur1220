@@ -151,7 +151,6 @@ function toggleMenu() {
   z-index: 1001;
 }
 
-/* Estilos para telas maiores (desktop) */
 @media (min-width: 992px) {
   .site-header {
     padding: 1rem 4rem;

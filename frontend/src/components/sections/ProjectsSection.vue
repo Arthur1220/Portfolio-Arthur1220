@@ -119,17 +119,16 @@ const projects = [
   margin-bottom: 2rem;
 }
 
-/* --- ESTILOS PARA A PAGINAÇÃO CUSTOMIZADA (AGORA COMO PONTOS) --- */
 .custom-pagination {
   display: flex;
   justify-content: center;
-  gap: 0.75rem; /* Espaço entre os pontos */
+  gap: 0.75rem;
   margin-bottom: 1.5rem;
 }
 .custom-pagination button {
   background-color: var(--color-border);
   border: none;
-  border-radius: 50%; /* Deixa o botão redondo */
+  border-radius: 50%;
   width: 7px;
   height: 7px;
   padding: 0;
@@ -145,8 +144,6 @@ const projects = [
   transform: scale(1.5);
 }
 
-
-/* --- ESTILOS DO CARD --- */
 .project-card {
   width: 98%;
   margin: 0 auto;

@@ -17,13 +17,11 @@ import ScrollToTopButton from './components/ui/ScrollToTopButton.vue';
 const { locale } = useI18n();
 
 watch(locale, () => {
-  // Adiciona a classe para iniciar o "fade out"
   document.getElementById('app').classList.add('is-translating');
 
-  // Remove a classe após um pequeno intervalo para permitir o "fade in"
   setTimeout(() => {
     document.getElementById('app').classList.remove('is-translating');
-  }, 150); // Metade do tempo da transição do CSS
+  }, 150);
 });
 </script>
 

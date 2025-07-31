@@ -1,9 +1,8 @@
-// src/services/blockchainService.js
 import { ethers } from 'ethers';
 
-// Lê os dados do arquivo .env
 const contractAddress = import.meta.env.VITE_GUESTBOOK_CONTRACT_ADDRESS;
 const rpcUrl = import.meta.env.VITE_RPC_URL;
+
 const contractABI = [
     {
       "anonymous": false,
@@ -91,7 +90,11 @@ const contractABI = [
 let provider;
 let contract;
 
-// Função de inicialização mais segura
+/*
+  * Inicializa o serviço de blockchain, configurando o provedor e o contrato.
+  * Tenta usar o MetaMask se disponível, ou um URL de RPC configurado.
+  * Se nenhum provedor for encontrado, emite um aviso.
+*/
 const initialize = () => {
     try {
         if (typeof window.ethereum !== 'undefined') {
@@ -102,7 +105,7 @@ const initialize = () => {
             console.log("Conectado em modo de apenas leitura via RPC.");
         } else {
             console.warn("Nenhum provedor Web3 ou URL de RPC foi configurado. O Guestbook não poderá buscar mensagens.");
-            return; // Sai da função se não houver como se conectar
+            return;
         }
         contract = new ethers.Contract(contractAddress, contractABI, provider);
     } catch (error) {
@@ -110,20 +113,29 @@ const initialize = () => {
     }
 };
 
+/*
+  * Conecta a carteira do usuário, solicitando permissão para acessar as contas.
+  * Recria o provedor para garantir que é o da carteira conectada.
+  * Retorna o endereço da conta conectada.
+*/
 export const connectWallet = async () => {
     if (!window.ethereum) throw new Error("MetaMask não está instalado.");
 
-    // Recria o provedor para garantir que é o da carteira
     provider = new ethers.BrowserProvider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     const signer = await provider.getSigner();
-    contract = new ethers.Contract(contractAddress, contractABI, signer); // Reconecta o contrato com o assinante
+    contract = new ethers.Contract(contractAddress, contractABI, signer);
     return await signer.getAddress();
 };
 
+/*
+  * Recupera todas as mensagens do contrato.
+  * Se o contrato não estiver inicializado, retorna um array vazio.
+  * Formata as mensagens para exibir o autor com um prefixo e sufixo,
+  * e converte o timestamp para uma string legível.
+*/
 export const getMessages = async () => {
-    // Adiciona uma verificação de segurança
-    if (!contract) return []; // Retorna uma lista vazia se o contrato não foi inicializado
+    if (!contract) return [];
 
     const fetchedMessages = await contract.getAllMessages();
     return [...fetchedMessages].map(msg => ({
@@ -133,6 +145,13 @@ export const getMessages = async () => {
     })).reverse();
 };
 
+/*
+  * Adiciona uma nova mensagem ao contrato.
+  * Verifica se o contrato está inicializado e se a carteira está conectada.
+  * Se não estiver, lança um erro.
+  * Conecta o contrato ao signer da carteira e envia a transação.
+  * Aguarda a confirmação da transação antes de retornar.
+*/
 export const addMessage = async (messageText) => {
     if (!contract) throw new Error("Contrato não inicializado.");
 

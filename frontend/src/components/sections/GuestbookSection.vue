@@ -14,7 +14,6 @@ const isLoading = ref(false);
 
 const explorerLink = computed(() => `https://amoy.polygonscan.com/address/${contractAddress}`);
 
-// A função formatAddress estava faltando no seu último script, adicionei de volta
 const formatAddress = (addr) => `${addr.slice(0, 6)}...${addr.slice(-4)}`;
 
 const handleConnect = async () => {
@@ -36,7 +35,6 @@ const handleFetchMessages = async () => {
   try {
     isLoading.value = true;
     statusMessage.value = 'Buscando mensagens na blockchain...';
-    // O serviço já formata o endereço, então não precisamos fazer de novo aqui
     messages.value = await getMessages();
     statusMessage.value = '';
   } catch (error) {
@@ -121,31 +119,180 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* O SEU CSS PODE PERMANECER O MESMO */
-.guestbook-section { padding: 6rem 2rem; text-align: center; }
-.section-title { font-size: 2.5rem; margin-bottom: 0.5rem; }
-.section-subtitle { font-size: 1.1rem; opacity: 0.7; margin-bottom: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-.guestbook-container { max-width: 800px; margin: 0 auto; padding: 2rem; background-color: var(--color-card-background); border: 1px solid var(--color-border); border-radius: 12px; }
-.wallet-area { margin-bottom: 2rem; }
-.connect-button, .send-button { display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.8rem 1.8rem; background-color: var(--color-primary); color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: filter 0.2s ease; }
-.connect-button:hover, .send-button:hover { filter: brightness(1.1); }
-.wallet-connected { font-weight: 500; }
-.wallet-connected span { font-family: monospace; background-color: var(--color-background); padding: 0.25rem 0.5rem; border-radius: 4px; border: 1px solid var(--color-border); }
-.form-area { display: flex; gap: 1rem; margin-bottom: 1rem; }
-.form-area input { flex-grow: 1; padding: 0.8rem 1rem; border: 1px solid var(--color-border); background-color: var(--color-background); color: var(--color-text); border-radius: 8px; font-size: 1rem; }
-.form-area input:focus { outline: none; border-color: var(--color-primary); }
-.send-button { padding: 0.8rem 1.2rem; }
-.send-button:disabled { opacity: 0.5; cursor: not-allowed; }
-.status-message { font-size: 0.9rem; opacity: 0.8; min-height: 1.2rem; margin-bottom: 2rem; }
-.messages-carousel-wrapper { border-top: 1px solid var(--color-border); padding-top: 2rem; min-height: 150px; }
-.loading-messages, .no-messages { opacity: 0.7; }
-:deep(.carousel__slide) { padding: 0 0.5rem; }
-.message-card { width: 100%; height: 100%; background-color: var(--color-background); padding: 1rem; border-radius: 8px; text-align: left; border: 1px solid var(--color-border); display: flex; flex-direction: column; }
-.message-text { font-size: 1rem; font-style: italic; margin-bottom: 1rem; flex-grow: 1; }
-.message-footer { display: flex; justify-content: space-between; font-size: 0.8rem; opacity: 0.7; }
-.author { font-family: monospace; }
-.explorer-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--color-text); opacity: 0.7; text-decoration: none; margin-bottom: 2rem; transition: opacity 0.3s ease; }
-.explorer-link:hover { opacity: 1; text-decoration: underline; }
-:deep(.carousel__prev), :deep(.carousel__next) { background-color: var(--color-card-background); border-radius: 50%; border: 1px solid var(--color-border); color: var(--color-primary); width: 36px; height: 36px; margin: 0 -10px; }
-:deep(.carousel__prev:hover), :deep(.carousel__next:hover) { background-color: var(--color-primary); color: var(--color-background); }
+.guestbook-section {
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.7;
+  margin-bottom: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.guestbook-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--color-card-background);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.wallet-area {
+  margin-bottom: 2rem;
+}
+
+.connect-button, .send-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1.8rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.connect-button:hover,
+.send-button:hover {
+  filter: brightness(1.1);
+}
+
+.wallet-connected {
+  font-weight: 500;
+}
+
+.wallet-connected span {
+  font-family: monospace;
+  background-color: var(--color-background);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+}
+
+.form-area {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-area input {
+  flex-grow: 1;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form-area input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.send-button {
+  padding: 0.8rem 1.2rem;
+}
+
+.send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.status-message {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  min-height: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.messages-carousel-wrapper {
+  border-top: 1px solid var(--color-border);
+  padding-top: 2rem;
+  min-height: 150px;
+}
+
+.loading-messages, .no-messages {
+  opacity: 0.7;
+}
+
+:deep(.carousel__slide) {
+  padding: 0 0.5rem;
+}
+
+.message-card {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-background);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: left;
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+}
+
+.message-text {
+  font-size: 1rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.message-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.author {
+  font-family: monospace;
+}
+
+.explorer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  opacity: 0.7;
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: opacity 0.3s ease;
+}
+
+.explorer-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+:deep(.carousel__prev), :deep(.carousel__next) {
+  background-color: var(--color-card-background);
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  color: var(--color-primary);
+  width: 36px;
+  height: 36px;
+  margin: 0 -10px;
+}
+
+:deep(.carousel__prev:hover), :deep(.carousel__next:hover) {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+}
 </style>

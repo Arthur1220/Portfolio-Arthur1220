@@ -6,7 +6,6 @@ import { Lightbulb, Shield, BookOpen, DownloadCloud, GraduationCap } from 'lucid
 const { locale } = useI18n();
 
 const resumeUrl = computed(() => {
-  // Se o idioma for 'pt', usa o arquivo _PT.pdf. Caso contrário, usa o _EN.pdf.
   if (locale.value === 'pt') {
     return '/Curriculo_Arthur_Azevedo_PT.pdf';
   } else {
@@ -182,7 +181,6 @@ const resumeFilename = computed(() => {
   border-color: var(--color-primary);
 }
 
-/* --- Responsividade --- */
 @media (max-width: 768px) {
   .about-section {
     padding: 4rem 1rem;

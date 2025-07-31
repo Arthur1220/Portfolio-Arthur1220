@@ -1,5 +1,4 @@
 <script setup>
-// Nenhuma lógica de script necessária aqui
 </script>
 
 <template>
@@ -25,23 +24,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 90vh; /* Ocupa quase a tela inteira na vertical */
+  min-height: 90vh;
   padding: 4rem 2rem;
 }
 
 .hero-content {
   display: flex;
   align-items: center;
-  gap: 3rem; /* Espaço entre a foto e o texto */
+  gap: 3rem;
   max-width: 1200px;
 }
 
 .profile-picture {
   width: 200px;
   height: 200px;
-  border-radius: 50%; /* Deixa a imagem redonda */
-  object-fit: cover; /* Garante que a imagem preencha o círculo sem distorcer */
-  border: 2px solid var(--color-primary); /* Borda sutil com a cor de destaque */
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-primary);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -72,7 +71,6 @@
   margin: 0.5rem 0;
 }
 
-/* --- Responsividade --- */
 @media (max-width: 992px) {
   .hero-content {
     gap: 2rem;
@@ -92,11 +90,11 @@
 @media (max-width: 768px) {
   .hero-section {
     min-height: 70vh;
-    text-align: center; /* Centraliza todo o texto em telas pequenas */
+    text-align: center;
   }
 
   .hero-content {
-    flex-direction: column; /* Empilha a foto sobre o texto */
+    flex-direction: column;
   }
 
   .hero-text {

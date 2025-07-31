@@ -6,8 +6,8 @@ const mainSkillCategories = [
       { name: 'Python', icon: 'devicon-python-plain' },
       { name: 'SQL', icon: 'devicon-azuresqldatabase-plain' },
       { name: 'JavaScript', icon: 'devicon-javascript-plain' },
-      { name: 'C', icon: 'devicon-cplusplus-plain' },
-      { name: 'C++', icon: 'devicon-c-plain' },
+      { name: 'C++', icon: 'devicon-cplusplus-plain' },
+      { name: 'C', icon: 'devicon-c-plain' },
     ]
   },
   {

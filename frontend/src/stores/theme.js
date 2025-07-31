@@ -1,14 +1,9 @@
-// src/stores/theme.js
-
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-// O 'theme' no defineStore é um ID único para esta store.
 export const useThemeStore = defineStore('theme', () => {
-  // 1. STATE
-  const theme = ref('light'); // O tema padrão é 'light'
+  const theme = ref('dark');
 
-  // 2. ACTIONS
   /**
    * Aplica um novo tema à aplicação e o salva no localStorage.
    * @param {string} newTheme - O nome do novo tema ('light' ou 'dark').
@@ -44,8 +39,6 @@ export const useThemeStore = defineStore('theme', () => {
     applyTheme(newTheme);
   }
 
-  // 3. RETURN
-  // Exponha o estado e as ações para que os componentes possam usá-los.
   return {
     theme,
     initTheme,
