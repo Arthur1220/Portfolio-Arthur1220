@@ -1,7 +1,6 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-  // Pega algumas contas de teste
   const [owner, user1, user2] = await ethers.getSigners();
 
   console.log("Deploying Guestbook contract...");
@@ -11,10 +10,9 @@ async function main() {
   console.log("Guestbook deployed to:", await guestbook.getAddress());
   console.log("----------------------------------------------------");
 
-  // Simula interações
   console.log("User 1 is sending a message...");
   let tx = await guestbook.connect(user1).addMessage("Olá, mundo blockchain!");
-  await tx.wait(); // Espera a transação ser confirmada
+  await tx.wait(); 
   console.log("Message from User 1 sent!");
 
   console.log("\nUser 2 is sending a message...");
@@ -23,7 +21,6 @@ async function main() {
   console.log("Message from User 2 sent!");
   console.log("----------------------------------------------------");
 
-  // Busca e exibe as mensagens
   console.log("\nFetching all messages from the contract:");
   const allMessages = await guestbook.getAllMessages();
 

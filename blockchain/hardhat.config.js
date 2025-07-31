@@ -1,14 +1,13 @@
 require("@nomicfoundation/hardhat-toolbox");
-require("dotenv").config(); // Linha que carrega as variáveis do .env
+require("dotenv").config();
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.28", // Garante que a versão é a mesma do seu contrato
+  solidity: "0.8.28",
   networks: {
-    // Define a configuração para a rede 'amoy'
     amoy: {
-      url: process.env.AMOY_RPC_URL,     // Usa a URL do seu .env
-      accounts: [process.env.PRIVATE_KEY], // Usa a chave da sua carteira do .env
+      url: process.env.AMOY_RPC_URL,
+      accounts: [process.env.PRIVATE_KEY],
     },
   },
 };
