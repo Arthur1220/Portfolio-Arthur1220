@@ -5,7 +5,7 @@
   <section id="home" class="hero-section">
     <div class="hero-content">
       <img
-        src="https://github.com/Arthur1220.png"
+        src="@/assets/profile/profile-01.jpg"
         alt="Foto de perfil de Arthur Azevedo"
         class="profile-picture"
       />
@@ -40,6 +40,7 @@
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: 65% 30%;
   border: 2px solid var(--color-primary);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
