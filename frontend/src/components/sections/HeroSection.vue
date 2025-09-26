@@ -4,11 +4,13 @@
 <template>
   <section id="home" class="hero-section">
     <div class="hero-content">
-      <img
-        src="@/assets/profile/profile-01.jpg"
-        alt="Foto de perfil de Arthur Azevedo"
-        class="profile-picture"
-      />
+      <div class="profile-picture-container">
+        <img
+          src="@/assets/profile/profile-04.jpg"
+          alt="Foto de perfil de Arthur Azevedo"
+          class="profile-picture-image"
+        />
+      </div>
 
       <div class="hero-text">
         <p class="greeting">{{ $t('hero.greeting') }}</p>
@@ -35,14 +37,23 @@
   max-width: 1200px;
 }
 
-.profile-picture {
+.profile-picture-container {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  object-fit: cover;
-  object-position: 65% 30%;
   border: 2px solid var(--color-primary);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  position: relative;
+}
+
+.profile-picture-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+  transform: scale(1.3);
+  transition: transform 0.3s ease;
 }
 
 .hero-text {
