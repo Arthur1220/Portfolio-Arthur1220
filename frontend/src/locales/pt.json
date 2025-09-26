@@ -41,6 +41,14 @@
         "title": "Calculadora Nutricional para Ovinos e Caprinos",
         "description": "Plataforma web de acesso livre para realizar cálculos de exigências nutricionais para ovinos e caprinos. Construí uma API RESTful segura, conteinerizada com Docker e implantada em uma instância AWS EC2."
       },
+      "finance-whatsapp": {
+        "title": "Gestão Financeira via WhatsApp com IA",
+        "description": "Sistema de gestão financeira pessoal que permite aos usuários registrarem suas rendas e despesas através de mensagens no WhatsApp, utilizando a API oficial da META e, utilizando a IA do Google (Gemini) para interpretar a linguagem natural."
+      },
+      "legal-lead-capture": {
+        "title": "Captação de Leads com IA para Advocacia",
+        "description": "Sistema de captação de leads para escritórios de advocacia. Um chatbot com IA (GPT) qualifica casos de potenciais clientes, resume conversas e analisa arquivos enviados, otimizando o processo inicial de contato e avaliação."
+      },
       "estimativa": {
         "title": "Estimativa de Peso por Imagens 3D (Iniciação Tecnológica)",
         "description": "Sistema em Python para capturar imagens 3D de ovinos (Intel RealSense) e armazenar metadados com SQLAlchemy, automatizando a coleta de dados para futuros modelos de regressão de peso. Por ser um projeto de pesquisa acadêmica, o código não pode ser divulgado."

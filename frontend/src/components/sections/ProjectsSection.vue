@@ -13,20 +13,36 @@ const goToSlide = (index) => {
 
 const projects = [
   {
-    id: 'rastreabilidade',
-    tech: [
-      { name: 'Django', icon: 'devicon-django-plain' }, { name: 'Vue.js', icon: 'devicon-vuejs-plain' }, { name: 'PostgreSQL', icon: 'devicon-postgresql-plain' }, { name: 'Solidity', icon: 'devicon-solidity-plain' },
-    ],
-    githubUrl: null,
-    liveUrl: null,
-  },
-  {
     id: 'calculadora',
     tech: [
       { name: 'Node.js', icon: 'devicon-nodejs-plain' }, { name: 'Express', icon: 'devicon-express-original' }, { name: 'Vue.js', icon: 'devicon-vuejs-plain' }, { name: 'Docker', icon: 'devicon-docker-plain' }, { name: 'AWS', icon: 'devicon-amazonwebservices-original' },
     ],
     githubUrl: 'https://github.com/Arthur1220/BRCO-SIMPLE',
     liveUrl: 'https://brcosimple.netlify.app/',
+  },
+  {
+    id: 'rastreabilidade',
+    tech: [
+      { name: 'Django', icon: 'devicon-django-plain' }, { name: 'Vue.js', icon: 'devicon-vuejs-plain' }, { name: 'PostgreSQL', icon: 'devicon-postgresql-plain' }, { name: 'Solidity', icon: 'devicon-solidity-plain' },
+    ],
+    githubUrl: 'https://github.com/Arthur1220/TCC',
+    liveUrl: 'https://tcc-animaltracking.netlify.app/',
+  },
+  {
+    id: 'finance-whatsapp',
+    tech: [
+        { name: 'Django', icon: 'devicon-django-plain' }, { name: 'Docker', icon: 'devicon-docker-plain' }, { name: 'Celery', icon: 'devicon-celery-plain' }, { name: 'Redis', icon: 'devicon-redis-plain' }, { name: 'WhatsApp API', icon: 'devicon-whatsapp-plain' }, { name: 'Gemini', icon: 'devicon-gemini-plain' }
+    ],
+    githubUrl: 'https://github.com/Arthur1220/Finance-Whatsapp',
+    liveUrl: null,
+  },
+  {
+    id: 'legal-lead-capture',
+    tech: [
+        { name: 'Django', icon: 'devicon-django-plain' }, { name: 'Vue.js', icon: 'devicon-vuejs-plain' }, { name: 'OpenAI', icon: 'devicon-openai-plain' }
+    ],
+    githubUrl: null,
+    liveUrl: null,
   },
   {
     id: 'estimativa',

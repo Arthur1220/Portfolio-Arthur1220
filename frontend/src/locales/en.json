@@ -41,6 +41,14 @@
         "title": "Nutritional Calculator for Sheep and Goats",
         "description": "A free-access web platform to perform nutritional requirement calculations for sheep and goats. I built a secure and containerized RESTful API with Docker, deployed on an AWS EC2 instance."
       },
+      "finance-whatsapp": {
+        "title": "Financial Management via WhatsApp with AI",
+        "description": "A personal finance management system that allows users to record income and expenses through WhatsApp messages, using the official META API and, using Google's AI (Gemini) to interpret natural language."
+      },
+      "legal-lead-capture": {
+        "title": "AI Lead Capture for Law Firms",
+        "description": "A lead capture system for law firms. An AI chatbot (GPT) qualifies potential client cases, summarizes conversations, and analyzes uploaded files, optimizing the initial contact and evaluation process."
+      },
       "estimativa": {
         "title": "Weight Estimation via 3D Imaging (Tech Initiation)",
         "description": "A Python system to capture 3D images of sheep (Intel RealSense) and store metadata with SQLAlchemy, automating data collection for future weight regression models. As an academic research project, the code cannot be disclosed."
