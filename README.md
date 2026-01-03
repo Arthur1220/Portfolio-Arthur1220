@@ -98,13 +98,5 @@ Este portfólio também documenta minha trajetória acadêmica na **Universidade
 
 ## // 06. Licença e Contrato
 
-Desenvolvido por **Arthur Azevedo** sob a licença MIT.
+Desenvolvido por **Arthur Azevedo**.
 *A imutabilidade das mensagens no Guestbook é garantida pelo protocolo Polygon.*
-
----
-
-<div align="center">
-<sub>// Built with ☕, Go and Solidity | 2026 Consolidation Era</sub>
-</div>
-
-```
