@@ -58,6 +58,17 @@ body {
   border-left: 4px solid var(--color-primary);
 }
 
+html, body {
+  overflow-x: hidden; /* Impede a rolagem horizontal indesejada */
+  width: 100%;
+  position: relative;
+}
+
+#app {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 /* Tipografia Técnica */
 h1, h2, h3, h4 {
   font-family: var(--font-mono);
