@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import { ArrowUp } from 'lucide-vue-next';
+import { ChevronUp } from 'lucide-vue-next';
 
 const isVisible = ref(false);
 
@@ -9,61 +9,74 @@ const handleScroll = () => {
 };
 
 const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
-});
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
-});
+onMounted(() => window.addEventListener('scroll', handleScroll));
+onUnmounted(() => window.removeEventListener('scroll', handleScroll));
 </script>
 
 <template>
-  <Transition name="fade">
-    <button v-if="isVisible" @click="scrollToTop" class="scroll-to-top-btn" aria-label="Voltar ao topo">
-      <ArrowUp :size="24" />
+  <Transition name="slide-up">
+    <button
+      v-if="isVisible"
+      @click="scrollToTop"
+      class="scroll-top-btn"
+      aria-label="Voltar ao topo"
+    >
+      <ChevronUp :size="20" class="icon" />
+      <span class="btn-text">TOP</span>
     </button>
   </Transition>
 </template>
 
 <style scoped>
-.scroll-to-top-btn {
+.scroll-top-btn {
   position: fixed;
-  bottom: 5rem;
-  right: 2rem;
+  bottom: 2.5rem;
+  right: 2.5rem;
   z-index: 1000;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: var(--color-primary);
-  color: var(--color-background);
-  border: none;
+
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 4px;
+
+  padding: 0.75rem;
+  min-width: 45px;
+
+  background-color: var(--color-card-background);
+  border: 1px solid var(--color-border);
+  border-radius: 4px; /* Casando com o raio dos seus botões e cards */
+  color: var(--color-primary);
+
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  font-family: var(--font-mono);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.scroll-to-top-btn:hover {
+.btn-text {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.scroll-top-btn:hover {
   transform: translateY(-5px);
-  filter: brightness(1.1);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.2);
+  background: rgba(var(--color-primary-rgb), 0.05);
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
+/* Transição refinada */
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.4s ease;
 }
 
-.fade-enter-from,
-.fade-leave-to {
+.slide-up-enter-from,
+.slide-up-leave-to {
   opacity: 0;
+  transform: translateY(20px);
 }
 </style>

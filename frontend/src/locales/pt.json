@@ -1,86 +1,93 @@
 {
   "nav": {
-    "about": "Sobre",
+    "about": "História",
+    "research": "Pesquisa",
     "projects": "Projetos",
-    "skills": "Habilidades",
     "guestbook": "Livro de Visitas",
+    "skills": "Stack",
     "contact": "Contato"
   },
   "hero": {
-    "greeting": "Olá, eu sou",
+    "greeting": "Desenvolvedor de Software",
     "name": "Arthur Marques Azevedo",
-    "title": "Desenvolvedor Back-end/Full-stack & Blockchain"
+    "professional_title": "Blockchain - Back-end - Full-stack Developer",
+    "location": "Ilhéus-BA (Disponível para mudança)"
   },
   "about": {
     "title": "Sobre Mim",
-    "subtitle": "Uma breve introdução",
-    "highlight1_title": "Solucionador de Problemas",
-    "highlight1_desc": "Abordagem analítica para superar desafios complexos.",
-    "highlight2_title": "Mentalidade de Segurança",
-    "highlight2_desc": "Foco em construir aplicações seguras e robustas.",
-    "highlight3_title": "Autodidata",
-    "highlight3_desc": "Aprendizado contínuo para evoluir e me adaptar.",
-    "description": "Desenvolvedor Back-end/Full-stack com foco em Python + Django e Vue.js, e experiência em projetos com sistemas blockchain (Solidity, Hardhat) e automação de APIs REST. Busco atuar no desenvolvimento de soluções de software seguras, escaláveis e de alto impacto.",
-    "download_button": "Baixar Currículo",
+    "bio_p1": "Sou formado em Ciência da Computação pela UESC (GPA 8.3/10). Atualmente, direciono minha carreira para o desenvolvimento de soluções robustas em Blockchain e Back-end, focando em arquiteturas escaláveis e seguras.",
+    "bio_p2": "Acredito que uma base técnica sólida é essencial para resolver problemas reais. Por isso, foco no entendimento profundo de sistemas híbridos (on-chain/off-chain) e na aplicação de inteligência artificial para otimização de processos.",
+    "spec1_title": "Blockchain & Web3",
+    "spec1_desc": "Implementação de arquiteturas híbridas e contratos inteligentes na L2 Polygon para garantir imutabilidade.",
+    "spec2_title": "Back-end",
+    "spec2_desc": "Construção de APIs RESTful escaláveis utilizando Python (Django/FastAPI) e Node.js com foco em performance.",
+    "spec3_title": "Full-stack",
+    "spec3_desc": "Desenvolvimento de interfaces modernas com Vue.js integradas a sistemas conteinerizados com Docker.",
+    "spec4_title": "IA & Automação",
+    "spec4_desc": "Uso de LLMs e Engenharia de Prompt para otimização de código, documentação e automação de processos.",
+    "education_title": "Formação Acadêmica",
     "education_degree": "Bacharel em Ciência da Computação",
-    "education_university": "Universidade Estadual de Santa Cruz (UESC)"
+    "education_university": "Universidade Estadual de Santa Cruz (UESC)",
+    "lang_pt": "Português",
+    "lang_pt_level": "Nativo",
+    "lang_en": "Inglês",
+    "lang_en_level": "Avançado (B2)",
+    "download_button": "Ver Currículo Completo"
+  },
+  "research": {
+    "title": "Pesquisa & Inovação",
+    "subtitle": "Experiência em Iniciação Tecnológica na UESC",
+    "project_tcc_title": "TCC: Rastreabilidade Animal com Blockchain",
+    "project_tcc_desc": "Arquitetura de uma plataforma full-stack para solucionar fraudes no agronegócio através de rastreabilidade imutável. Implementação de arquitetura híbrida (on-chain/off-chain) com registro de hashes na rede Polygon (L2) e desenvolvimento de uma carteira custodial no back-end para abstrair a complexidade Web3.",
+    "project_tcc_highlight": "Cobertura de +95% de testes nos contratos inteligentes.",
+    "project1_title": "Estimativa de Peso via Visão Computacional 3D",
+    "project1_desc": "Desenvolvimento de um sistema em Python para captura de imagens 3D utilizando sensores Intel RealSense e armazenamento de metadados complexos. A solução automatizou a coleta de dados para futuros modelos de regressão.",
+    "project2_title": "Software de Engenharia Nutricional",
+    "project2_desc": "Criação de um aplicativo desktop em Python para automatização de fórmulas nutricionais nacionais. Aplicação rigorosa de conceitos de POO e processamento numérico com NumPy."
   },
   "projects": {
-    "title": "Projetos",
-    "subtitle": "Abaixo estão alguns dos meus principais trabalhos. Alguns são de código aberto, enquanto outros são projetos privados ou conceituais.",
-    "view_code": "Ver Código",
-    "live_demo": "Demo ao Vivo",
-    "private_repo": "Repositório Privado",
-    "view_all_github": "Ver todos os projetos no GitHub",
+    "title": "Projetos Selecionados",
+    "subtitle": "Soluções reais de engenharia, do agronegócio à infraestrutura Web3.",
+    "view_all_github": "Repositórios Adicionais no GitHub",
     "project_list": {
-      "rastreabilidade": {
-        "title": "Sistema de Rastreabilidade Animal com Blockchain",
-        "description": "Plataforma full-stack para rastreabilidade imutável no agronegócio, solucionando o problema de fraude. A principal inovação é uma arquitetura de carteira custodial no back-end que abstrai 100% da complexidade da Web3 para o usuário final."
-      },
-      "calculadora": {
-        "title": "Calculadora Nutricional para Ovinos e Caprinos",
-        "description": "Plataforma web de acesso livre para realizar cálculos de exigências nutricionais para ovinos e caprinos. Construí uma API RESTful segura, conteinerizada com Docker e implantada em uma instância AWS EC2."
+      "brco-simple": {
+        "title": "Plataforma Nutricional BRCO",
+        "description": "Desenvolvimento de uma API RESTful para cálculos de exigências nutricionais. Implementação de deploy conteinerizado com Docker em instâncias AWS EC2."
       },
       "finance-whatsapp": {
-        "title": "Gestão Financeira via WhatsApp com IA",
-        "description": "Sistema de gestão financeira pessoal que permite aos usuários registrarem suas rendas e despesas através de mensagens no WhatsApp, utilizando a API oficial da META e, utilizando a IA do Google (Gemini) para interpretar a linguagem natural."
+        "title": "Lembretes Financeiros via IA",
+        "description": "Sistema de automação via WhatsApp integrado ao Gemini AI. Utiliza Celery e Redis para processamento assíncrono de notas e lembretes financeiros."
       },
-      "legal-lead-capture": {
-        "title": "Captação de Leads com IA para Advocacia",
-        "description": "Sistema de captação de leads para escritórios de advocacia. Um chatbot com IA (GPT) qualifica casos de potenciais clientes, resume conversas e analisa arquivos enviados, otimizando o processo inicial de contato e avaliação."
-      },
-      "estimativa": {
-        "title": "Estimativa de Peso por Imagens 3D (Iniciação Tecnológica)",
-        "description": "Sistema em Python para capturar imagens 3D de ovinos (Intel RealSense) e armazenar metadados com SQLAlchemy, automatizando a coleta de dados para futuros modelos de regressão de peso. Por ser um projeto de pesquisa acadêmica, o código não pode ser divulgado."
+      "go-chain-turbo": {
+        "title": "Go-Chain Turbo",
+        "description": "Sistema de alta performance em Go para monitoramento de Smart Contracts em tempo real utilizando WebSockets para baixa latência."
       }
     }
   },
   "skills": {
-    "title": "Habilidades",
-    "subtitle": "Meu nível técnico",
-    "category1": "Linguagens",
-    "category2": "Frameworks & Bibliotecas",
-    "category3": "Bancos de Dados",
-    "category4": "Blockchain",
-    "category5": "DevOps & Ferramentas"
+    "title": "Arsenal Técnico",
+    "subtitle": "Linguagens e ferramentas utilizadas em meus fluxos de engenharia.",
+    "languages": "Linguagens",
+    "frameworks": "Frameworks",
+    "infrastructure": "Cloud & Infra",
+    "databases": "Bancos de Dados",
+    "tools_ia": "IA & Produtividade"
   },
   "guestbook": {
-    "title": "Livro de Visitas",
-    "subtitle": "Deixe sua marca na blockchain! Conecte sua carteira na rede Polygon Amoy de teste e envie uma mensagem.",
+    "title": "Guestbook On-Chain",
+    "subtitle": "Assine sua passagem por aqui. Mensagens registradas permanentemente na rede Amoy (Polygon).",
+    "view_contract": "Explorar Contrato",
+    "placeholder": "Digite sua mensagem para a eternidade...",
     "connect_wallet": "Conectar Carteira",
-    "placeholder": "Sua mensagem...",
-    "send_message": "Enviar Mensagem On-Chain",
-    "sending": "Enviando transação...",
-    "success": "Mensagem enviada com sucesso!",
-    "no_messages": "Nenhuma mensagem ainda. Seja o primeiro!",
-    "view_contract": "Ver Contrato na Polygonscan"
+    "send_message": "Enviar para a Chain",
+    "sending": "Minerando...",
+    "no_messages": "Nenhum bloco de mensagens encontrado."
   },
   "contact": {
-    "title": "Contato",
-    "subtitle": "Entre em contato",
-    "direct_title": "Fale comigo",
-    "email_desc": "Envie um email detalhado.",
-    "whatsapp_desc": "Inicie uma conversa rápida.",
-    "linkedin_desc": "Visite meu perfil profissional."
+    "title": "Conectar",
+    "subtitle": "Estou disponível para novas oportunidades em Backend, Blockchain e projetos desafiadores de engenharia. Sinta-se à vontade para entrar em contato.",
+    "email_desc": "arthurmarquesazevedo{'@'}gmail.com",
+    "whatsapp_desc": "Fale comigo agora",
+    "linkedin_desc": "Minha rede profissional"
   }
 }

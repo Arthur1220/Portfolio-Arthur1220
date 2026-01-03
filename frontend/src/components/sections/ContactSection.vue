@@ -1,45 +1,38 @@
 <script setup>
-import { Linkedin, Mail, MessageCircle } from 'lucide-vue-next';
+import { Mail, MessageCircle, Linkedin, Github, MapPin } from 'lucide-vue-next';
 </script>
 
 <template>
-  <section id="contact" class="contact-section" data-aos="fade-up">
-    <div class="contact-container">
-      <h2 class="section-title">{{ $t('contact.title') }}</h2>
-      <p class="section-subtitle">{{ $t('contact.subtitle') }}</p>
+  <section id="contact" class="contact-section">
+    <div class="content-wrapper">
+      <h2 class="section-title">// {{ $t('contact.title') }}</h2>
 
-      <div class="direct-contact-column">
+      <div class="contact-layout">
+        <div class="contact-info">
+          <p class="contact-description">{{ $t('contact.subtitle') }}</p>
+          <div class="location-tag">
+            <MapPin :size="16" />
+            <span>{{ $t('hero.location') }}</span>
+          </div>
+        </div>
 
-        <div class="contact-cards-container">
-          <a href="mailto:arthurmarquesazevedo@gmail.com" class="contact-card">
-            <div class="icon-wrapper">
-              <Mail :size="28" />
-            </div>
-            <div class="text-wrapper">
-              <h4>Email</h4>
-              <p>{{ $t('contact.email_desc') }}</p>
-            </div>
+        <div class="contact-links">
+          <a href="mailto:arthurmarquesazevedo@gmail.com" class="contact-item">
+            <Mail :size="20" />
+            <span>arthurmarquesazevedo@gmail.com</span>
           </a>
-
-          <a href="https://wa.me/5573991481220" target="_blank" class="contact-card">
-            <div class="icon-wrapper">
-              <MessageCircle :size="28" />
-            </div>
-            <div class="text-wrapper">
-              <h4>WhatsApp</h4>
-              <p>{{ $t('contact.whatsapp_desc') }}</p>
-            </div>
+          <a href="https://wa.me/5573991481220" target="_blank" class="contact-item">
+            <MessageCircle :size="20" />
+            <span>+55 73 99148-1220</span>
           </a>
-
-          <a href="https://linkedin.com/in/azevedo-arthur" target="_blank" class="contact-card" >
-            <div class="icon-wrapper">
-              <Linkedin :size="28" />
-            </div>
-            <div class="text-wrapper">
-              <h4>LinkedIn</h4>
-              <p>{{ $t('contact.linkedin_desc') }}</p>
-            </div>
-          </a>
+          <div class="social-row">
+            <a href="https://linkedin.com/in/azevedo-arthur" target="_blank" class="social-icon-link">
+              <Linkedin :size="24" />
+            </a>
+            <a href="https://github.com/Arthur1220" target="_blank" class="social-icon-link">
+              <Github :size="24" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -47,84 +40,24 @@ import { Linkedin, Mail, MessageCircle } from 'lucide-vue-next';
 </template>
 
 <style scoped>
-.contact-section {
-  padding: 6rem 2rem;
-  display: flex;
-  justify-content: center;
-}
-.contact-container {
-  width: 100%;
-  max-width: 800px;
-  text-align: center;
-}
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-.section-subtitle {
-  font-size: 1.1rem;
-  opacity: 0.7;
-  margin-bottom: 3rem;
-}
+.contact-section { padding: 8rem 2rem 4rem 2rem; border-top: 1px solid var(--color-border); }
+.content-wrapper { max-width: 1100px; margin: 0 auto; }
+.section-title { color: var(--color-primary); margin-bottom: 3rem; }
 
-.column-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-  text-align: center;
-}
+.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
 
-.contact-cards-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
+.contact-description { font-size: 1.1rem; line-height: 1.6; opacity: 0.8; margin-bottom: 2rem; }
+.location-tag { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.85rem; opacity: 0.6; }
 
-.contact-card {
-  width: 100%;
-  max-width: 350px;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  background-color: var(--color-card-background);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  text-decoration: none;
-  color: var(--color-text);
-  transition: all 0.3s ease;
-}
+.contact-links { display: flex; flex-direction: column; gap: 1.5rem; }
+.contact-item { display: flex; align-items: center; gap: 1rem; font-family: var(--font-mono); font-size: 0.95rem; color: var(--color-text); transition: color 0.2s; }
+.contact-item:hover { color: var(--color-primary); }
 
-.contact-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--color-primary);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
+.social-row { display: flex; gap: 2rem; margin-top: 1rem; }
+.social-icon-link { color: var(--color-text); opacity: 0.6; transition: all 0.2s; }
+.social-icon-link:hover { color: var(--color-primary); opacity: 1; transform: translateY(-3px); }
 
-.icon-wrapper {
-  background-color: rgba(var(--color-primary-rgb), 0.1);
-  color: var(--color-primary);
-  padding: 1rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.text-wrapper {
-  text-align: left;
-}
-
-.text-wrapper h4 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--color-heading);
-  margin: 0 0 0.25rem 0;
-}
-
-.text-wrapper p {
-  margin: 0;
-  opacity: 0.8;
+@media (max-width: 768px) {
+  .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
 }
 </style>

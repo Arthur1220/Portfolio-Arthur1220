@@ -1,68 +1,77 @@
 {
   "nav": {
-    "about": "About",
+    "about": "Story",
+    "research": "Research",
     "projects": "Projects",
-    "skills": "Skills",
     "guestbook": "Guestbook",
+    "skills": "Stack",
     "contact": "Contact"
   },
   "hero": {
-    "greeting": "Hello, I am",
+    "greeting": "Software Developer",
     "name": "Arthur Marques Azevedo",
-    "title": "Back-end/Full-stack & Blockchain Developer"
+    "professional_title": "Blockchain - Back-end - Full-stack Developer",
+    "location": "Ilheus-BA, Brazil (Open to relocation)"
   },
   "about": {
     "title": "About Me",
-    "subtitle": "A brief introduction",
-    "highlight1_title": "Problem Solver",
-    "highlight1_desc": "Analytical approach to overcome complex challenges.",
-    "highlight2_title": "Security Mindset",
-    "highlight2_desc": "Focus on building secure and robust applications.",
-    "highlight3_title": "Continuous Learner",
-    "highlight3_desc": "Always learning to evolve and adapt.",
-    "description": "Back-end/Full-stack developer focused on Python + Django and Vue.js, with experience in projects involving blockchain systems (Solidity, Hardhat) and REST API automation. I aim to develop secure, scalable, and high-impact software solutions.",
-    "download_button": "Download Resume",
+    "bio_p1": "I hold a B.Sc. in Computer Science from UESC (GPA 8.3/10). Currently, I focus my career on developing robust Blockchain and Back-end solutions, emphasizing scalable and secure architectures.",
+    "bio_p2": "I believe a strong technical foundation is essential for solving real problems. Therefore, I focus on deep understanding of hybrid systems (on-chain/off-chain) and applying AI for process optimization and technical automation.",
+    "spec1_title": "Blockchain & Web3",
+    "spec1_desc": "Implementing hybrid architectures and smart contracts on Polygon L2 to ensure data immutability.",
+    "spec2_title": "Back-end Architecture",
+    "spec2_desc": "Building scalable RESTful APIs using Python (Django/FastAPI) and Node.js with a focus on performance.",
+    "spec3_title": "Full-stack Web",
+    "spec3_desc": "Developing modern interfaces with Vue.js integrated into containerized systems using Docker.",
+    "spec4_title": "AI & Optimization",
+    "spec4_desc": "Using LLMs and Prompt Engineering for code optimization, documentation, and process automation.",
+    "education_title": "Education",
     "education_degree": "B.Sc. in Computer Science",
-    "education_university": "State University of Santa Cruz (UESC)"
+    "education_university": "University of Santa Cruz (UESC)",
+    "lang_pt": "Portuguese",
+    "lang_pt_level": "Native Fluent",
+    "lang_en": "English",
+    "lang_en_level": "Advanced (B2 Upper Intermediate)",
+    "download_button": "View Full Resume"
+  },
+  "research": {
+    "title": "Research & Innovation",
+    "subtitle": "Technological Initiation Experience at UESC",
+    "project_tcc_title": "Final Project: Animal Traceability with Blockchain",
+    "project_tcc_desc": "Full-stack platform architecture to solve agribusiness fraud through immutable traceability. Implementation of a hybrid architecture (on-chain/off-chain) recording event hashes on the Polygon network (L2) and developing a back-end custodial wallet to abstract Web3 complexity.",
+    "project_tcc_highlight": "+95% test coverage on smart contracts.",
+    "project1_title": "Weight Estimation via 3D Computer Vision",
+    "project1_desc": "Development of a Python system for 3D image capture using Intel RealSense sensors and complex metadata storage. The solution automated data collection for future regression models.",
+    "project2_title": "Nutritional Engineering Software",
+    "project2_desc": "Creation of a Python desktop application for automating national nutritional formulas. Rigorous application of OOP concepts and numerical processing with NumPy."
   },
   "projects": {
-    "title": "Projects",
-    "subtitle": "Below are some of my main works. Some are open-source, while others are private or conceptual projects.",
-    "view_code": "View Code",
-    "live_demo": "Live Demo",
-    "private_repo": "Private Repository",
-    "view_all_github": "View All Projects on GitHub",
+    "title": "Selected Projects",
+    "subtitle": "Real engineering solutions, from agribusiness to Web3 infrastructure.",
+    "view_all_github": "Additional Repositories on GitHub",
     "project_list": {
-      "rastreabilidade": {
-        "title": "Animal Traceability System with Blockchain",
-        "description": "A full-stack platform for immutable traceability in the agribusiness sector, solving the fraud problem. The main innovation is a back-end custodial wallet architecture that abstracts 100% of Web3 complexity for the end-user."
-      },
-      "calculadora": {
-        "title": "Nutritional Calculator for Sheep and Goats",
-        "description": "A free-access web platform to perform nutritional requirement calculations for sheep and goats. I built a secure and containerized RESTful API with Docker, deployed on an AWS EC2 instance."
+      "brco-simple": {
+        "title": "BRCO Nutritional Platform",
+        "description": "Development of a RESTful API for nutritional requirement calculations. Implementation of containerized deployment with Docker on AWS EC2 instances."
       },
       "finance-whatsapp": {
-        "title": "Financial Management via WhatsApp with AI",
-        "description": "A personal finance management system that allows users to record income and expenses through WhatsApp messages, using the official META API and, using Google's AI (Gemini) to interpret natural language."
+        "title": "AI Financial Reminders",
+        "description": "WhatsApp automation system integrated with Gemini AI. Uses Celery and Redis for asynchronous processing of notes and financial reminders."
       },
-      "legal-lead-capture": {
-        "title": "AI Lead Capture for Law Firms",
-        "description": "A lead capture system for law firms. An AI chatbot (GPT) qualifies potential client cases, summarizes conversations, and analyzes uploaded files, optimizing the initial contact and evaluation process."
-      },
-      "estimativa": {
-        "title": "Weight Estimation via 3D Imaging (Tech Initiation)",
-        "description": "A Python system to capture 3D images of sheep (Intel RealSense) and store metadata with SQLAlchemy, automating data collection for future weight regression models. As an academic research project, the code cannot be disclosed."
+      "go-chain-turbo": {
+        "title": "Go-Chain Turbo",
+        "description": "High-performance monitoring system in Go for real-time Smart Contract tracking using WebSockets for low latency."
       }
     }
   },
   "skills": {
-    "title": "Skills",
-    "subtitle": "My technical level",
-    "category1": "Languages",
-    "category2": "Frameworks & Libraries",
-    "category3": "Databases",
-    "category4": "Blockchain",
-    "category5": "DevOps & Tools"
+    "title": "Technical Arsenal",
+    "subtitle": "Languages and tools used in my engineering workflows.",
+    "languages": "Languages",
+    "frameworks": "Frameworks",
+    "infrastructure": "Cloud & Infra",
+    "databases": "Databases",
+    "tools_ia": "AI & Productivity"
   },
   "guestbook": {
     "title": "On-Chain Guestbook",

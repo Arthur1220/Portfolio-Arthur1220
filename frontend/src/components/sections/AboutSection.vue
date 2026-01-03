@@ -1,16 +1,22 @@
 <script setup>
+import {
+  Database,
+  Layers,
+  Cpu,
+  Blocks,
+  DownloadCloud,
+  GraduationCap,
+  Globe
+} from 'lucide-vue-next';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { Lightbulb, Shield, BookOpen, DownloadCloud, GraduationCap } from 'lucide-vue-next';
 
 const { locale } = useI18n();
 
 const resumeUrl = computed(() => {
-  if (locale.value === 'pt') {
-    return '/Curriculo_Arthur_Azevedo_PT.pdf';
-  } else {
-    return '/Curriculo_Arthur_Azevedo_EN.pdf';
-  }
+  return locale.value === 'pt'
+    ? '/Curriculo_Arthur_Azevedo_PT.pdf'
+    : '/Curriculo_Arthur_Azevedo_EN.pdf';
 });
 
 const resumeFilename = computed(() => {
@@ -19,177 +25,232 @@ const resumeFilename = computed(() => {
 </script>
 
 <template>
-  <section id="about" class="about-section" data-aos="fade-up">
-    <h2 class="section-title">{{ $t('about.title') }}</h2>
-    <p class="section-subtitle">{{ $t('about.subtitle') }}</p>
+  <section id="about" class="about-section">
+    <div class="content-wrapper">
+      <h2 class="section-title">// {{ $t('about.title') }}</h2>
 
-    <div class="education-highlight">
-      <GraduationCap :size="32" class="icon" />
-      <div class="education-text">
-        <h3>{{ $t('about.education_degree') }} </h3>
-        <p>{{ $t('about.education_university') }} </p>
+      <div class="bio-container">
+        <p class="bio-text">{{ $t('about.bio_p1') }}</p>
+        <p class="bio-text">{{ $t('about.bio_p2') }}</p>
+      </div>
+
+      <div class="specialties-grid">
+        <div class="card-base card-interactive spec-card">
+          <Blocks class="spec-icon" :size="28" />
+          <h3>{{ $t('about.spec1_title') }}</h3>
+          <p>{{ $t('about.spec1_desc') }}</p>
+        </div>
+        <div class="card-base card-interactive spec-card">
+          <Database class="spec-icon" :size="28" />
+          <h3>{{ $t('about.spec2_title') }}</h3>
+          <p>{{ $t('about.spec2_desc') }}</p>
+        </div>
+        <div class="card-base card-interactive spec-card">
+          <Layers class="spec-icon" :size="28" />
+          <h3>{{ $t('about.spec3_title') }}</h3>
+          <p>{{ $t('about.spec3_desc') }}</p>
+        </div>
+        <div class="card-base card-interactive spec-card">
+          <Cpu class="spec-icon" :size="28" />
+          <h3>{{ $t('about.spec4_title') }}</h3>
+          <p>{{ $t('about.spec4_desc') }}</p>
+        </div>
+      </div>
+
+      <div class="education-container">
+        <div class="card-base card-interactive edu-card">
+          <div class="edu-header">
+            <GraduationCap :size="28" class="text-primary" />
+            <div class="edu-title-group">
+              <h3>{{ $t('about.education_title') }}</h3>
+              <h4>{{ $t('about.education_degree') }}</h4>
+            </div>
+          </div>
+          <div class="edu-body">
+            <p class="university">{{ $t('about.education_university') }}</p>
+            <div class="edu-badges">
+              <span class="edu-badge">2020 — 2025</span>
+              <span class="edu-badge accent">GPA: 8.3/10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="languages-row">
+        <div class="lang-tag">
+          <Globe :size="16" />
+          <span class="lang-name">{{ $t('about.lang_pt') }}:</span>
+          <span class="lang-val">{{ $t('about.lang_pt_level') }}</span>
+        </div>
+        <div class="lang-tag">
+          <Globe :size="16" />
+          <span class="lang-name">{{ $t('about.lang_en') }}:</span>
+          <span class="lang-val">{{ $t('about.lang_en_level') }}</span>
+        </div>
+      </div>
+
+      <div class="actions-centered">
+        <a :href="resumeUrl" :download="resumeFilename" class="btn btn-primary">
+          <DownloadCloud :size="20" />
+          <span>{{ $t('about.download_button') }}</span>
+        </a>
       </div>
     </div>
-
-    <div class="highlights">
-      <div class="highlight-card">
-        <Lightbulb :size="32" class="icon" />
-        <h3>{{ $t('about.highlight1_title') }}</h3>
-        <p>{{ $t('about.highlight1_desc') }}</p>
-      </div>
-      <div class="highlight-card">
-        <Shield :size="32" class="icon" />
-        <h3>{{ $t('about.highlight2_title') }}</h3>
-        <p>{{ $t('about.highlight2_desc') }}</p>
-      </div>
-      <div class="highlight-card">
-        <BookOpen :size="32" class="icon" />
-        <h3>{{ $t('about.highlight3_title') }}</h3>
-        <p>{{ $t('about.highlight3_desc') }}</p>
-      </div>
-    </div>
-
-    <p class="description">
-      {{ $t('about.description') }}
-    </p>
-
-    <a :href="resumeUrl" :download="resumeFilename" class="download-button">
-      <DownloadCloud :size="20" />
-      <span>{{ $t('about.download_button') }}</span>
-    </a>
   </section>
 </template>
 
 <style scoped>
 .about-section {
+  padding: 8rem 2rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 6rem 2rem;
-  max-width: 960px;
-  margin: 0 auto;
+  justify-content: center;
+}
+
+.content-wrapper {
+  max-width: 1100px;
+  width: 100%;
 }
 
 .section-title {
-  font-size: 2.5rem;
-  color: var(--color-heading);
-  margin-bottom: 0rem;
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  color: var(--color-text);
-  opacity: 0.7;
   margin-bottom: 3rem;
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  text-align: left;
 }
 
-.highlights {
-  display: flex;
-  gap: 2rem;
-  width: 100%;
-  margin-bottom: 3rem;
+.bio-container {
+  margin-bottom: 4rem;
+  text-align: justify;
 }
 
-.highlight-card {
-  flex: 1;
-  background-color: var(--color-card-background);
-  border: 1px solid var(--color-border);
-  padding: 2rem;
-  border-radius: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.bio-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
 }
 
-.highlight-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+/* Especialidades */
+.specialties-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
 }
 
-.icon {
+.spec-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+.spec-icon {
   color: var(--color-primary);
   margin-bottom: 1rem;
+  align-self: center;
 }
 
-.highlight-card h3 {
+/* Card de Educação Centralizado */
+.education-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.edu-card {
+  width: 100%;
+  max-width: 1100px;
+  border-left: 4px solid var(--color-primary) !important;
+}
+
+.edu-header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.edu-title-group h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.6;
+}
+
+.edu-title-group h4 {
   font-size: 1.2rem;
-  color: var(--color-heading);
-  margin-bottom: 0.5rem;
 }
 
-.highlight-card p {
-  font-size: 0.9rem;
-  color: var(--color-text);
-  line-height: 1.5;
+.university {
+  font-family: var(--font-mono);
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
 }
 
-.education-highlight {
+.edu-badges {
+  display: flex;
+  gap: 1rem;
+}
+
+.edu-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.edu-badge.accent {
+  border: 1px solid var(--color-primary);
+  background: transparent;
+  color: var(--color-primary);
+}
+
+/* Idiomas Estilo Row */
+.languages-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+}
+
+.lang-tag {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  background-color: var(--color-card-background);
-  border-left: 4px solid var(--color-primary);
-  padding: 1.5rem 2rem;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 900px;
-  text-align: left;
-  margin-bottom: 3rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.education-highlight:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.education-text h3 {
-  font-size: 1.2rem;
-  color: var(--color-heading);
-  margin-bottom: 0.5rem;
-}
-
-.education-text p {
-  font-size: 0.9rem;
-  color: var(--color-text);
-  line-height: 1.5;
-}
-
-.description {
-  max-width: 800px;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--color-text);
-  margin-bottom: 3rem;
-}
-
-.download-button {
-  display: inline-flex;
-  align-items: center;
   gap: 0.75rem;
-  padding: 0.8rem 1.8rem;
-  background-color: var(--color-card-background);
-  color: var(--color-text);
-  border: 1px solid var(--color-primary);
-  border-radius: 30px;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: var(--color-card-background);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.download-button:hover {
-  background-color: var(--color-primary);
-  color: #fff;
+.lang-tag:hover {
+  transform:scale(1.1);
   border-color: var(--color-primary);
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
 }
 
-@media (max-width: 768px) {
-  .about-section {
-    padding: 4rem 1rem;
-  }
-  .highlights {
-    flex-direction: column;
-  }
-  .section-title {
-    font-size: 2rem;
-  }
+.lang-name {
+  font-weight: 600;
+}
+
+.lang-val {
+  opacity: 0.7;
+}
+
+/* Botão Centralizado */
+.actions-centered {
+  display: flex;
+  justify-content: center;
+}
+
+.text-primary { color: var(--color-primary); }
+
+@media (max-width: 600px) {
+  .languages-row { gap: 1rem; }
+  .edu-header { flex-direction: column; text-align: center; }
 }
 </style>

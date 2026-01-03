@@ -1,32 +1,37 @@
-/* Definição das Variáveis de Cor (Theming) */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;600;700&display=swap');
+
 :root {
-  /* Tema Claro (Padrão) */
+  /* Tema Claro - Ajustado para maior sobriedade */
   --color-primary: #235218;
-  --color-primary-hover: #00a372;
+  --color-primary-rgb: 35, 82, 24;
+  --color-primary-hover: #1a3d12;
   --color-text: #2c3e50;
   --color-background: #ffffff;
-  --color-heading: #222831;
-  --color-card-background: #f9f9f9;
-  --color-border: #c9c8c8;
-  --color-pattern: rgba(0, 0, 0, 0.06);
+  --color-heading: #1a1a1a;
+  --color-card-background: #fdfdfd;
+  --color-border: #e2e2e2;
+  --color-pattern: rgba(0, 0, 0, 0.03);
+
+  /* Fontes */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
-/* Sobrescreve as variáveis quando o tema escuro estiver ativo */
 [data-theme='dark'] {
-  --color-primary: #235218;
-  --color-primary-hover: #00e09e;
-  --color-text: #e0e0e0;
-  --color-background: #121212;
+  /* Tema Escuro - "True Dark" para estética Low-profile */
+  --color-primary: #3d8c2a;
+  --color-primary-rgb: 61, 140, 42;
+  --color-primary-hover: #4db335;
+  --color-text: #b0b0b0;
+  --color-background: #0a0a0a;
   --color-heading: #ffffff;
-  --color-card-background: #1e1e1e;
-  --color-border: #2c2c2c;
-  --color-pattern: rgba(255, 255, 255, 0.05);
+  --color-card-background: #121212;
+  --color-border: #1f1f1f;
+  --color-pattern: rgba(255, 255, 255, 0.02);
 }
 
-/* Reset Básico e Estilos Globais */
-*,
-*::before,
-*::after {
+/* Reset e Estilos Globais */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -34,54 +39,148 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 16px;
+  font-family: var(--font-sans);
   line-height: 1.6;
   background-color: var(--color-background);
   color: var(--color-text);
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 
-  background-image: repeating-linear-gradient(
-    45deg,
-    var(--color-pattern),
-    var(--color-pattern) 1px,
-    transparent 1px,
-    transparent 40px
-  );
+  /* Sutil padrão de grid para remeter a engenharia */
+  background-image: radial-gradient(var(--color-pattern) 1px, transparent 1px);
+  background-size: 30px 30px;
 
-  border-left: 5px solid var(--color-primary);
+  /* Identidade visual lateral */
+  border-left: 4px solid var(--color-primary);
 }
 
-h1, h2, h3, h4, h5, h6 {
+/* Tipografia Técnica */
+h1, h2, h3, h4 {
+  font-family: var(--font-mono);
   color: var(--color-heading);
-  line-height: 1.3;
-  margin-bottom: 1rem;
   font-weight: 600;
+  letter-spacing: -0.5px;
 }
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.8rem; margin-top: 2rem; }
 
 a {
   color: var(--color-primary);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.2s ease;
+  font-family: var(--font-mono); /* Links com cara de código */
+  font-size: 0.95rem;
 }
 
 a:hover {
-  color: var(--color-primary-hover);
+  opacity: 0.8;
+  text-decoration: underline;
 }
 
-img {
-  max-width: 100%;
-  display: block;
+/* Utilitários de Transição */
+#app {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
 }
 
 #app.is-translating {
-  transform: translateY(10px);
   opacity: 0;
+  transform: translateY(5px);
 }
 
-#app {
-  transition: transform 0.3s ease, opacity 0.3s ease;
+/* Custom Selection */
+::selection {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+/* --- Botões Globais --- */
+
+/* Base do botão (Reset e estrutura comum) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+}
+
+/* Variante Outline (O padrão que você enviou) */
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -10px rgba(var(--color-primary-rgb), 0.3);
+  background: rgba(var(--color-primary-rgb), 0.05);
+  text-decoration: none;
+}
+
+/* Variante Primary (Para CTAs de destaque como 'Download CV') */
+.btn-primary {
+  gap: 1rem;
+  padding: 1rem 2.5rem;
+  border-radius: 4px;
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.4);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -10px rgba(var(--color-primary-rgb), 0.5);
+  text-decoration: none;
+}
+
+/* Variante Ghost (Apenas texto, para links menos importantes) */
+.btn-ghost:hover {
+  background: var(--color-card-background);
+  color: var(--color-primary);
+}
+
+/* --- Cards Globais --- */
+
+.card-base {
+  background-color: var(--color-card-background);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-base h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-base p {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* Efeito de hover padrão para cards interativos */
+.card-interactive:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
 }

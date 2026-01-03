@@ -1,80 +1,79 @@
 <script setup>
 const mainSkillCategories = [
   {
-    title: 'category1',
+    title: 'languages',
     skills: [
       { name: 'Python', icon: 'devicon-python-plain' },
-      { name: 'SQL', icon: 'devicon-azuresqldatabase-plain' },
+      { name: 'Go', icon: 'devicon-go-original-wordmark' },
+      { name: 'Solidity', icon: 'devicon-solidity-plain' },
       { name: 'JavaScript', icon: 'devicon-javascript-plain' },
-      { name: 'C++', icon: 'devicon-cplusplus-plain' },
-      { name: 'C', icon: 'devicon-c-plain' },
+      { name: 'SQL', icon: 'devicon-azuresqldatabase-plain' },
     ]
   },
   {
-    title: 'category2',
+    title: 'frameworks',
     skills: [
       { name: 'Django', icon: 'devicon-django-plain' },
       { name: 'FastAPI', icon: 'devicon-fastapi-plain' },
-      { name: 'Vue.js', icon: 'devicon-vuejs-plain' },
       { name: 'Node.js', icon: 'devicon-nodejs-plain' },
-      { name: 'Express.js', icon: 'devicon-express-original' },
+      { name: 'Vue.js', icon: 'devicon-vuejs-plain' },
     ]
   },
   {
-    title: 'category3',
+    title: 'infrastructure',
+    skills: [
+      { name: 'Docker', icon: 'devicon-docker-plain' },
+      { name: 'AWS', icon: 'devicon-amazonwebservices-plain' },
+      { name: 'Linux', icon: 'devicon-linux-plain' },
+      { name: 'Git', icon: 'devicon-git-plain' },
+    ]
+  },
+  {
+    title: 'databases',
     skills: [
       { name: 'PostgreSQL', icon: 'devicon-postgresql-plain' },
-      { name: 'MySQL', icon: 'devicon-mysql-plain' },
       { name: 'MongoDB', icon: 'devicon-mongodb-plain' },
-    ]
-  },
-  {
-    title: 'category4',
-    skills: [
-      { name: 'Solidity', icon: 'devicon-solidity-plain' },
-      { name: 'Hardhat', icon: 'devicon-hardhat-plain' },
-      { name: 'OpenZeppelin', icon: 'devicon-openzeppelin-plain' },
+      { name: 'SQLAlchemy', icon: 'devicon-sqlalchemy-plain' },
     ]
   }
 ];
 
-const toolSkills = {
-  title: 'category5',
+const aiTools = {
+  title: 'tools_ia',
   skills: [
-    { name: 'GitHub Actions', icon: 'devicon-githubactions-plain' },
-    { name: 'Git', icon: 'devicon-git-plain' },
+    { name: 'GitHub Copilot', icon: 'devicon-github-original' },
+    { name: 'Gemini', icon: 'devicon-google-plain' },
+    { name: 'Claude', icon: 'devicon-anthropic-plain' },
     { name: 'Postman', icon: 'devicon-postman-plain' },
-    { name: 'VS Code', icon: 'devicon-vscode-plain' },
-    { name: 'Docker', icon: 'devicon-docker-plain' },
-    { name: 'AWS', icon: 'devicon-amazonwebservices-plain' },
-    { name: 'Linux', icon: 'devicon-linux-plain' },
   ]
 };
 </script>
 
 <template>
-  <section id="skills" class="skills-section" data-aos="fade-up">
-    <h2 class="section-title">{{ $t('skills.title') }}</h2>
-    <p class="section-subtitle">{{ $t('skills.subtitle') }}</p>
+  <section id="skills" class="skills-section">
+    <div class="section-container">
+      <h2 class="section-title">// {{ $t('skills.title') }}</h2>
+      <p class="section-subtitle">{{ $t('skills.subtitle') }}</p>
 
-    <div class="skills-grid">
-      <div v-for="category in mainSkillCategories" :key="category.title" class="skill-card">
-        <h3 class="card-title">{{ $t(`skills.${category.title}`) }}</h3>
-        <div class="skills-list">
-          <div v-for="skill in category.skills" :key="skill.name" class="skill-item">
-            <i :class="skill.icon" class="skill-icon"></i>
-            <span>{{ skill.name }}</span>
+      <div class="skills-grid">
+        <div v-for="category in mainSkillCategories" :key="category.title" class="card-base card-interactive skill-card">
+          <h3 class="card-title">{{ $t(`skills.${category.title}`) }}</h3>
+          <div class="skills-list">
+            <div v-for="skill in category.skills" :key="skill.name" class="skill-item">
+              <i :class="skill.icon" class="skill-icon"></i>
+              <span>{{ skill.name }}</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="skill-card standalone-card">
-      <h3 class="card-title">{{ $t(`skills.${toolSkills.title}`) }}</h3>
-      <div class="skills-list standalone-list">
-        <div v-for="skill in toolSkills.skills" :key="skill.name" class="skill-item">
-          <i :class="skill.icon" class="skill-icon"></i>
-          <span>{{ skill.name }}</span>
+      <div class="card-base card-interactive skill-card standalone-card">
+        <h3 class="card-title">{{ $t(`skills.${aiTools.title}`) }}</h3>
+        <div class="skills-list standalone-list">
+          <div v-for="skill in aiTools.skills" :key="skill.name" class="skill-item">
+            <i :class="skill.icon" class="skill-icon"></i>
+            <span>{{ skill.name }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -82,79 +81,77 @@ const toolSkills = {
 </template>
 
 <style scoped>
-.skill-icon {
-  font-size: 28px;
-  color: var(--color-primary);
-  flex-shrink: 0;
+.skills-section {
+  padding: 8rem 2rem;
+  display: flex;
+  justify-content: center;
 }
 
-.skills-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 6rem 2rem;
-  max-width: 960px;
-  margin: 0 auto;
+.section-container {
+  max-width: 1100px;
+  width: 100%;
 }
+
 .section-title {
-  font-size: 2.5rem;
-  color: var(--color-heading);
-  margin-bottom: 0rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  text-align: left;
 }
+
 .section-subtitle {
-  font-size: 1.1rem;
-  color: var(--color-text);
+  font-family: var(--font-mono);
   opacity: 0.7;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
+  text-align: left;
 }
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  width: 100%;
 }
+
+/* O card-base já fornece fundo, borda e raio. Aqui ajustamos o padding local. */
 .skill-card {
-  background-color: var(--color-card-background);
-  border: 1px solid var(--color-border);
-  padding: 2rem;
-  border-radius: 8px;
-  text-align: left;
+  padding: 2.5rem;
 }
-.skill-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+
 .card-title {
-  font-size: 1.3rem;
-  color: var(--color-heading);
-  margin-bottom: 1.5rem;
-  border-left: 3px solid var(--color-primary);
-  padding-left: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  opacity: 0.6;
 }
+
 .skills-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
+
 .skill-item {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  transition: transform 0.2s ease;
+  gap: 1rem;
 }
+
+.skill-icon {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
 .skill-item span {
-  font-size: 1rem;
-  font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
 }
+
 .standalone-card {
   margin-top: 2rem;
-  width: 100%;
+  height: auto;
 }
-.standalone-list {
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-}
+
 @media (max-width: 768px) {
   .skills-grid {
     grid-template-columns: 1fr;

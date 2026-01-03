@@ -1,275 +1,156 @@
 <script setup>
-import 'vue3-carousel/dist/carousel.css';
-import { ref } from 'vue';
-import { Github, ExternalLink } from 'lucide-vue-next';
-import { Carousel, Slide, Navigation } from 'vue3-carousel';
-
-const myCarousel = ref(null);
-const currentSlide = ref(0);
-
-const goToSlide = (index) => {
-  myCarousel.value.slideTo(index);
-};
+import { Github, ExternalLink, Code2, Terminal } from 'lucide-vue-next';
 
 const projects = [
   {
-    id: 'calculadora',
-    tech: [
-      { name: 'Node.js', icon: 'devicon-nodejs-plain' }, { name: 'Express', icon: 'devicon-express-original' }, { name: 'Vue.js', icon: 'devicon-vuejs-plain' }, { name: 'Docker', icon: 'devicon-docker-plain' }, { name: 'AWS', icon: 'devicon-amazonwebservices-original' },
-    ],
+    id: 'brco-simple',
+    type: 'Freelance | Full-stack',
+    tech: ['Node.js', 'Express', 'Prisma', 'AWS EC2', 'Docker', 'Vue.js'],
     githubUrl: 'https://github.com/Arthur1220/BRCO-SIMPLE',
-    liveUrl: 'https://brcosimple.netlify.app/',
-  },
-  {
-    id: 'rastreabilidade',
-    tech: [
-      { name: 'Django', icon: 'devicon-django-plain' }, { name: 'Vue.js', icon: 'devicon-vuejs-plain' }, { name: 'PostgreSQL', icon: 'devicon-postgresql-plain' }, { name: 'Solidity', icon: 'devicon-solidity-plain' },
-    ],
-    githubUrl: 'https://github.com/Arthur1220/TCC',
-    liveUrl: 'https://tcc-animaltracking.netlify.app/',
+    liveUrl: 'https://brcosimple.netlify.app/'
   },
   {
     id: 'finance-whatsapp',
-    tech: [
-        { name: 'Django', icon: 'devicon-django-plain' }, { name: 'Docker', icon: 'devicon-docker-plain' }, { name: 'Celery', icon: 'devicon-celery-plain' }, { name: 'Redis', icon: 'devicon-redis-plain' }, { name: 'WhatsApp API', icon: 'devicon-whatsapp-plain' }, { name: 'Gemini', icon: 'devicon-gemini-plain' }
-    ],
+    type: 'Backend | AI Automation',
+    tech: ['Django', 'Celery', 'Redis', 'Gemini AI', 'WhatsApp API', 'Docker'],
     githubUrl: 'https://github.com/Arthur1220/Finance-Whatsapp',
-    liveUrl: null,
+    liveUrl: null
   },
   {
-    id: 'legal-lead-capture',
-    tech: [
-        { name: 'Django', icon: 'devicon-django-plain' }, { name: 'Vue.js', icon: 'devicon-vuejs-plain' }, { name: 'OpenAI', icon: 'devicon-openai-plain' }
-    ],
-    githubUrl: null,
-    liveUrl: null,
-  },
-  {
-    id: 'estimativa',
-    tech: [
-      { name: 'Python', icon: 'devicon-python-plain' }, { name: 'SQLAlchemy', icon: 'devicon-sqlalchemy-plain' },
-    ],
-    githubUrl: null,
-    liveUrl: null,
+    id: 'go-chain-turbo',
+    type: 'Blockchain Infrastructure',
+    tech: ['Go', 'WebSockets', 'Ethers.js', 'PostgreSQL'],
+    githubUrl: 'https://github.com/Arthur1220/Go-Chain-Turbo',
+    liveUrl: null
   }
 ];
 </script>
 
 <template>
-  <section id="projects" class="projects-section" data-aos="fade-up">
+  <section id="projects" class="projects-section">
     <div class="section-container">
-      <h2 class="section-title">{{ $t('projects.title') }}</h2>
+      <h2 class="section-title">// {{ $t('projects.title') }}</h2>
       <p class="section-subtitle">{{ $t('projects.subtitle') }}</p>
 
-      <div class="custom-pagination">
-        <button
-          v-for="(project, index) in projects"
-          :key="project.id"
-          @click="goToSlide(index)"
-          :class="{ active: currentSlide === index }"
-          :aria-label="`Ir para o projeto ${index + 1}`"
-        >
-          </button>
-      </div>
+      <div class="projects-grid">
+        <div v-for="project in projects" :key="project.id" class="card-base card-interactive project-card">
+          <div class="card-header">
+            <span class="project-type">{{ project.type }}</span>
+            <Terminal :size="18" class="text-primary" />
+          </div>
 
-      <Carousel ref="myCarousel" v-model="currentSlide" :wrap-around="true">
-        <Slide v-for="project in projects" :key="project.id">
-          <div class="project-card">
-            <h3 class="project-title">{{ $t(`projects.project_list.${project.id}.title`) }}</h3>
-            <p class="project-description">{{ $t(`projects.project_list.${project.id}.description`) }}</p>
+          <h3 class="project-title">{{ $t(`projects.project_list.${project.id}.title`) }}</h3>
+          <p class="project-description">{{ $t(`projects.project_list.${project.id}.description`) }}</p>
 
-            <div class="project-tech-icons">
-              <div v-for="tech in project.tech" :key="tech.name" class="tech-item">
-                <i :class="tech.icon" class="tech-icon"></i>
-                <span>{{ tech.name }}</span>
-              </div>
-            </div>
+          <div class="tech-stack">
+            <span v-for="tech in project.tech" :key="tech" class="tech-badge">
+              {{ tech }}
+            </span>
+          </div>
 
-            <div class="project-links">
-              <a v-if="project.githubUrl" :href="project.githubUrl" target="_blank" class="project-link">
-                <Github :size="20" />
-                <span>{{ $t('projects.view_code') }}</span>
-              </a>
-              <a v-if="project.liveUrl" :href="project.liveUrl" target="_blank" class="project-link primary">
-                <ExternalLink :size="20" />
-                <span>{{ $t('projects.live_demo') }}</span>
-              </a>
-              <div v-if="!project.githubUrl && !project.liveUrl" class="private-tag">
-                <span>{{ $t('projects.private_repo') }}</span>
-              </div>
+          <div class="project-links">
+            <a v-if="project.githubUrl" :href="project.githubUrl" target="_blank" class="link-item">
+              <Github :size="18" />
+              <span>Source</span>
+            </a>
+            <a v-if="project.liveUrl" :href="project.liveUrl" target="_blank" class="link-item primary">
+              <ExternalLink :size="18" />
+              <span>Deploy</span>
+            </a>
+            <div v-else class="private-tag">
+              <Code2 :size="16" />
+              <span>Backend Only / Private</span>
             </div>
           </div>
-        </Slide>
+        </div>
+      </div>
 
-        <template #addons>
-          <Navigation />
-        </template>
-      </Carousel>
-
-      <a href="https://github.com/Arthur1220" target="_blank" class="github-cta-button">
-        <span>{{ $t('projects.view_all_github') }}</span>
-        <Github :size="22" />
-      </a>
-
+      <div class="cta-wrapper">
+        <a href="https://github.com/Arthur1220" target="_blank" class="btn btn-primary">
+          <span>{{ $t('projects.view_all_github') }}</span>
+          <Github :size="20" />
+        </a>
+      </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.projects-section {
-  padding: 6rem 1rem;
-}
-.section-container {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
-}
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-.section-subtitle {
-  font-size: 1.1rem;
-  opacity: 0.7;
-  margin-bottom: 2rem;
+.projects-section { padding: 8rem 2rem; }
+.section-container { max-width: 1100px; margin: 0 auto; }
+.section-title { color: var(--color-primary); margin-bottom: 1rem; }
+.section-subtitle { margin-bottom: 4rem; opacity: 0.7; font-family: var(--font-mono); }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
 }
 
-.custom-pagination {
+/* Ajustes finos locais que o card-base não cobre */
+.project-card {
+  padding: 2.5rem;
+}
+
+.card-header {
   display: flex;
-  justify-content: center;
-  gap: 0.75rem;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1.5rem;
 }
-.custom-pagination button {
-  background-color: var(--color-border);
-  border: none;
-  border-radius: 50%;
-  width: 7px;
-  height: 7px;
-  padding: 0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.custom-pagination button:hover {
-  background-color: var(--color-primary);
-  opacity: 0.7;
-}
-.custom-pagination button.active {
-  background-color: var(--color-primary);
-  transform: scale(1.5);
+
+.project-type {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  letter-spacing: 1px;
 }
 
-.project-card {
-  width: 98%;
-  margin: 0 auto;
-  height: 100%;
-  padding: 2.5rem;
-  background-color: var(--color-card-background);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-}
-.project-title {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-.project-description {
-  margin-bottom: 2rem;
-  line-height: 1.7;
-  flex-grow: 1;
-}
-.project-tech-icons {
+.project-title { font-size: 1.5rem; margin-bottom: 1rem; }
+.project-description { font-size: 0.95rem; line-height: 1.6; opacity: 0.8; margin-bottom: 2rem; flex-grow: 1; }
+
+.tech-stack {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 0.5rem;
   margin-bottom: 2rem;
 }
-.tech-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
+
+.tech-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
 }
-.tech-icon {
-  font-size: 2rem;
-}
-.tech-item span {
-  font-size: 0.8rem;
-  font-weight: 500;
-}
+
 .project-links {
   display: flex;
   gap: 1.5rem;
   align-items: center;
-}
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.6rem 1.2rem;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-.project-link:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-.project-link.primary {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: #fff;
-}
-.project-link.primary:hover {
-  filter: brightness(1.1);
-  color: #fff;
-}
-.private-tag {
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 0.6rem 1.2rem;
-  background-color: var(--color-card-background);
-  border: 1px dashed var(--color-border);
-  border-radius: 8px;
-  opacity: 0.7;
-}
-.github-cta-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 4rem;
-  padding: 0.8rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--color-primary);
-  background-color: transparent;
-  border: 2px solid var(--color-primary);
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.github-cta-button:hover {
-  background-color: var(--color-primary);
-  color: var(--color-background);
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.5rem;
+  margin-top: auto;
 }
 
-:deep(.carousel__prev),
-:deep(.carousel__next) {
-  background-color: var(--color-card-background);
-  border-radius: 50%;
-  border: 1px solid var(--color-border);
-  color: var(--color-primary);
+.link-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  opacity: 0.7;
+  transition: opacity 0.2s, color 0.2s;
 }
-@media (max-width: 768px) {
-  :deep(.carousel__prev),
-  :deep(.carousel__next) {
-    display: none;
-  }
-}
+
+.link-item:hover { opacity: 1; color: var(--color-primary); text-decoration: none; }
+.link-item.primary { color: var(--color-primary); opacity: 1; font-weight: 600; }
+
+.private-tag { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; opacity: 0.5; font-style: italic; }
+
+.cta-wrapper { margin-top: 5rem; display: flex; justify-content: center; }
+
+.text-primary { color: var(--color-primary); }
 </style>

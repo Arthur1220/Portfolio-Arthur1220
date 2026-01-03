@@ -1,99 +1,110 @@
-# Portfólio Full-Stack & Web3 - Arthur Azevedo
-
-## Sobre o Projeto
-
-Este é o repositório do meu portfólio pessoal, uma Single Page Application (SPA) moderna construída para demonstrar minhas habilidades em desenvolvimento web full-stack e blockchain. O projeto é dividido em duas partes principais: um frontend interativo construído com Vue.js e um smart contract na blockchain para uma funcionalidade de "Livro de Visitas On-Chain".
-
-**[Acesse a versão ao vivo aqui](https://portfolioama.netlify.app)**
+# // Arthur Azevedo - Full-Stack & Web3 Engineer
+### [B.Sc. Computer Science @ UESC | GPA 8.3/10]
 
 ---
 
-## ✨ Funcionalidades Principais
+<div align="left">
 
-* **Frontend Moderno e Interativo:** Uma interface totalmente responsiva construída com Vue 3 (Composition API), com troca de temas (claro/escuro), suporte a múltiplos idiomas (PT/EN) e animações de scroll.
-* **Prova de Habilidade On-Chain:** Uma seção "Guestbook" funcional que permite aos visitantes conectar suas carteiras MetaMask e deixar uma mensagem em um smart contract real, implantado na rede de testes Polygon Amoy.
-* **Ambiente de Desenvolvimento Blockchain Profissional:** O smart contract foi desenvolvido com Hardhat, seguindo as melhores práticas, incluindo testes unitários completos, scripts de deploy e simulação local.
-* **Arquitetura Limpa:** O código é bem estruturado, com uma clara separação de responsabilidades entre UI (componentes), lógica de estado (Pinia) e serviços (interação com a blockchain).
+[![Status](https://img.shields.io/badge/Status-Consolidação_2026-3d8c2a?style=flat-square&logo=terminal&logoColor=white)](https://portfolioama.netlify.app)
+[![Main Stack](https://img.shields.io/badge/Stack-Go_|_Python_|_Solidity-235218?style=flat-square)](https://portfolioama.netlify.netlify.app)
+[![License](https://img.shields.io/badge/License-MIT-gray?style=flat-square)](LICENSE)
 
----
+**[🌐 Live Portfolio](https://portfolioama.netlify.app)** • **[💼 LinkedIn](https://linkedin.com/in/azevedo-arthur)** • **[📧 Contact](mailto:arthurmarquesazevedo@gmail.com)**
 
-## 🛠️ Pilha de Tecnologias
-
-| Frontend                                                                                      | Blockchain                                                                         |
-| --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| [Vue.js](https://vuejs.org/) (Composition API)                                                | [Solidity](https://soliditylang.org/)                                              |
-| [Vite](https://vitejs.dev/)                                                                   | [Hardhat](https://hardhat.org/)                                                    |
-| [Pinia](https://pinia.vuejs.org/)                                                             | [Ethers.js](https://ethers.io/)                                                    |
-| [Vue Router](https://router.vuejs.org/)                                                       | [Mocha](https://mochajs.org/) & [Chai](https://www.chaijs.com/)                    |
-| [Vue-i18n](https://vue-i18n.intlify.dev/)                                                     | [OpenZeppelin](https://www.openzeppelin.com/contracts) (Contratos Padrão)        |
-| [AOS](https://michalsnik.github.io/aos/) (Animate on Scroll)                                  | [Polygon Amoy](https://polygon.technology/) (Rede de Testes)                       |
-| [Lucide Icons](https://lucide.dev/) & [Devicon](https://devicon.dev/)                         | [Alchemy](https://www.alchemy.com/) (Provedor de RPC)                              |
+</div>
 
 ---
 
-## 📂 Estrutura do Projeto
+## // 01. Visão Geral do Projeto
 
-O repositório está organizado em um formato de monorepo, com duas pastas principais:
+Este repositório contém a infraestrutura completa do meu portfólio profissional. Diferente de um site estático comum, este projeto foi desenhado como uma **Arquitetura Híbrida (Web2 + Web3)**, servindo como um "Proof of Concept" (PoC) para sistemas escaláveis de rastreabilidade e automação.
 
-* **`/frontend`**: Contém toda a aplicação Vue.js. Esta é a parte visual e interativa do portfólio.
-* **`/blockchain`**: Contém o projeto Hardhat com o smart contract, testes e scripts de deploy.
-* **`netlify.toml`**: Arquivo de configuração que instrui o Netlify a fazer o deploy do site a partir da pasta `/frontend`.
-
----
-
-## 🚀 Configuração e Execução Local
-
-Para rodar o projeto completo na sua máquina, você precisará configurar as duas partes.
-
-**Pré-requisitos:**
-* [Node.js](https://nodejs.org/) (versão LTS)
-* [NPM](https://www.npmjs.com/)
-* Uma carteira [MetaMask](https://metamask.io/) para interagir com a funcionalidade do Guestbook.
-
-### Configurando o Frontend
-
-1.  Navegue até a pasta do frontend:
-    ```bash
-    cd frontend
-    ```
-2.  Instale as dependências:
-    ```bash
-    npm install
-    ```
-3.  Crie e configure o arquivo de variáveis de ambiente:
-    ```bash
-    cp .env.example .env
-    ```
-    Abra o arquivo `.env` e preencha as variáveis `VITE_GUESTBOOK_CONTRACT_ADDRESS` e `VITE_RPC_URL` com os seus dados.
-
-4.  Inicie o servidor de desenvolvimento:
-    ```bash
-    npm run dev
-    ```
-
-### Configurando o Backend (Blockchain)
-
-1.  Em outro terminal, navegue até a pasta do blockchain:
-    ```bash
-    cd blockchain
-    ```
-2.  Instale as dependências:
-    ```bash
-    npm install
-    ```
-3.  Para rodar os testes ou simular interações, nenhum passo adicional é necessário. Para fazer deploy em uma rede de testes, configure o arquivo `.env` conforme as instruções no `README.md` da pasta `/blockchain`.
+### Destaques de Engenharia:
+* **Hybrid On-Chain State:** Implementação de um Guestbook descentralizado com registro de eventos na L2 **Polygon (Amoy)**.
+* **Infrastructure-as-Code (Manual):** Ambientes conteinerizados com **Docker** e estratégias de deploy em instâncias **AWS EC2**.
+* **Software Design:** Aplicação de Composition API no Vue 3 para separação rigorosa de lógica de estado (Pinia) e serviços de blockchain.
+* **AI Integration:** Módulos de automação técnica utilizando **LLMs (Gemini/GPT)** para otimização de fluxos.
 
 ---
 
-## 📜 Scripts Disponíveis
+## // 02. Stack Tecnológica
 
-#### Frontend
-* `npm run dev`: Inicia o servidor de desenvolvimento.
-* `npm run build`: Compila a aplicação para produção.
-* `npm run preview`: Visualiza o build de produção localmente.
+### Core Languages & Runtimes
+* **Backend:** Go (Sistemas de alta performance), Python (Django/FastAPI), Node.js (Express).
+* **Blockchain:** Solidity (EVM Smart Contracts), Hardhat, Ethers.js.
+* **Frontend:** Vue.js 3, Vite, TypeScript, Tailwind/Custom CSS.
 
-#### Blockchain
-* `npx hardhat compile`: Compila os smart contracts.
-* `npx hardhat test`: Roda os testes unitários.
-* `npx hardhat run scripts/run-local.js`: Roda uma simulação local.
-* `npx hardhat run scripts/deploy.js --network amoy`: Faz o deploy para a rede de testes Amoy.
+### Data & Infrastructure
+* **Databases:** PostgreSQL (Relacional), MongoDB (NoSQL), Redis (Caching/Queues).
+* **DevOps:** Docker & Docker Compose, AWS (EC2/S3), GitHub Actions (CI/CD).
+* **Testing:** Mocha/Chai (Smart Contracts), Pytest (Backend).
+
+---
+
+## // 03. Arquitetura do Repositório
+
+O projeto utiliza uma estrutura de **Monorepo** para manter a paridade entre o contrato inteligente e a interface de usuário:
+
+```bash
+.
+├── 📁 blockchain/          # Hardhat Environment
+│   ├── 📁 contracts/       # Smart Contracts (Solidity)
+│   ├── 📁 test/            # Unit & Integration Tests
+│   └── scripts/            # Deployment & Migration scripts
+├── 📁 frontend/            # Vue 3 SPA
+│   ├── 📁 src/
+│   │   ├── 📁 services/    # Blockchain & API Integrations
+│   │   ├── 📁 components/  # Atomic UI Components
+│   │   └── 📁 locales/     # i18n (PT/EN Support)
+│   └── vite.config.js
+└── netlify.toml            # Automated Deployment Config
+
+```
+
+---
+
+## // 04. Setup & Desenvolvimento Local
+
+### 04.1 Frontend Context
+
+```bash
+cd frontend
+npm install
+cp .env.example .env # Configure VITE_GUESTBOOK_CONTRACT_ADDRESS
+npm run dev
+
+```
+
+### 04.2 Blockchain Context (Hardhat)
+
+```bash
+cd blockchain
+npm install
+npx hardhat test      # Validação da lógica do contrato
+npx hardhat compile   # Geração de ABI para o frontend
+
+```
+
+---
+
+## // 05. Pesquisas e Inovação (UESC)
+
+Este portfólio também documenta minha trajetória acadêmica na **Universidade Estadual de Santa Cruz**, incluindo:
+
+* **TCC (2025):** Plataforma Full-stack de Rastreabilidade Animal via Blockchain L2.
+* **Iniciação Tecnológica:** Sistemas de estimativa de peso via Visão Computacional 3D (Intel RealSense).
+
+---
+
+## // 06. Licença e Contrato
+
+Desenvolvido por **Arthur Azevedo** sob a licença MIT.
+*A imutabilidade das mensagens no Guestbook é garantida pelo protocolo Polygon.*
+
+---
+
+<div align="center">
+<sub>// Built with ☕, Go and Solidity | 2026 Consolidation Era</sub>
+</div>
+
+```
