@@ -1,9 +1,9 @@
 {
   "nav": {
-    "about": "História",
-    "research": "Pesquisa",
+    "about": "Sobre Mim",
+    "research": "Pesquisa & Experiência",
     "projects": "Projetos",
-    "guestbook": "Livro de Visitas",
+    "guestbook": "Guestbook",
     "skills": "Stack",
     "contact": "Contato"
   },
@@ -11,6 +11,7 @@
     "greeting": "Desenvolvedor de Software",
     "name": "Arthur Marques Azevedo",
     "professional_title": "Blockchain - Back-end - Full-stack Developer",
+    "status": "Disponível para oportunidades remotas e híbridas",
     "location": "Ilhéus-BA (Disponível para mudança)"
   },
   "about": {
@@ -35,7 +36,7 @@
     "download_button": "Ver Currículo Completo"
   },
   "research": {
-    "title": "Pesquisa & Inovação",
+    "title": "Pesquisa & Experiência",
     "subtitle": "Experiência em Iniciação Tecnológica na UESC",
     "project_tcc_title": "TCC: Rastreabilidade Animal com Blockchain",
     "project_tcc_desc": "Arquitetura de uma plataforma full-stack para solucionar fraudes no agronegócio através de rastreabilidade imutável. Implementação de arquitetura híbrida (on-chain/off-chain) com registro de hashes na rede Polygon (L2) e desenvolvimento de uma carteira custodial no back-end para abstrair a complexidade Web3.",
@@ -46,7 +47,7 @@
     "project2_desc": "Criação de um aplicativo desktop em Python para automatização de fórmulas nutricionais nacionais. Aplicação rigorosa de conceitos de POO e processamento numérico com NumPy."
   },
   "projects": {
-    "title": "Projetos Selecionados",
+    "title": "Projetos",
     "subtitle": "Soluções reais de engenharia, do agronegócio à infraestrutura Web3.",
     "view_all_github": "Repositórios Adicionais no GitHub",
     "project_list": {
@@ -65,13 +66,16 @@
     }
   },
   "skills": {
-    "title": "Arsenal Técnico",
+    "title": "Stack Técnica",
     "subtitle": "Linguagens e ferramentas utilizadas em meus fluxos de engenharia.",
     "languages": "Linguagens",
     "frameworks": "Frameworks",
     "infrastructure": "Cloud & Infra",
     "databases": "Bancos de Dados",
-    "tools_ia": "IA & Produtividade"
+    "tools_ia": "IA & Produtividade",
+    "legend_primary": "uso diário",
+    "legend_secondary": "conhecimento sólido",
+    "legend_exploring": "explorando"
   },
   "guestbook": {
     "title": "Guestbook On-Chain",
@@ -81,10 +85,15 @@
     "connect_wallet": "Conectar Carteira",
     "send_message": "Enviar para a Chain",
     "sending": "Minerando...",
-    "no_messages": "Nenhum bloco de mensagens encontrado."
+    "no_messages": "Nenhum bloco de mensagens encontrado.",
+    "empty_title": "Nenhum registro on-chain ainda.",
+    "empty_hint": "Conecte sua carteira Polygon Amoy e seja o primeiro a assinar.",
+    "connect_cta": "Conectar Carteira",
+    "empty_connected_title": "Nenhuma mensagem ainda.",
+    "empty_connected_hint": "Use o campo acima para registrar sua passagem na blockchain."
   },
   "contact": {
-    "title": "Conectar",
+    "title": "Contato",
     "subtitle": "Estou disponível para novas oportunidades em Backend, Blockchain e projetos desafiadores de engenharia. Sinta-se à vontade para entrar em contato.",
     "email_desc": "arthurmarquesazevedo{'@'}gmail.com",
     "whatsapp_desc": "Fale comigo agora",

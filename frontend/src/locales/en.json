@@ -1,7 +1,7 @@
 {
   "nav": {
-    "about": "Story",
-    "research": "Research",
+    "about": "About Me",
+    "research": "Research & Experience",
     "projects": "Projects",
     "guestbook": "Guestbook",
     "skills": "Stack",
@@ -11,6 +11,7 @@
     "greeting": "Software Developer",
     "name": "Arthur Marques Azevedo",
     "professional_title": "Blockchain - Back-end - Full-stack Developer",
+    "status": "Available for remote and hybrid opportunities",
     "location": "Ilheus-BA, Brazil (Open to relocation)"
   },
   "about": {
@@ -35,7 +36,7 @@
     "download_button": "View Full Resume"
   },
   "research": {
-    "title": "Research & Innovation",
+    "title": "Research & Experience",
     "subtitle": "Technological Initiation Experience at UESC",
     "project_tcc_title": "Final Project: Animal Traceability with Blockchain",
     "project_tcc_desc": "Full-stack platform architecture to solve agribusiness fraud through immutable traceability. Implementation of a hybrid architecture (on-chain/off-chain) recording event hashes on the Polygon network (L2) and developing a back-end custodial wallet to abstract Web3 complexity.",
@@ -65,13 +66,16 @@
     }
   },
   "skills": {
-    "title": "Technical Arsenal",
+    "title": "Technical Stack",
     "subtitle": "Languages and tools used in my engineering workflows.",
     "languages": "Languages",
     "frameworks": "Frameworks",
     "infrastructure": "Cloud & Infra",
     "databases": "Databases",
-    "tools_ia": "AI & Productivity"
+    "tools_ia": "AI & Productivity",
+    "legend_primary": "daily use",
+    "legend_secondary": "solid knowledge",
+    "legend_exploring": "exploring"
   },
   "guestbook": {
     "title": "On-Chain Guestbook",
@@ -82,7 +86,12 @@
     "sending": "Sending transaction...",
     "success": "Message sent successfully!",
     "no_messages": "No messages yet. Be the first!",
-    "view_contract": "View Contract on Polygonscan"
+    "view_contract": "View Contract on Polygonscan",
+    "empty_title": "No on-chain records yet.",
+    "empty_hint": "Connect your Polygon Amoy wallet and be the first to sign.",
+    "connect_cta": "Connect Wallet",
+    "empty_connected_title": "No messages yet.",
+    "empty_connected_hint": "Use the field above to register your visit on the blockchain."
   },
   "contact": {
     "title": "Contact",

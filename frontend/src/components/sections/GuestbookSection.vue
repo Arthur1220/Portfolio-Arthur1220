@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { connectWallet, getMessages, addMessage } from '@/services/blockchainService.js';
-import { Wallet, Send, ExternalLink, ShieldCheck, Terminal } from 'lucide-vue-next';
+import { Wallet, Send, ExternalLink, ShieldCheck, Terminal, BookOpen } from 'lucide-vue-next';
 
 const contractAddress = import.meta.env.VITE_GUESTBOOK_CONTRACT_ADDRESS;
 const account = ref(null);
@@ -67,7 +67,6 @@ onMounted(handleFetchMessages);
     <div class="content-wrapper">
       <h2 class="section-title">// {{ $t('guestbook.title') }}</h2>
       <p class="section-subtitle">{{ $t('guestbook.subtitle') }}</p>
-
       <div class="card-base guestbook-terminal">
         <div class="terminal-header">
           <div class="contract-info">
@@ -78,7 +77,6 @@ onMounted(handleFetchMessages);
               <ExternalLink :size="12" />
             </a>
           </div>
-
           <button v-if="!account" @click="handleConnect" class="btn btn-outline btn-small" :disabled="isLoading">
             <Wallet :size="16" />
             <span>Connect</span>
@@ -111,9 +109,35 @@ onMounted(handleFetchMessages);
         </div>
 
         <div class="messages-log">
-          <div v-if="isLoading && messages.length === 0" class="log-entry system-msg">Loading chain data...</div>
-          <div v-if="!isLoading && messages.length === 0" class="log-entry system-msg">No records found on-chain.</div>
+          <!-- Estado: carregando -->
+          <div v-if="isLoading && messages.length === 0" class="empty-state">
+            <div class="empty-spinner">
+              <span class="spinner-dot">.</span>
+              <span class="spinner-dot">.</span>
+              <span class="spinner-dot">.</span>
+            </div>
+            <span class="empty-label">Fetching on-chain records</span>
+          </div>
 
+          <!-- Estado: vazio sem carteira conectada -->
+          <div v-else-if="!isLoading && messages.length === 0 && !account" class="empty-state">
+            <BookOpen :size="28" class="empty-icon" />
+            <p class="empty-title">{{ $t('guestbook.empty_title') }}</p>
+            <p class="empty-hint">{{ $t('guestbook.empty_hint') }}</p>
+            <button @click="handleConnect" class="btn btn-outline btn-small empty-cta" :disabled="isLoading">
+              <Wallet :size="14" />
+              <span>{{ $t('guestbook.connect_cta') }}</span>
+            </button>
+          </div>
+
+          <!-- Estado: vazio com carteira conectada -->
+          <div v-else-if="!isLoading && messages.length === 0 && account" class="empty-state">
+            <BookOpen :size="28" class="empty-icon" />
+            <p class="empty-title">{{ $t('guestbook.empty_connected_title') }}</p>
+            <p class="empty-hint">{{ $t('guestbook.empty_connected_hint') }}</p>
+          </div>
+
+          <!-- Mensagens -->
           <div v-for="(msg, index) in messages" :key="index" class="log-entry">
             <span class="log-time">[{{ msg.timestamp }}]</span>
             <span class="log-author">{{ formatAddress(msg.author) }}:</span>
@@ -149,7 +173,6 @@ onMounted(handleFetchMessages);
   font-size: 0.9rem;
 }
 
-/* Terminal Adjustments */
 .guestbook-terminal {
   height: auto !important;
   max-width: 1100px;
@@ -198,6 +221,13 @@ onMounted(handleFetchMessages);
   height: 8px;
   background: #27c93f;
   border-radius: 50%;
+  box-shadow: 0 0 6px rgba(39, 201, 63, 0.6);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
 .input-area {
@@ -215,6 +245,12 @@ onMounted(handleFetchMessages);
   background: rgba(0, 0, 0, 0.2);
   padding: 0.5rem 1rem;
   border-radius: 4px;
+  border: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.input-wrapper:focus-within {
+  border-color: rgba(39, 201, 63, 0.4);
 }
 
 .prompt {
@@ -244,12 +280,10 @@ onMounted(handleFetchMessages);
 
 .send-btn:hover:not(:disabled) {
   border-color: var(--color-primary);
-  background: rgba(var(--color-primary-rgb), 0.1);
+  background: rgba(39, 201, 63, 0.1);
 }
 
-.send-btn:disabled {
-  opacity: 0.3;
-}
+.send-btn:disabled { opacity: 0.3; }
 
 .status-bar {
   padding: 0.5rem 1.5rem;
@@ -259,12 +293,12 @@ onMounted(handleFetchMessages);
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(var(--color-primary-rgb), 0.05);
+  background: rgba(39, 201, 63, 0.05);
 }
 
 .messages-log {
   padding: 1.5rem;
-  height: 250px;
+  min-height: 220px;
   overflow-y: auto;
   font-family: var(--font-mono);
   font-size: 0.85rem;
@@ -273,15 +307,72 @@ onMounted(handleFetchMessages);
   gap: 0.5rem;
 }
 
+/* Estado vazio */
+.empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.empty-icon {
+  color: var(--color-primary);
+  opacity: 0.4;
+  margin-bottom: 0.5rem;
+}
+
+.empty-title {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.empty-hint {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  opacity: 0.45;
+  margin: 0;
+  max-width: 340px;
+  line-height: 1.5;
+}
+
+.empty-cta {
+  margin-top: 0.5rem;
+}
+
+/* Spinner de loading */
+.empty-spinner {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.spinner-dot {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  animation: loadingDots 1.2s infinite;
+  opacity: 0;
+}
+
+.spinner-dot:nth-child(2) { animation-delay: 0.2s; }
+.spinner-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes loadingDots {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* Mensagens */
 .log-entry {
   line-height: 1.4;
   display: flex;
   gap: 0.75rem;
-}
-
-.system-msg {
-  opacity: 0.5;
-  font-style: italic;
+  flex-wrap: wrap;
 }
 
 .log-time { opacity: 0.4; }
