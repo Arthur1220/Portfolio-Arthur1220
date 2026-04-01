@@ -5,10 +5,9 @@ const mainSkillCategories = [
     skills: [
       { name: 'Python', icon: 'devicon-python-plain', level: 'primary' },
       { name: 'JavaScript', icon: 'devicon-javascript-plain', level: 'primary' },
-      { name: 'Go', icon: 'devicon-go-original-wordmark', level: 'primary' },
-      { name: 'SQL', icon: 'devicon-azuresqldatabase-plain', level: 'primary' },
-      { name: 'C', icon: 'devicon-c-plain', level: 'primary' },
+      { name: 'Go', icon: 'devicon-go-original-wordmark', level: 'exploring' },
       { name: 'Solidity', icon: 'devicon-solidity-plain', level: 'secondary' },
+      { name: 'SQL', icon: 'devicon-azuresqldatabase-plain', level: 'primary' },
     ]
   },
   {
@@ -17,10 +16,9 @@ const mainSkillCategories = [
       { name: 'Django', icon: 'devicon-django-plain', level: 'primary' },
       { name: 'FastAPI', icon: 'devicon-fastapi-plain', level: 'primary' },
       { name: 'Vue.js', icon: 'devicon-vuejs-plain', level: 'primary' },
-      { name: 'Node.js', icon: 'devicon-nodejs-plain', level: 'primary' },
-      { name: 'Express.js', icon: 'devicon-express-original', level: 'primary' },
+      { name: 'Node.js', icon: 'devicon-nodejs-plain', level: 'secondary' },
       { name: 'Prisma', icon: 'devicon-prisma-plain', level: 'secondary' },
-      { name: 'Flask', icon: 'devicon-flask-plain', level: 'secondary' },
+      { name: 'Express.js', icon: 'devicon-express-original', level: 'secondary' },
     ]
   },
   {
@@ -29,20 +27,17 @@ const mainSkillCategories = [
       { name: 'Docker', icon: 'devicon-docker-plain', level: 'primary' },
       { name: 'Linux', icon: 'devicon-linux-plain', level: 'primary' },
       { name: 'Git', icon: 'devicon-git-plain', level: 'primary' },
-      { name: 'AWS', icon: 'devicon-amazonwebservices-plain', level: 'primary' },
+      { name: 'AWS', icon: 'devicon-amazonwebservices-plain', level: 'secondary' },
       { name: 'GitHub Actions', icon: 'devicon-githubactions-plain', level: 'secondary' },
-
     ]
   },
   {
     title: 'databases',
     skills: [
       { name: 'PostgreSQL', icon: 'devicon-postgresql-plain', level: 'primary' },
-      { name: 'MongoDB', icon: 'devicon-mongodb-plain', level: 'primary' },
-      { name: 'MySQL', icon: 'devicon-mysql-plain', level: 'primary' },
-      { name: 'SQLite', icon: 'devicon-sqlite-plain', level: 'primary' },
+      { name: 'MongoDB', icon: 'devicon-mongodb-plain', level: 'secondary' },
+      { name: 'MySQL', icon: 'devicon-mysql-plain', level: 'secondary' },
       { name: 'SQLAlchemy', icon: 'devicon-sqlalchemy-plain', level: 'secondary' },
-      { name: 'Redis', icon: 'devicon-redis-plain', level: 'secondary' },
     ]
   }
 ];
@@ -52,8 +47,8 @@ const aiTools = {
   skills: [
     { name: 'GitHub Copilot', icon: 'devicon-github-original', level: 'primary' },
     { name: 'Claude', icon: 'devicon-anthropic-plain', level: 'primary' },
-    { name: 'Gemini', icon: 'devicon-google-plain', level: 'primary' },
-    { name: 'Postman', icon: 'devicon-postman-plain', level: 'primary' },    
+    { name: 'Gemini', icon: 'devicon-google-plain', level: 'secondary' },
+    { name: 'Postman', icon: 'devicon-postman-plain', level: 'secondary' },    
   ]
 };
 
@@ -67,8 +62,10 @@ const levelLabel = {
 <template>
   <section id="skills" class="skills-section">
     <div class="section-container">
-      <h2 class="section-title">// {{ $t('skills.title') }}</h2>
-      <p class="section-subtitle">{{ $t('skills.subtitle') }}</p>
+      <div class="section-header">
+        <h2 class="section-title">{{ $t('skills.title') }}</h2>
+        <p class="section-subtitle">{{ $t('skills.subtitle') }}</p>
+      </div>
 
       <!-- Legenda de níveis -->
       <div class="legend">
@@ -90,9 +87,9 @@ const levelLabel = {
         <div
           v-for="category in mainSkillCategories"
           :key="category.title"
-          class="card-base card-interactive skill-card"
+          class="skill-category"
         >
-          <h3 class="card-title">{{ $t(`skills.${category.title}`) }}</h3>
+          <h3 class="category-title">{{ $t(`skills.${category.title}`) }}</h3>
           <div class="skills-list">
             <div
               v-for="skill in category.skills"
@@ -110,9 +107,9 @@ const levelLabel = {
         </div>
       </div>
 
-      <!-- Card de IA standalone -->
-      <div class="card-base card-interactive skill-card standalone-card">
-        <h3 class="card-title">{{ $t(`skills.${aiTools.title}`) }}</h3>
+      <!-- Blocos extra standalone -->
+      <div class="skill-category standalone-category">
+        <h3 class="category-title">{{ $t(`skills.${aiTools.title}`) }}</h3>
         <div class="skills-list standalone-list">
           <div
             v-for="skill in aiTools.skills"
@@ -137,31 +134,33 @@ const levelLabel = {
 }
 
 .section-container {
-  max-width: 1100px;
+  max-width: 900px;
   width: 100%;
 }
 
+.section-header {
+  margin-bottom: 4rem;
+}
+
 .section-title {
-  color: var(--color-primary);
-  margin-bottom: 1rem;
-  text-align: left;
+  font-size: 2.5rem;
+  color: var(--color-heading);
+  margin-bottom: 0.5rem;
 }
 
 .section-subtitle {
-  font-family: var(--font-mono);
-  opacity: 0.7;
-  margin-bottom: 2rem;
-  text-align: left;
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
 }
 
 /* Legenda de níveis */
 .legend {
   display: flex;
   gap: 2rem;
-  margin-bottom: 3rem;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  opacity: 0.6;
+  margin-bottom: 4rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
 }
 
 .legend-item {
@@ -184,29 +183,32 @@ const levelLabel = {
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: 4rem 3rem;
 }
 
-.skill-card {
-  padding: 2.5rem;
+.skill-category {
+  display: flex;
+  flex-direction: column;
 }
 
-.card-title {
+.category-title {
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 2rem;
-  opacity: 0.6;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.75rem;
 }
 
 .skills-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem 1.5rem;
+  gap: 1rem;
 }
 
-/* Skill item com hierarquia visual */
+/* Skill item */
 .skill-item {
   display: flex;
   align-items: center;
@@ -215,15 +217,24 @@ const levelLabel = {
 }
 
 .skill-icon {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  color: var(--color-text);
+  transition: color 0.2s;
+}
+
+.skill-item:hover .skill-icon {
   color: var(--color-primary);
-  transition: opacity 0.2s;
 }
 
 .skill-name {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  transition: opacity 0.2s;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-heading);
+  transition: color 0.2s;
+}
+
+.skill-item:hover .skill-name {
+  color: var(--color-primary);
 }
 
 /* Hierarquia: primary = destaque total */
@@ -235,7 +246,7 @@ const levelLabel = {
 /* secondary = levemente esmaecido */
 .level-secondary .skill-icon,
 .level-secondary .skill-name {
-  opacity: 0.45;
+  opacity: 0.6;
 }
 
 /* exploring = ícone amarelo + badge */
@@ -259,9 +270,8 @@ const levelLabel = {
   white-space: nowrap;
 }
 
-.standalone-card {
-  margin-top: 2rem;
-  height: auto;
+.standalone-category {
+  margin-top: 4rem;
 }
 
 .standalone-list {

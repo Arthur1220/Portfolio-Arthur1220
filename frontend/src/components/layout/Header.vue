@@ -2,7 +2,7 @@
 import { ref, onMounted, onUnmounted, watch } from 'vue';
 import ThemeSwitcher from '../ui/ThemeSwitcher.vue';
 import LanguageSwitcher from '../ui/LanguageSwitcher.vue';
-import { Menu, X, Terminal } from 'lucide-vue-next';
+import { Menu, X } from 'lucide-vue-next';
 
 const isMenuOpen = ref(false);
 const isMobile = ref(false);
@@ -45,7 +45,6 @@ const navLinks = [
     <div class="header-content">
       <div class="header-left">
         <a href="/" class="logo-link" @click="closeMenu">
-          <Terminal :size="20" class="text-primary" />
           <span class="logo-text">AMA</span>
         </a>
       </div>
@@ -63,18 +62,16 @@ const navLinks = [
 
         <div v-if="isMobile" class="mobile-controls">
           <ThemeSwitcher />
-          <div class="v-divider"></div>
           <LanguageSwitcher />
         </div>
       </nav>
 
       <div v-if="!isMobile" class="header-right">
         <ThemeSwitcher />
-        <div class="v-divider"></div>
         <LanguageSwitcher />
       </div>
 
-      <button class="menu-toggle" @click="toggleMenu">
+      <button class="menu-toggle" aria-label="Menu" @click="toggleMenu">
         <X v-if="isMenuOpen" :size="24" />
         <Menu v-else :size="24" />
       </button>
@@ -89,10 +86,10 @@ const navLinks = [
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(var(--color-background-rgb), 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-border);
-  padding: 0.75rem 0;
+  background-color: transparent;
+  backdrop-filter: blur(8px);
+  padding: 1rem 0;
+  transition: all 0.3s ease;
 }
 
 .header-content {
@@ -106,8 +103,8 @@ const navLinks = [
 
 /* Lógica de Layout Desktop */
 @media (min-width: 1024px) {
-  .main-nav { display: flex; align-items: center; gap: 1rem; }
-  .header-right { display: flex; align-items: center; gap: 1rem; }
+  .main-nav { display: flex; align-items: center; gap: 2rem; }
+  .header-right { display: flex; align-items: center; gap: 1.5rem; }
   .menu-toggle { display: none; }
 }
 
@@ -122,10 +119,10 @@ const navLinks = [
     right: 0;
     width: 280px;
     height: 100vh;
-    background: var(--color-card-background);
+    background: var(--color-background);
     padding: 5rem 2rem;
     z-index: 1001;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
   }
   .mobile-controls {
     display: flex;
@@ -135,19 +132,55 @@ const navLinks = [
     padding-top: 2rem;
     border-top: 1px solid var(--color-border);
   }
+  .menu-toggle {
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    z-index: 1002;
+  }
+}
+
+.nav-links-wrapper {
+  display: flex;
+  gap: 1.5rem;
+}
+
+@media (max-width: 1023px) {
+  .nav-links-wrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }
 
 .nav-item {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
   text-decoration: none;
-  opacity: 0.7;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
+  position: relative;
 }
 
-.nav-item:hover { color: var(--color-primary); opacity: 1; }
-.v-divider { width: 1px; height: 16px; background: var(--color-border); }
-.logo-link { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-weight: 700; color: var(--color-heading); }
-.text-primary { color: var(--color-primary); }
+.nav-item:hover { 
+  color: var(--color-text);
+}
+
+.logo-link { 
+  font-family: var(--font-sans); 
+  font-weight: 700; 
+  color: var(--color-heading); 
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+}
 </style>
+

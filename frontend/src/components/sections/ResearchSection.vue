@@ -5,8 +5,10 @@ import { Cpu, Microscope, Presentation, Blocks, ShieldCheck } from 'lucide-vue-n
 <template>
   <section id="research" class="research-section">
     <div class="content-wrapper">
-      <h2 class="section-title">// {{ $t('research.title') }}</h2>
-      <p class="section-subtitle">{{ $t('research.subtitle') }}</p>
+      <div class="section-header">
+        <h2 class="section-title">{{ $t('research.title') }}</h2>
+        <p class="section-subtitle">{{ $t('research.subtitle') }}</p>
+      </div>
 
       <div class="research-timeline">
         <div class="research-item">
@@ -15,7 +17,7 @@ import { Cpu, Microscope, Presentation, Blocks, ShieldCheck } from 'lucide-vue-n
               <Blocks :size="20" />
             </div>
           </div>
-          <div class="card-base card-interactive research-content">
+          <div class="research-content">
             <span class="period">2025</span>
             <h3>{{ $t('research.project_tcc_title') }}</h3>
             <p>{{ $t('research.project_tcc_desc') }}</p>
@@ -40,7 +42,7 @@ import { Cpu, Microscope, Presentation, Blocks, ShieldCheck } from 'lucide-vue-n
               <Cpu :size="20" />
             </div>
           </div>
-          <div class="card-base card-interactive research-content">
+          <div class="research-content">
             <span class="period">2023 — 2024</span>
             <h3>{{ $t('research.project1_title') }}</h3>
             <p>{{ $t('research.project1_desc') }}</p>
@@ -64,7 +66,7 @@ import { Cpu, Microscope, Presentation, Blocks, ShieldCheck } from 'lucide-vue-n
               <Microscope :size="20" />
             </div>
           </div>
-          <div class="card-base card-interactive research-content">
+          <div class="research-content">
             <span class="period">2022 — 2023</span>
             <h3>{{ $t('research.project2_title') }}</h3>
             <p>{{ $t('research.project2_desc') }}</p>
@@ -94,26 +96,29 @@ import { Cpu, Microscope, Presentation, Blocks, ShieldCheck } from 'lucide-vue-n
 }
 
 .content-wrapper {
-  max-width: 1100px;
+  max-width: 900px;
   width: 100%;
 }
 
+.section-header {
+  margin-bottom: 5rem;
+}
+
 .section-title {
-  margin-bottom: 1rem;
-  color: var(--color-primary);
+  font-size: 2.25rem;
+  color: var(--color-heading);
+  margin-bottom: 0.5rem;
 }
 
 .section-subtitle {
-  margin-bottom: 4rem;
-  opacity: 0.7;
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
 }
 
 .research-timeline {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 4rem;
   position: relative;
 }
 
@@ -121,7 +126,7 @@ import { Cpu, Microscope, Presentation, Blocks, ShieldCheck } from 'lucide-vue-n
 .research-timeline::before {
   content: '';
   position: absolute;
-  left: 17px;
+  left: 23px;
   top: 0;
   bottom: 0;
   width: 1px;
@@ -130,7 +135,7 @@ import { Cpu, Microscope, Presentation, Blocks, ShieldCheck } from 'lucide-vue-n
 
 .research-item {
   display: flex;
-  gap: 2.5rem;
+  gap: 3rem;
   position: relative;
 }
 
@@ -143,8 +148,8 @@ import { Cpu, Microscope, Presentation, Blocks, ShieldCheck } from 'lucide-vue-n
   background: var(--color-background);
   border: 1px solid var(--color-border);
   border-radius: 50%;
-  width: 35px;
-  height: 35px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,34 +158,37 @@ import { Cpu, Microscope, Presentation, Blocks, ShieldCheck } from 'lucide-vue-n
 }
 
 .research-item:hover .research-icon {
+  background: rgba(var(--color-primary-rgb), 0.1);
   border-color: var(--color-primary);
-  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.2);
 }
 
 .research-content {
   flex: 1;
-  padding: 2rem; /* Mantemos o padding local para controle fino */
+  padding-bottom: 1rem;
 }
 
 .period {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--color-primary);
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 .research-content h3 {
-  margin: 0.5rem 0 1rem 0;
-  font-size: 1.3rem;
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  color: var(--color-heading);
 }
 
 .research-content p {
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.7;
+  color: var(--color-text);
   margin-bottom: 1.5rem;
-  opacity: 0.8;
-  text-align: justify;
+  opacity: 0.9;
 }
 
 .tech-tags {
@@ -192,20 +200,24 @@ import { Cpu, Microscope, Presentation, Blocks, ShieldCheck } from 'lucide-vue-n
 
 .tech-tags span {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  padding: 4px 10px;
-  background: rgba(var(--color-primary-rgb), 0.05);
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 999px;
+  color: var(--color-text-muted);
+}
+
+[data-theme='dark'] .tech-tags span {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .achievement {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  font-style: italic;
-  opacity: 0.6;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
 }
 
 .text-primary {
@@ -214,7 +226,8 @@ import { Cpu, Microscope, Presentation, Blocks, ShieldCheck } from 'lucide-vue-n
 
 @media (max-width: 768px) {
   .research-item { gap: 1.5rem; }
-  .research-timeline::before { left: 14px; }
-  .research-icon { width: 30px; height: 30px; }
+  .research-timeline::before { left: 19px; }
+  .research-icon { width: 40px; height: 40px; }
+  .research-content h3 { font-size: 1.25rem; }
 }
 </style>

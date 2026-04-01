@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { connectWallet, getMessages, addMessage } from '@/services/blockchainService.js';
-import { Wallet, Send, ExternalLink, ShieldCheck, Terminal, BookOpen } from 'lucide-vue-next';
+import { Wallet, Send, ExternalLink, ShieldCheck, BookOpen } from 'lucide-vue-next';
 
 const contractAddress = import.meta.env.VITE_GUESTBOOK_CONTRACT_ADDRESS;
 const account = ref(null);
@@ -20,7 +20,7 @@ const formatAddress = (addr) => {
 const handleConnect = async () => {
   try {
     isLoading.value = true;
-    statusMessage.value = 'Initializing provider...';
+    statusMessage.value = 'Connecting to wallet...';
     const userAccount = await connectWallet();
     account.value = userAccount;
     await handleFetchMessages();
@@ -37,7 +37,7 @@ const handleFetchMessages = async () => {
     isLoading.value = true;
     messages.value = await getMessages();
   } catch {
-    statusMessage.value = 'RPC Error: Failed to fetch logs.';
+    statusMessage.value = 'Failed to fetch messages.';
   } finally {
     isLoading.value = false;
   }
@@ -49,11 +49,12 @@ const handleSendMessage = async () => {
     isLoading.value = true;
     statusMessage.value = 'Awaiting signature...';
     await addMessage(newMessage.value);
-    statusMessage.value = 'Transaction confirmed. Updating state...';
+    statusMessage.value = 'Message sent! Updating...';
     newMessage.value = '';
     await handleFetchMessages();
+    setTimeout(() => statusMessage.value = '', 3000);
   } catch {
-    statusMessage.value = 'Transaction failed or rejected.';
+    statusMessage.value = 'Transaction failed.';
   } finally {
     isLoading.value = false;
   }
@@ -65,22 +66,27 @@ onMounted(handleFetchMessages);
 <template>
   <section id="guestbook" class="guestbook-section">
     <div class="content-wrapper">
-      <h2 class="section-title">// {{ $t('guestbook.title') }}</h2>
-      <p class="section-subtitle">{{ $t('guestbook.subtitle') }}</p>
-      <div class="card-base guestbook-terminal">
-        <div class="terminal-header">
+      <div class="section-header">
+        <h2 class="section-title">{{ $t('guestbook.title') }}</h2>
+        <p class="section-subtitle">{{ $t('guestbook.subtitle') }}</p>
+      </div>
+
+      <div class="guestbook-container">
+        <div class="guestbook-controls">
           <div class="contract-info">
             <ShieldCheck :size="16" class="text-primary" />
-            <span class="mono-label">Contract:</span>
+            <span class="label">Contract</span>
             <a :href="explorerLink" target="_blank" class="address-link">
               {{ formatAddress(contractAddress) }}
               <ExternalLink :size="12" />
             </a>
           </div>
-          <button v-if="!account" @click="handleConnect" class="btn btn-outline btn-small" :disabled="isLoading">
+          
+          <button v-if="!account" @click="handleConnect" class="btn btn-primary btn-small" :disabled="isLoading">
             <Wallet :size="16" />
-            <span>Connect</span>
+            <span>Connect Wallet</span>
           </button>
+          
           <div v-else class="wallet-status">
             <span class="status-dot online"></span>
             <span class="addr">{{ formatAddress(account) }}</span>
@@ -89,59 +95,55 @@ onMounted(handleFetchMessages);
 
         <div v-if="account" class="input-area">
           <div class="input-wrapper">
-            <span class="prompt">></span>
             <input
               v-model="newMessage"
               type="text"
+              class="message-input"
               :placeholder="$t('guestbook.placeholder')"
               @keyup.enter="handleSendMessage"
               :disabled="isLoading"
             />
+            <button @click="handleSendMessage" :disabled="isLoading || !newMessage.trim()" class="send-btn">
+              <Send :size="18" />
+            </button>
           </div>
-          <button @click="handleSendMessage" :disabled="isLoading || !newMessage.trim()" class="send-btn">
-            <Send :size="18" />
-          </button>
+          <div v-if="statusMessage" class="status-text">{{ statusMessage }}</div>
         </div>
 
-        <div v-if="statusMessage" class="status-bar">
-          <Terminal :size="14" />
-          <span>{{ statusMessage }}</span>
-        </div>
-
-        <div class="messages-log">
-          <!-- Estado: carregando -->
+        <div class="messages-list">
+          <!-- Loading state -->
           <div v-if="isLoading && messages.length === 0" class="empty-state">
-            <div class="empty-spinner">
-              <span class="spinner-dot">.</span>
-              <span class="spinner-dot">.</span>
-              <span class="spinner-dot">.</span>
-            </div>
-            <span class="empty-label">Fetching on-chain records</span>
+            <div class="spinner"></div>
+            <p>Loading records...</p>
           </div>
 
-          <!-- Estado: vazio sem carteira conectada -->
+          <!-- Empty un-connected -->
           <div v-else-if="!isLoading && messages.length === 0 && !account" class="empty-state">
-            <BookOpen :size="28" class="empty-icon" />
+            <BookOpen :size="32" class="empty-icon text-muted" />
             <p class="empty-title">{{ $t('guestbook.empty_title') }}</p>
             <p class="empty-hint">{{ $t('guestbook.empty_hint') }}</p>
-            <button @click="handleConnect" class="btn btn-outline btn-small empty-cta" :disabled="isLoading">
-              <Wallet :size="14" />
+            <button @click="handleConnect" class="btn btn-outline empty-cta" :disabled="isLoading">
+              <Wallet :size="16" />
               <span>{{ $t('guestbook.connect_cta') }}</span>
             </button>
           </div>
 
-          <!-- Estado: vazio com carteira conectada -->
+          <!-- Empty connected -->
           <div v-else-if="!isLoading && messages.length === 0 && account" class="empty-state">
-            <BookOpen :size="28" class="empty-icon" />
+            <BookOpen :size="32" class="empty-icon text-muted" />
             <p class="empty-title">{{ $t('guestbook.empty_connected_title') }}</p>
             <p class="empty-hint">{{ $t('guestbook.empty_connected_hint') }}</p>
           </div>
 
-          <!-- Mensagens -->
-          <div v-for="(msg, index) in messages" :key="index" class="log-entry">
-            <span class="log-time">[{{ msg.timestamp }}]</span>
-            <span class="log-author">{{ formatAddress(msg.author) }}:</span>
-            <span class="log-text">"{{ msg.message }}"</span>
+          <!-- Message list -->
+          <div v-else class="messages-grid">
+            <div v-for="(msg, index) in messages" :key="index" class="message-card">
+              <div class="message-header">
+                <span class="message-author">{{ formatAddress(msg.author) }}</span>
+                <span class="message-time">{{ msg.timestamp }}</span>
+              </div>
+              <p class="message-content">{{ msg.message }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -157,51 +159,52 @@ onMounted(handleFetchMessages);
 }
 
 .content-wrapper {
-  max-width: 1100px;
+  max-width: 900px;
   width: 100%;
 }
 
+.section-header {
+  margin-bottom: 4rem;
+}
+
 .section-title {
-  color: var(--color-primary);
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  color: var(--color-heading);
+  margin-bottom: 0.5rem;
 }
 
 .section-subtitle {
-  opacity: 0.7;
-  margin-bottom: 3rem;
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
 }
 
-.guestbook-terminal {
-  height: auto !important;
-  max-width: 1100px;
-  margin: 0 auto;
+.guestbook-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.terminal-header {
-  background: rgba(0, 0, 0, 0.2);
-  padding: 1rem 1.5rem;
+.guestbook-controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--color-border);
-}
-
-.btn-small {
-  padding: 0.5rem 1rem;
-  font-size: 0.8rem;
 }
 
 .contract-info {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.label {
+  color: var(--color-text-muted);
 }
 
 .address-link {
+  font-family: var(--font-mono);
   color: var(--color-primary);
   display: flex;
   align-items: center;
@@ -213,171 +216,184 @@ onMounted(handleFetchMessages);
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 999px;
+}
+
+[data-theme='dark'] .wallet-status {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .status-dot.online {
   width: 8px;
   height: 8px;
-  background: #27c93f;
+  background: var(--color-primary);
   border-radius: 50%;
-  box-shadow: 0 0 6px rgba(39, 201, 63, 0.6);
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  50% { opacity: 0.5; }
 }
 
 .input-area {
-  padding: 1.5rem;
   display: flex;
+  flex-direction: column;
   gap: 1rem;
-  border-bottom: 1px solid var(--color-border);
 }
 
 .input-wrapper {
-  flex: 1;
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 0.5rem 1rem;
+  gap: 1rem;
+  position: relative;
+}
+
+.message-input {
+  flex: 1;
+  background: transparent;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
-  border: 1px solid transparent;
+  padding: 1rem 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-text);
+  outline: none;
   transition: border-color 0.2s;
 }
 
-.input-wrapper:focus-within {
-  border-color: rgba(39, 201, 63, 0.4);
-}
-
-.prompt {
-  color: var(--color-primary);
-  font-family: var(--font-mono);
-  font-weight: bold;
-}
-
-.input-wrapper input {
-  background: transparent;
-  border: none;
-  color: var(--color-text);
-  width: 100%;
-  font-family: var(--font-mono);
-  outline: none;
+.message-input:focus {
+  border-color: var(--color-primary);
 }
 
 .send-btn {
-  background: none;
-  border: 1px solid var(--color-border);
-  color: var(--color-primary);
-  padding: 0.5rem;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
   border-radius: 4px;
+  padding: 0 1.5rem;
   cursor: pointer;
-  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
 }
 
 .send-btn:hover:not(:disabled) {
-  border-color: var(--color-primary);
-  background: rgba(39, 201, 63, 0.1);
+  opacity: 0.9;
 }
 
-.send-btn:disabled { opacity: 0.3; }
-
-.status-bar {
-  padding: 0.5rem 1.5rem;
-  font-size: 0.75rem;
-  font-family: var(--font-mono);
-  color: var(--color-primary);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(39, 201, 63, 0.05);
+.send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
-.messages-log {
-  padding: 1.5rem;
-  min-height: 220px;
-  overflow-y: auto;
-  font-family: var(--font-mono);
+.status-text {
   font-size: 0.85rem;
+  color: var(--color-primary);
+  padding-left: 1.5rem;
+}
+
+.messages-list {
+  margin-top: 2rem;
+}
+
+.messages-grid {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1.5rem;
 }
 
-/* Estado vazio */
+.message-card {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.message-card:last-child {
+  border-bottom: none;
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.message-author {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.message-time {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.message-content {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+/* Empty State */
 .empty-state {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  padding: 2rem 1rem;
+  padding: 4rem 2rem;
   text-align: center;
 }
 
 .empty-icon {
-  color: var(--color-primary);
-  opacity: 0.4;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.5;
 }
 
 .empty-title {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  opacity: 0.8;
-  margin: 0;
-}
-
-.empty-hint {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  opacity: 0.45;
-  margin: 0;
-  max-width: 340px;
-  line-height: 1.5;
-}
-
-.empty-cta {
-  margin-top: 0.5rem;
-}
-
-/* Spinner de loading */
-.empty-spinner {
-  display: flex;
-  gap: 4px;
+  font-size: 1.25rem;
+  color: var(--color-heading);
   margin-bottom: 0.5rem;
 }
 
-.spinner-dot {
-  color: var(--color-primary);
-  font-size: 1.5rem;
-  animation: loadingDots 1.2s infinite;
-  opacity: 0;
+.empty-hint {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  max-width: 400px;
+  margin-bottom: 2rem;
 }
 
-.spinner-dot:nth-child(2) { animation-delay: 0.2s; }
-.spinner-dot:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes loadingDots {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
+.empty-cta {
+  margin-top: 1rem;
 }
 
-/* Mensagens */
-.log-entry {
-  line-height: 1.4;
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
 }
 
-.log-time { opacity: 0.4; }
-.log-author { color: var(--color-primary); }
-.log-text { opacity: 0.9; }
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 
 .text-primary { color: var(--color-primary); }
+.text-muted { color: var(--color-text-muted); }
+
+@media (max-width: 600px) {
+  .guestbook-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
 </style>
