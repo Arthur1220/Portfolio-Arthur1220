@@ -13,7 +13,7 @@ const experiences = [
     <div class="content-wrapper">
       <div class="section-header">
         <h2 class="section-title">{{ $t('experience.title') }} & {{ $t('research.title') }}</h2>
-        <p class="section-subtitle">{{ $t('projects.subtitle') }}</p>
+        <p class="section-subtitle">{{ $t('experience.subtitle') }}</p>
       </div>
 
       <!-- Experience Block -->

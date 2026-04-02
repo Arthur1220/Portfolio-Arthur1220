@@ -37,7 +37,7 @@
     "download_button": "Ver Currículo Completo"
   },
   "research": {
-    "title": "Pesquisa & Experiência",
+    "title": "Pesquisa",
     "subtitle": "Experiência em Iniciação Tecnológica na UESC",
     "project_tcc_title": "TCC: Rastreabilidade Animal com Blockchain",
     "project_tcc_desc": "Arquitetura de uma plataforma full-stack para solucionar fraudes no agronegócio através de rastreabilidade imutável. Implementação de arquitetura híbrida (on-chain/off-chain) com registro de hashes na rede Polygon (L2) e desenvolvimento de uma carteira custodial no back-end para abstrair a complexidade Web3.",
@@ -49,7 +49,7 @@
   },
   "experience": {
     "title": "Experiência",
-    "subtitle": "Atuação profissional em produtos e startups",
+    "subtitle": "Trajetória profissional focada no desenvolvimento de produtos escaláveis e inovação em ecossistemas de startups",
     "datafly": {
       "company": "Datafly Brasil · Lexa IA",
       "role": "Desenvolvedor Full-Stack",
@@ -88,7 +88,7 @@
   },
   "projects": {
     "title": "Projetos",
-    "subtitle": "Soluções reais de engenharia, do agronegócio à infraestrutura Web3.",
+    "subtitle": "Soluções de engenharia ponta-a-ponta, integrando tecnologia de ponta em setores tradicionais e infraestrutura descentralizada.",
     "view_all_github": "Repositórios Adicionais no GitHub",
     "repo_soon": "Repo em breve",
     "project_list": {
