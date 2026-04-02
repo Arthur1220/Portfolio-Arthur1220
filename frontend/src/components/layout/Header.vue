@@ -32,7 +32,7 @@ watch(isMenuOpen, (val) => {
 
 const navLinks = [
   { href: '#about', label: 'nav.about' },
-  { href: '#research', label: 'nav.research' },
+  { href: '#experience', label: 'nav.experience' },
   { href: '#projects', label: 'nav.projects' },
   { href: '#skills', label: 'nav.skills' },
   { href: '#guestbook', label: 'nav.guestbook' },

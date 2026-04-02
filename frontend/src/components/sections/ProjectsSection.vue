@@ -3,6 +3,13 @@ import { Github, ExternalLink, Code2 } from 'lucide-vue-next';
 
 const projects = [
   {
+    id: 'orbit',
+    type: 'Full-Stack | DevTools',
+    tech: ['Go', 'Fiber', 'Vue.js', 'TypeScript', 'SQLite', 'Docker', 'GitHub OAuth'],
+    githubUrl: null,
+    liveUrl: 'https://getorbitapp.netlify.app/'
+  },
+  {
     id: 'brco-simple',
     type: 'Freelance | Full-stack',
     tech: ['Node.js', 'Express', 'Prisma', 'AWS EC2', 'Docker', 'Vue.js'],
@@ -47,6 +54,10 @@ const projects = [
                 <Github :size="16" />
                 <span>Source</span>
               </a>
+              <div v-else class="private-tag">
+                <Github :size="16" />
+                <span>{{ $t('projects.repo_soon') }}</span>
+              </div>
               <a v-if="project.liveUrl" :href="project.liveUrl" target="_blank" class="link-item deploy-link">
                 <ExternalLink :size="16" />
                 <span>Deploy</span>

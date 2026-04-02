@@ -5,6 +5,7 @@ const mainSkillCategories = [
     skills: [
       { name: 'Python', icon: 'devicon-python-plain', level: 'primary' },
       { name: 'JavaScript', icon: 'devicon-javascript-plain', level: 'primary' },
+      { name: 'TypeScript', icon: 'devicon-typescript-plain', level: 'secondary' },
       { name: 'Go', icon: 'devicon-go-original-wordmark', level: 'exploring' },
       { name: 'Solidity', icon: 'devicon-solidity-plain', level: 'secondary' },
       { name: 'SQL', icon: 'devicon-azuresqldatabase-plain', level: 'primary' },
@@ -19,6 +20,7 @@ const mainSkillCategories = [
       { name: 'Node.js', icon: 'devicon-nodejs-plain', level: 'secondary' },
       { name: 'Prisma', icon: 'devicon-prisma-plain', level: 'secondary' },
       { name: 'Express.js', icon: 'devicon-express-original', level: 'secondary' },
+      { name: 'Fiber', icon: 'devicon-go-plain', level: 'secondary' },
     ]
   },
   {
@@ -37,6 +39,7 @@ const mainSkillCategories = [
       { name: 'PostgreSQL', icon: 'devicon-postgresql-plain', level: 'primary' },
       { name: 'MongoDB', icon: 'devicon-mongodb-plain', level: 'secondary' },
       { name: 'MySQL', icon: 'devicon-mysql-plain', level: 'secondary' },
+      { name: 'SQLite', icon: 'devicon-sqlite-plain', level: 'secondary' },
       { name: 'SQLAlchemy', icon: 'devicon-sqlalchemy-plain', level: 'secondary' },
     ]
   }

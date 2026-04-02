@@ -7,9 +7,9 @@ import Footer from './components/layout/Footer.vue';
 
 import HeroSection from './components/sections/HeroSection.vue';
 import AboutSection from './components/sections/AboutSection.vue';
-import ResearchSection from './components/sections/ResearchSection.vue';
-import SkillsSection from './components/sections/SkillsSection.vue';
+import ExperienceSection from './components/sections/ExperienceSection.vue';
 import ProjectsSection from './components/sections/ProjectsSection.vue';
+import SkillsSection from './components/sections/SkillsSection.vue';
 import GuestbookSection from './components/sections/GuestbookSection.vue';
 import ContactSection from './components/sections/ContactSection.vue';
 
@@ -32,7 +32,7 @@ watch(locale, () => {
   <main class="main-content">
     <HeroSection id="home" />
     <AboutSection id="about" />
-    <ResearchSection id="research" />
+    <ExperienceSection id="experience" />
     <ProjectsSection id="projects" />
     <SkillsSection id="skills" />
     <GuestbookSection id="guestbook" />

@@ -1,6 +1,7 @@
 {
   "nav": {
     "about": "About Me",
+    "experience": "Experience",
     "research": "Research & Experience",
     "projects": "Projects",
     "guestbook": "Guestbook",
@@ -46,11 +47,55 @@
     "project2_title": "Nutritional Engineering Software",
     "project2_desc": "Creation of a Python desktop application for automating national nutritional formulas. Rigorous application of OOP concepts and numerical processing with NumPy."
   },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "Professional work in products and startups",
+    "datafly": {
+      "company": "Datafly Brasil · Lexa IA",
+      "role": "Full-Stack Developer",
+      "location": "Remote",
+      "stack": "Node.js, JavaScript, WhatsApp Business API, Instagram API, PostgreSQL, MongoDB, Docker",
+      "highlights": [
+        "Sole dedicated developer in a 3-person team, with full-stack ownership of the product",
+        "Architected the AI module (lexa-ai) from scratch as an independent microservice after identifying inefficiency in the CRM-coupled code",
+        "Significantly reduced AI response time by refactoring the legacy module into an isolated, scalable solution",
+        "Implements omnichannel communication features — WhatsApp (official and unofficial API) and Instagram"
+      ]
+    },
+    "dria": {
+      "company": "Dr. IA",
+      "role": "AI & LLM Workflow Engineer",
+      "location": "Belo Horizonte, MG · Remote",
+      "stack": "LLMs, Prompt Engineering, WhatsApp Business API, CRM",
+      "highlights": [
+        "Managed an active portfolio of ~32 simultaneous clients, leading the complete onboarding cycle",
+        "Set the company's fastest activation record: 13 days in a process that historically took months",
+        "Created onboarding support materials on own initiative, reducing friction in the process",
+        "Documented the area's processes from scratch in two internal documents adopted by management"
+      ]
+    },
+    "freelancer": {
+      "company": "Independent",
+      "role": "Freelance Full-Stack Developer",
+      "location": "Remote",
+      "stack": "Python, Node.js, Vue.js, Docker, Databases, Automation Tools",
+      "highlights": [
+        "Development of complete end-to-end systems, covering both robust back-end architectures and front-end interfaces.",
+        "Practical experience with diverse modern frameworks and scalable architectures tailored to multiple business scenarios.",
+        "Creation and implementation of system automation scripts to optimize time and reduce repetitive manual tasks."
+      ]
+    }
+  },
   "projects": {
     "title": "Selected Projects",
     "subtitle": "Real engineering solutions, from agribusiness to Web3 infrastructure.",
     "view_all_github": "Additional Repositories on GitHub",
+    "repo_soon": "Repo soon",
     "project_list": {
+      "orbit": {
+        "title": "Orbit",
+        "description": "Self-hosted operations hub for developer teams. Monitors HTTP endpoints, manages environment variables with AES-256 encryption and integrates GitHub repositories in real time."
+      },
       "brco-simple": {
         "title": "BRCO Nutritional Platform",
         "description": "Development of a RESTful API for nutritional requirement calculations. Implementation of containerized deployment with Docker on AWS EC2 instances."
