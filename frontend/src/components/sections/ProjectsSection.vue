@@ -29,10 +29,8 @@ const projects = [
 <template>
   <section id="projects" class="projects-section">
     <div class="section-container">
-      <div class="section-header">
-        <h2 class="section-title">{{ $t('projects.title') }}</h2>
-        <p class="section-subtitle">{{ $t('projects.subtitle') }}</p>
-      </div>
+      <h2 class="section-title">{{ $t('projects.title') }}</h2>
+      <p class="section-subtitle">{{ $t('projects.subtitle') }}</p>
       
       <div class="projects-list">
         <div
@@ -40,39 +38,42 @@ const projects = [
           :key="project.id"
           class="project-item"
         >
-          <div class="project-content">
-            <span class="project-type">{{ project.type }}</span>
+          <div class="project-header">
             <h3 class="project-title">{{ $t(`projects.project_list.${project.id}.title`) }}</h3>
-            <p class="project-description">{{ $t(`projects.project_list.${project.id}.description`) }}</p>
-            
-            <div class="tech-stack">
-              <span v-for="tech in project.tech" :key="tech" class="tech-item">
-                {{ tech }}
-              </span>
-            </div>
+            <span class="project-type">{{ project.type }}</span>
             
             <div class="project-links">
               <a v-if="project.githubUrl" :href="project.githubUrl" target="_blank" class="link-item">
-                <Github :size="18" />
-                <span>Source Code</span>
+                <Github :size="16" />
+                <span>Source</span>
               </a>
-              <a v-if="project.liveUrl" :href="project.liveUrl" target="_blank" class="link-item link-item-primary">
-                <ExternalLink :size="18" />
-                <span>Live Demo</span>
+              <a v-if="project.liveUrl" :href="project.liveUrl" target="_blank" class="link-item deploy-link">
+                <ExternalLink :size="16" />
+                <span>Deploy</span>
               </a>
               <div v-if="!project.liveUrl" class="private-tag">
                 <Code2 :size="16" />
-                <span>Backend Only</span>
+                <span>Private</span>
               </div>
+            </div>
+          </div>
+          
+          <div class="project-content">
+            <p class="project-description">{{ $t(`projects.project_list.${project.id}.description`) }}</p>
+            
+            <div class="tech-stack">
+              <span v-for="tech in project.tech" :key="tech" class="tech-badge">
+                {{ tech }}
+              </span>
             </div>
           </div>
         </div>
       </div>
       
       <div class="cta-wrapper">
-        <a href="https://github.com/Arthur1220" target="_blank" class="btn btn-outline">
-          <Github :size="18" />
+        <a href="https://github.com/Arthur1220" target="_blank" class="github-button">
           <span>{{ $t('projects.view_all_github') }}</span>
+          <Github :size="18" />
         </a>
       </div>
     </div>
@@ -80,40 +81,41 @@ const projects = [
 </template>
 
 <style scoped>
-.projects-section { 
-  padding: 8rem 2rem; 
+.projects-section {
+  padding: 8rem 2rem;
+  font-family: var(--font-sans);
 }
 
-.section-container { 
-  max-width: 900px; 
-  margin: 0 auto; 
+.section-container {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.section-header {
-  margin-bottom: 5rem;
-}
-
-.section-title { 
+.section-title {
   font-size: 2.25rem;
   color: var(--color-heading);
-  margin-bottom: 0.5rem; 
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .section-subtitle {
+  margin-bottom: 4rem;
   font-size: 1.125rem;
-  color: var(--color-text-muted);
+  color: var(--color-text);
+  opacity: 0.8;
 }
 
 .projects-list {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 3rem;
 }
 
 .project-item {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 4rem;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -122,78 +124,94 @@ const projects = [
   padding-bottom: 0;
 }
 
+.project-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-title {
+  font-size: 1.35rem;
+  color: var(--color-heading);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.project-item:hover .project-title {
+  color: var(--color-primary);
+}
+
+.project-type {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
 .project-content {
   display: flex;
   flex-direction: column;
 }
 
-.project-type {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--color-primary);
-  margin-bottom: 1rem;
-}
-
-.project-title { 
-  font-size: 2rem; 
-  color: var(--color-heading);
-  margin-bottom: 1rem; 
-}
-
 .project-description {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   line-height: 1.7;
   color: var(--color-text);
   opacity: 0.9;
   margin-bottom: 2rem;
-  max-width: 800px;
 }
 
 .tech-stack {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 2.5rem;
 }
 
-.tech-item {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
+.tech-badge {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.6rem;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
   color: var(--color-text-muted);
-}
-
-.tech-item:not(:last-child)::after {
-  content: '·';
-  margin-left: 0.75rem;
-  color: var(--color-border);
 }
 
 .project-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.25rem;
   align-items: center;
+  margin-top: auto; /* Push to bottom of header column */
 }
 
 .link-item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 0.9rem;
   color: var(--color-text);
-  transition: color 0.2s ease;
+  opacity: 0.7;
+  transition: opacity 0.2s, color 0.2s;
+  text-decoration: none;
 }
 
 .link-item:hover {
+  opacity: 1;
   color: var(--color-primary);
+  transform: translateY(-1px);
 }
 
-.link-item-primary {
-  color: var(--color-primary);
+.deploy-link {
+  color: var(--color-heading);
+  opacity: 0.9;
+  font-weight: 500;
 }
 
-.link-item-primary:hover {
-  opacity: 0.8;
+.deploy-link:hover {
+  color: var(--color-primary);
+  opacity: 1;
+  transform: translateY(-1px);
 }
 
 .private-tag {
@@ -202,11 +220,49 @@ const projects = [
   gap: 0.5rem;
   font-size: 0.85rem;
   color: var(--color-text-muted);
+  opacity: 0.8;
+  font-style: italic;
 }
 
 .cta-wrapper {
-  margin-top: 6rem;
+  margin-top: 5rem;
   display: flex;
   justify-content: center;
+}
+
+.github-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1.5rem;
+  color: var(--color-heading);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  text-decoration: none;
+}
+
+.github-button:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-background);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .project-item {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .project-type {
+    margin-bottom: 1rem;
+  }
+
+  .project-links {
+    margin-top: 1rem;
+  }
 }
 </style>

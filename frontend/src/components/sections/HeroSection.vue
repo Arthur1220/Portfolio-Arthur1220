@@ -77,7 +77,7 @@ import profilePhoto from '@/assets/profile/profile-05.jpg';
 }
 
 .main-name {
-  font-size: 4rem; /* Reduzido de 4.5rem para caber em máx 2 linhas */
+  font-size: 3.5rem; /* Reduzido de 4.5rem para caber em máx 2 linhas */
   line-height: 1.1;
   margin-bottom: 1rem;
   color: var(--color-heading);

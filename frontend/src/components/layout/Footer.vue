@@ -1,5 +1,5 @@
 <script setup>
-import { Github, Linkedin } from 'lucide-vue-next';
+import { Terminal } from 'lucide-vue-next';
 const currentYear = new Date().getFullYear();
 </script>
 
@@ -7,17 +7,10 @@ const currentYear = new Date().getFullYear();
   <footer class="app-footer">
     <div class="footer-content">
       <div class="footer-brand">
+        <Terminal :size="16" class="text-primary" />
         <span class="copyright">
-          &copy; {{ currentYear }} Arthur Marques Azevedo.
+          &copy; {{ currentYear }} Arthur Marques Azevedo
         </span>
-      </div>
-      <div class="footer-socials">
-        <a href="https://github.com/Arthur1220" target="_blank" class="social-link" aria-label="GitHub">
-          <Github :size="16" />
-        </a>
-        <a href="https://linkedin.com/in/azevedo-arthur" target="_blank" class="social-link" aria-label="LinkedIn">
-          <Linkedin :size="16" />
-        </a>
       </div>
     </div>
   </footer>
@@ -25,14 +18,15 @@ const currentYear = new Date().getFullYear();
 
 <style scoped>
 .app-footer {
-  padding: 4rem 2rem; 
+  padding: 4rem 2rem; /* Aumentado o padding superior para compensar a falta da linha */
   margin-top: 2rem;
+  /* border-top removido conforme solicitado */
 }
 
 .footer-content {
   display: flex;
-  justify-content: space-between; 
-  align-items: center;     
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center;     /* Centraliza verticalmente */
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -41,44 +35,23 @@ const currentYear = new Date().getFullYear();
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  opacity: 0.6; 
+  opacity: 0.6; /* Deixa o footer inteiro mais discreto */
   transition: opacity 0.3s ease;
 }
 
 .footer-brand:hover {
-  opacity: 1; 
+  opacity: 1; /* Ganha destaque sutil ao passar o mouse */
 }
 
 .copyright {
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
 }
 
-.footer-socials {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-}
-
-.social-link {
-  display: flex;
-  align-items: center;
-  color: var(--color-text-muted);
-  opacity: 0.5;
-  transition: opacity 0.2s ease, color 0.2s ease;
-}
-
-.social-link:hover {
-  opacity: 1;
-  color: var(--color-primary);
-}
+.text-primary { color: var(--color-primary); }
 
 @media (max-width: 576px) {
-  .footer-content { 
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center; 
-  }
+  .footer-content { text-align: center; }
 }
 </style>

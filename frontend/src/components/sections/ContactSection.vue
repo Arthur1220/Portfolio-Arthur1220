@@ -1,5 +1,5 @@
 <script setup>
-import { Mail, Linkedin, Github, MapPin } from 'lucide-vue-next';
+import { Mail, Linkedin, Github, MapPin, MessageCircle } from 'lucide-vue-next';
 </script>
 
 <template>
@@ -23,6 +23,10 @@ import { Mail, Linkedin, Github, MapPin } from 'lucide-vue-next';
             <Mail :size="20" />
             <span>arthurmarquesazevedo@gmail.com</span>
           </a>
+          <a href="https://wa.me/5573991481220" target="_blank" class="contact-item">
+            <MessageCircle :size="20" />
+            <span>+55 73 99148-1220</span>
+          </a>
           <div class="social-row">
             <a href="https://linkedin.com/in/azevedo-arthur" target="_blank" class="social-icon-link">
               <Linkedin :size="22" />
@@ -39,7 +43,7 @@ import { Mail, Linkedin, Github, MapPin } from 'lucide-vue-next';
 
 <style scoped>
 .contact-section { 
-  padding: 8rem 2rem 4rem; 
+  padding: 8rem 2rem; 
 }
 
 .content-wrapper { 

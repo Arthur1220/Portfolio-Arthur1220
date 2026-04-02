@@ -25,7 +25,6 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
       aria-label="Voltar ao topo"
     >
       <ChevronUp :size="20" class="icon" />
-      <span class="btn-text">TOP</span>
     </button>
   </Transition>
 </template>
@@ -38,34 +37,27 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
   z-index: 1000;
 
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
 
   padding: 0.75rem;
-  min-width: 45px;
+  width: 45px;
+  height: 45px;
 
-  background-color: var(--color-card-background);
+  background-color: var(--color-background);
   border: 1px solid var(--color-border);
-  border-radius: 4px; /* Casando com o raio dos seus botões e cards */
-  color: var(--color-primary);
+  border-radius: 50%;
+  color: var(--color-text);
 
   cursor: pointer;
-  font-family: var(--font-mono);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.btn-text {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
 .scroll-top-btn:hover {
-  transform: translateY(-5px);
-  border-color: var(--color-primary);
-  box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.2);
-  background: rgba(var(--color-primary-rgb), 0.05);
+  transform: translateY(-3px);
+  border-color: var(--color-text-muted);
+  color: var(--color-heading);
+  background-color: transparent;
 }
 
 /* Transição refinada */

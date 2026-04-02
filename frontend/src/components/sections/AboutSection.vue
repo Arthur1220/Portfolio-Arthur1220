@@ -5,7 +5,8 @@ import {
   Cpu,
   Blocks,
   DownloadCloud,
-  GraduationCap
+  GraduationCap,
+  Globe
 } from 'lucide-vue-next';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -34,42 +35,34 @@ const resumeFilename = computed(() => {
       </div>
 
       <div class="specialties-grid">
-        <div class="spec-item">
+        <div class="spec-card">
           <Blocks class="spec-icon" :size="16" />
-          <div class="spec-content">
-            <h3>{{ $t('about.spec1_title') }}</h3>
-            <p>{{ $t('about.spec1_desc') }}</p>
-          </div>
+          <h3>{{ $t('about.spec1_title') }}</h3>
+          <p>{{ $t('about.spec1_desc') }}</p>
         </div>
-        <div class="spec-item">
+        <div class="spec-card">
           <Database class="spec-icon" :size="16" />
-          <div class="spec-content">
-            <h3>{{ $t('about.spec2_title') }}</h3>
-            <p>{{ $t('about.spec2_desc') }}</p>
-          </div>
+          <h3>{{ $t('about.spec2_title') }}</h3>
+          <p>{{ $t('about.spec2_desc') }}</p>
         </div>
-        <div class="spec-item">
+        <div class="spec-card">
           <Layers class="spec-icon" :size="16" />
-          <div class="spec-content">
-            <h3>{{ $t('about.spec3_title') }}</h3>
-            <p>{{ $t('about.spec3_desc') }}</p>
-          </div>
+          <h3>{{ $t('about.spec3_title') }}</h3>
+          <p>{{ $t('about.spec3_desc') }}</p>
         </div>
-        <div class="spec-item">
+        <div class="spec-card">
           <Cpu class="spec-icon" :size="16" />
-          <div class="spec-content">
-            <h3>{{ $t('about.spec4_title') }}</h3>
-            <p>{{ $t('about.spec4_desc') }}</p>
-          </div>
+          <h3>{{ $t('about.spec4_title') }}</h3>
+          <p>{{ $t('about.spec4_desc') }}</p>
         </div>
       </div>
 
       <div class="education-container">
-        <div class="edu-item">
+        <div class="edu-card">
           <div class="edu-header">
-            <GraduationCap :size="24" class="text-muted" />
+            <GraduationCap :size="24" class="edu-icon" />
             <div class="edu-title-group">
-              <h3>{{ $t('about.education_title') }}</h3>
+              <h3 class="category-label">{{ $t('about.education_title') }}</h3>
               <h4>{{ $t('about.education_degree') }}</h4>
             </div>
           </div>
@@ -77,28 +70,28 @@ const resumeFilename = computed(() => {
             <p class="university">{{ $t('about.education_university') }}</p>
             <div class="edu-badges">
               <span class="edu-badge">2020 — 2025</span>
-              <span class="edu-badge accent">GPA: 8.3/10</span>
+              <span class="edu-badge">GPA: 8.3/10</span>
             </div>
           </div>
         </div>
       </div>
 
       <div class="languages-row">
-        <div class="lang-text">
-          <span class="lang-name">{{ $t('about.lang_pt') }}</span>
-          <span class="lang-separator">·</span>
+        <div class="lang-tag">
+          <Globe :size="16" class="lang-icon" />
+          <span class="lang-name">{{ $t('about.lang_pt') }}:</span>
           <span class="lang-val">{{ $t('about.lang_pt_level') }}</span>
         </div>
-        <div class="lang-text">
-          <span class="lang-name">{{ $t('about.lang_en') }}</span>
-          <span class="lang-separator">·</span>
+        <div class="lang-tag">
+          <Globe :size="16" class="lang-icon" />
+          <span class="lang-name">{{ $t('about.lang_en') }}:</span>
           <span class="lang-val">{{ $t('about.lang_en_level') }}</span>
         </div>
       </div>
 
       <div class="actions-centered">
-        <a :href="resumeUrl" :download="resumeFilename" class="btn btn-outline">
-          <DownloadCloud :size="18" />
+        <a :href="resumeUrl" :download="resumeFilename" class="download-button">
+          <DownloadCloud :size="20" />
           <span>{{ $t('about.download_button') }}</span>
         </a>
       </div>
@@ -111,6 +104,7 @@ const resumeFilename = computed(() => {
   padding: 8rem 2rem;
   display: flex;
   justify-content: center;
+  font-family: var(--font-sans);
 }
 
 .content-wrapper {
@@ -120,95 +114,111 @@ const resumeFilename = computed(() => {
 
 .section-title {
   margin-bottom: 3rem;
-  font-size: 2.25rem;
   color: var(--color-heading);
+  font-size: 2.25rem;
+  text-align: left;
+  font-weight: 600;
 }
 
 .bio-container {
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
+  text-align: left;
 }
 
 .bio-text {
   font-size: 1.125rem;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
+  line-height: 1.7;
   color: var(--color-text);
+  margin-bottom: 1.5rem;
   opacity: 0.9;
 }
 
-/* Especialidades */
+/* Specialties */
 .specialties-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
-  margin-bottom: 5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
 }
 
-.spec-item {
-  display: flex;
-  gap: 1.5rem;
-  align-items: flex-start;
+.spec-card {
+  text-align: left;
+  padding: 2rem;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.spec-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(39, 201, 63, 0.05); /* very subtle var(--color-primary) tint if it's green, or transparent tint */
 }
 
 .spec-icon {
-  color: var(--color-text-muted);
   opacity: 0.55;
-  flex-shrink: 0;
-  margin-top: 0.25rem;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
 }
 
-.spec-content h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+.spec-card h3 {
+  font-size: 1.125rem;
   color: var(--color-heading);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
 }
 
-.spec-content p {
+.spec-card p {
   font-size: 0.95rem;
-  color: var(--color-text-muted);
+  color: var(--color-text);
   line-height: 1.6;
+  opacity: 0.8;
 }
 
-/* Educação */
+/* Education */
 .education-container {
   margin-bottom: 4rem;
-  padding-bottom: 4rem;
-  border-bottom: 1px solid var(--color-border);
 }
 
-.edu-item {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.edu-card {
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
 }
 
 .edu-header {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   align-items: flex-start;
+  margin-bottom: 1.5rem;
 }
 
-.edu-title-group h3 {
+.edu-icon {
+  opacity: 0.55;
+  color: var(--color-text);
+  margin-top: 0.2rem;
+}
+
+.category-label {
   font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
   color: var(--color-text-muted);
-  margin-bottom: 0.25rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
 }
 
 .edu-title-group h4 {
   font-size: 1.25rem;
   color: var(--color-heading);
-}
-
-.edu-body {
-  padding-left: 2.5rem;
+  font-weight: 500;
 }
 
 .university {
-  font-family: var(--font-sans);
+  font-size: 1rem;
   color: var(--color-text);
-  margin-bottom: 1rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
 }
 
 .edu-badges {
@@ -217,38 +227,46 @@ const resumeFilename = computed(() => {
 }
 
 .edu-badge {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   padding: 0.25rem 0.75rem;
-  background: rgba(0, 0, 0, 0.03);
-  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
   color: var(--color-text-muted);
 }
 
-[data-theme='dark'] .edu-badge {
-  background: rgba(255, 255, 255, 0.05);
+/* Languages */
+.languages-row {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.edu-badge.accent {
-  background: rgba(var(--color-primary-rgb), 0.1);
+.lang-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  padding-bottom: 0.2rem;
+}
+
+.lang-tag:hover {
+  border-color: var(--color-primary);
   color: var(--color-primary);
 }
 
-/* Idiomas */
-.languages-row {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  margin-bottom: 4rem;
-  flex-wrap: wrap;
+.lang-tag:hover .lang-icon,
+.lang-tag:hover .lang-name {
+  color: var(--color-primary);
+  opacity: 1;
 }
 
-.lang-text {
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.lang-icon {
+  opacity: 0.55;
 }
 
 .lang-name {
@@ -256,28 +274,40 @@ const resumeFilename = computed(() => {
   color: var(--color-heading);
 }
 
-.lang-separator {
-  color: var(--color-text-muted);
-}
-
 .lang-val {
-  color: var(--color-text-muted);
+  opacity: 0.8;
 }
 
-/* Botão Centralizado */
+/* Download Button */
 .actions-centered {
   display: flex;
   justify-content: center;
 }
 
-.text-primary { color: var(--color-primary); }
-.text-muted { color: var(--color-text-muted); }
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1.5rem;
+  color: var(--color-heading);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.download-button:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-background); /* Inverts text out from background */
+  transform: translateY(-1px);
+}
 
 @media (max-width: 600px) {
-  .languages-row { gap: 1.5rem; flex-direction: column; align-items: center; }
-  .edu-header { align-items: center; }
-  .edu-body { padding-left: 0; text-align: center; }
-  .edu-item { align-items: center; }
-  .edu-title-group { text-align: center; }
+  .languages-row { flex-direction: column; gap: 1rem; }
+  .edu-header { gap: 1rem; }
+  .specialties-grid { grid-template-columns: 1fr; }
 }
 </style>
