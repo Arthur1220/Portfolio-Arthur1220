@@ -17,8 +17,8 @@
   },
   "about": {
     "title": "About Me",
-    "bio_p1": "I hold a B.Sc. in Computer Science from UESC (GPA 8.3/10). Currently, I focus my career on developing robust Blockchain and Back-end solutions, emphasizing scalable and secure architectures.",
-    "bio_p2": "I believe a strong technical foundation is essential for solving real problems. Therefore, I focus on deep understanding of hybrid systems (on-chain/off-chain) and applying AI for process optimization and technical automation.",
+    "paragraph1": "Computer Science graduate working as a Full-Stack Developer and AI Engineer with experience in tech startups — from microservices architecture and direct LLM API integrations to cloud deployment of production systems.",
+    "paragraph2": "Proven track record in Back-end (Python, Django, Node.js), Front-end (Vue.js) and Blockchain (Solidity), with a solid foundation in DevOps, RESTful APIs and both relational and non-relational databases. Impact-driven profile: I identify architectural bottlenecks, propose solutions and deliver measurable results in high-responsibility, lean-team environments.",
     "spec1_title": "Blockchain & Web3",
     "spec1_desc": "Implementing hybrid architectures and smart contracts on Polygon L2 to ensure data immutability.",
     "spec2_title": "Back-end Architecture",
@@ -54,35 +54,45 @@
       "company": "Datafly Brasil · Lexa IA",
       "role": "Full-Stack Developer",
       "location": "Remote",
-      "stack": "Node.js, JavaScript, WhatsApp Business API, Instagram API, PostgreSQL, MongoDB, Docker",
+      "stack": "NestJS, Next.js, Node.js, JavaScript, TypeScript, Prisma, Supabase, WhatsApp Business API (official/unofficial), FastAPI, Vue.js, JWT, Docker, LLMs, Microservices Architecture",
       "highlights": [
-        "Sole dedicated developer in a 3-person team, with full-stack ownership of the product",
-        "Architected the AI module (lexa-ai) from scratch as an independent microservice after identifying inefficiency in the CRM-coupled code",
-        "Significantly reduced AI response time by refactoring the legacy module into an isolated, scalable solution",
-        "Implements omnichannel communication features — WhatsApp (official and unofficial API) and Instagram"
+        "Proposed and architected the AI module (lexa-ai) from scratch as an independent microservice, after identifying inefficiency in the CRM-coupled code — creating an isolated, reusable, high-performance service",
+        "Significantly reduced AI response time by refactoring the legacy module, redesigning the message processing architecture into a scalable and efficient solution",
+        "Builds and maintains modules of the Lexa IA CRM, contributing to new features, integrations and fixes with full-stack coverage",
       ]
     },
     "dria": {
       "company": "Dr. IA",
       "role": "AI & LLM Workflow Engineer",
       "location": "Belo Horizonte, MG · Remote",
-      "stack": "LLMs, Prompt Engineering, WhatsApp Business API, CRM",
+      "stack": "LLMs, Prompt Engineering, Conversational AI Platforms, WhatsApp Business API, CRM",
       "highlights": [
-        "Managed an active portfolio of ~32 simultaneous clients, leading the complete onboarding cycle",
-        "Set the company's fastest activation record: 13 days in a process that historically took months",
-        "Created onboarding support materials on own initiative, reducing friction in the process",
-        "Documented the area's processes from scratch in two internal documents adopted by management"
+        "Managed an active portfolio of simultaneous clients (doctors and clinics), leading the complete onboarding cycle — from first contact to AI agent activation in production",
+        "Achieved the fastest activation time in the team since joining, in a process that took months",
+        "Won an internal reactivation campaign, outperforming the entire team — awarded paid time off",
+        "Identified a gap in the onboarding experience and, on own initiative, created support materials that reduced friction in the adoption process",
+        "Documented the area's processes from scratch in internal documents adopted by management, still in use after departure"
       ]
     },
-    "freelancer": {
-      "company": "Independent",
-      "role": "Freelance Full-Stack Developer",
+    "brco_v2": {
+      "company": "Nutritional Requirements Calculator (BRCO)",
+      "role": "Full-stack Web System",
       "location": "Remote",
-      "stack": "Python, Node.js, Vue.js, Docker, Databases, Automation Tools",
+      "stack": "Node.js, Express.js, Prisma, Vue.js, Pinia, Docker, AWS Lightsail, Netlify",
       "highlights": [
-        "Development of complete end-to-end systems, covering both robust back-end architectures and front-end interfaces.",
-        "Practical experience with diverse modern frameworks and scalable architectures tailored to multiple business scenarios.",
-        "Creation and implementation of system automation scripts to optimize time and reduce repetitive manual tasks."
+        "Development and architecture of an innovative open-access web platform (BRCO) for nutritional requirement calculations, democratizing access to a tool previously restricted to academia.",
+        "Built a secure RESTful API with Node.js/Express.js and Prisma ORM, implementing CSV report export functionality.",
+        "Production deployment of the application with a containerized back-end (Docker on AWS Lightsail) and front-end distributed via Netlify."
+      ]
+    },
+    "brco_v1": {
+      "company": "Freelance Project",
+      "role": "Full-Stack Developer",
+      "location": "Remote",
+      "stack": "Django, Vue.js, JWT, Pytest, Docker, AWS EC2",
+      "highlights": [
+        "Implemented v1 of the nutritional platform (Django/Vue.js) with JWT authentication and test suite (Pytest)",
+        "PDF report generation, Docker Compose containerization and deployment on AWS EC2"
       ]
     }
   },

@@ -17,8 +17,8 @@
   },
   "about": {
     "title": "Sobre Mim",
-    "bio_p1": "Sou formado em Ciência da Computação pela UESC (GPA 8.3/10). Atualmente, direciono minha carreira para o desenvolvimento de soluções robustas em Blockchain e Back-end, focando em arquiteturas escaláveis e seguras.",
-    "bio_p2": "Acredito que uma base técnica sólida é essencial para resolver problemas reais. Por isso, foco no entendimento profundo de sistemas híbridos (on-chain/off-chain) e na aplicação de inteligência artificial para otimização de processos.",
+    "paragraph1": "Formado em Ciência da Computação, atuo como Desenvolvedor Full-Stack e Engenheiro de IA com experiência em startups de tecnologia — desde a arquitetura de microsserviços e integrações com LLMs via API direta até o deploy de sistemas em nuvem.",
+    "paragraph2": "Histórico comprovado em Back-end (Python, Django, Node.js), Front-end (Vue.js) e Blockchain (Solidity), com base sólida em DevOps, APIs RESTful e bancos de dados relacionais e não relacionais. Perfil orientado a impacto: identifico gargalos arquiteturais, proponho soluções e entrego resultados mensuráveis em ambientes de alta responsabilidade e equipe enxuta.",
     "spec1_title": "Blockchain & Web3",
     "spec1_desc": "Implementação de arquiteturas híbridas e contratos inteligentes na L2 Polygon para garantir imutabilidade.",
     "spec2_title": "Back-end",
@@ -54,35 +54,45 @@
       "company": "Datafly Brasil · Lexa IA",
       "role": "Desenvolvedor Full-Stack",
       "location": "Remota",
-      "stack": "Node.js, JavaScript, WhatsApp Business API, Instagram API, PostgreSQL, MongoDB, Docker",
+      "stack": "NestJS, Next.js, Node.js, JavaScript, TypeScript, Prisma, Supabase, WhatsApp Business API (oficial/não oficial), FastAPI, Vue.js, JWT, Docker, LLMs, Arquitetura de Microsserviços",
       "highlights": [
-        "Único desenvolvedor exclusivo numa equipe de 3, com responsabilidade full-stack sobre o produto",
-        "Arquitetou do zero o módulo de IA (lexa-ai) como microsserviço independente, após identificar ineficiência no código acoplado ao CRM",
-        "Reduziu significativamente o tempo de resposta da IA ao refatorar o módulo legado para uma solução isolada e escalável",
-        "Implementa funcionalidades de comunicação omnichannel — WhatsApp (API oficial e não oficial) e Instagram"
+        "Propôs e arquitetou do zero o módulo de IA (lexa-ai) como microsserviço independente, após identificar ineficiência no código acoplado ao CRM — criando um serviço isolado, reutilizável e de alta performance",
+        "Reduziu significativamente o tempo de resposta da IA ao refatorar o módulo legado, redesenhando a arquitetura de processamento de mensagens para uma solução escalável e eficiente",
+        "Atua na construção e manutenção de módulos do CRM Lexa IA, contribuindo em novas funcionalidades, integrações e ajustes com cobertura full-stack",
       ]
     },
     "dria": {
       "company": "Dr. IA",
       "role": "AI & LLM Workflow Engineer",
       "location": "Belo Horizonte, MG · Remota",
-      "stack": "LLMs, Engenharia de Prompt, WhatsApp Business API, CRM",
+      "stack": "LLMs, Engenharia de Prompt, Plataformas de IA Conversacional, WhatsApp Business API, CRM",
       "highlights": [
-        "Geriu carteira ativa de ~32 clientes simultâneos, conduzindo ciclo completo de onboarding",
-        "Estabeleceu o recorde de ativação mais rápida da empresa: 13 dias num processo que historicamente levava meses",
-        "Criou por iniciativa própria materiais de apoio que reduziram fricção no onboarding",
-        "Documentou do zero os processos da área em dois documentos internos adotados pela gestão"
+        "Geriu carteira ativa com diversos clientes simultâneos (médicos e clínicas), conduzindo o ciclo completo de onboarding — do primeiro contato à ativação do agente de IA em produção",
+        "Atingiu o menor tempo de ativação da equipe desde sua entrada na empresa, em processo que levava meses",
+        "Venceu campanha interna de reativação de clientes inativos, superando toda a equipe — premiado com folga remunerada",
+        "Identificou gap na experiência de onboarding e, por iniciativa própria, criou materiais de apoio que reduziram fricção no processo de adoção",
+        "Documentou do zero os processos da área em documentos internos adotados pela gestão, que seguem em uso após sua saída"
       ]
     },
-    "freelancer": {
-      "company": "Autônomo",
-      "role": "Desenvolvedor Full-Stack Freelancer",
-      "location": "Remoto",
-      "stack": "Python, Node.js, Vue.js, Docker, Bancos de Dados, Ferramentas de Automação",
+    "brco_v2": {
+      "company": "Calculadora de Exigências Nutricionais (BRCO)",
+      "role": "Full-stack Web System",
+      "location": "Remota",
+      "stack": "Node.js, Express.js, Prisma, Vue.js, Pinia, Docker, AWS Lightsail, Netlify",
       "highlights": [
-        "Desenvolvimento de sistemas completos end-to-end, abrangendo tanto a arquitetura avançada de back-end quanto as interfaces no front-end.",
-        "Experiência prática com diversos frameworks modernos e arquiteturas escaláveis para adaptação a múltiplos cenários de negócio.",
-        "Criação e implementação de scripts de automação de sistemas para otimização de tempo e redução de tarefas manuais repetitivas."
+        "Desenvolvimento do projeto e da arquitetura de uma plataforma web inovadora de acesso livre (BRCO) para cálculos de exigências nutricionais, democratizando o acesso a uma ferramenta antes restrita ao meio acadêmico.",
+        "Construção de uma API RESTful segura com Node.js/Express.js e ORM Prisma, implementando funcionalidade de exportação de relatórios (CSV).",
+        "Deploy da aplicação em ambiente de produção com o back-end conteinerizado (Docker em AWS Lightsail) e o front-end distribuído via Netlify."
+      ]
+    },
+    "brco_v1": {
+      "company": "Projeto Freelance",
+      "role": "Desenvolvedor Full-Stack",
+      "location": "Remota",
+      "stack": "Django, Vue.js, JWT, Pytest, Docker, AWS EC2",
+      "highlights": [
+        "Implementação da v1 da plataforma nutricional (Django/Vue.js) com autenticação JWT e suíte de testes (Pytest)",
+        "Geração de relatórios PDF, conteinerização com Docker Compose e deploy em AWS EC2"
       ]
     }
   },

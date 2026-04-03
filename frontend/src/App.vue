@@ -1,6 +1,7 @@
 <script setup>
 import { watch } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useFavicon } from '@/composables/useFavicon';
 
 import Header from './components/layout/Header.vue';
 import Footer from './components/layout/Footer.vue';
@@ -16,6 +17,8 @@ import ContactSection from './components/sections/ContactSection.vue';
 import ScrollToTopButton from './components/ui/ScrollToTopButton.vue';
 
 const { locale } = useI18n();
+
+useFavicon();
 
 watch(locale, () => {
   document.getElementById('app').classList.add('is-translating');

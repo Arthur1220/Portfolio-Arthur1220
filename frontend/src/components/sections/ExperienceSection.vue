@@ -4,7 +4,8 @@ import { Briefcase, Building, MapPin, CheckCircle2, Cpu, Microscope, Presentatio
 const experiences = [
   { id: 'datafly', period: 'Mar 2026 – presente', type: 'full-time' },
   { id: 'dria', period: 'Jan 2026 – Fev 2026', type: 'full-time' },
-  { id: 'freelancer', period: '2023 – presente', type: 'freelance' }
+  { id: 'brco_v2', period: 'Jan 2025 – Mar 2025', type: 'freelance' },
+  { id: 'brco_v1', period: 'Jun 2024 – Ago 2024', type: 'freelance' }
 ];
 </script>
 

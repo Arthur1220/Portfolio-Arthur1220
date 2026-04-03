@@ -30,8 +30,8 @@ const resumeFilename = computed(() => {
       <h2 class="section-title">{{ $t('about.title') }}</h2>
 
       <div class="bio-container">
-        <p class="bio-text">{{ $t('about.bio_p1') }}</p>
-        <p class="bio-text">{{ $t('about.bio_p2') }}</p>
+        <p class="bio-text">{{ $t('about.paragraph1') }}</p>
+        <p class="bio-text">{{ $t('about.paragraph2') }}</p>
       </div>
 
       <div class="specialties-grid">

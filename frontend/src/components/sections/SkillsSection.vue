@@ -41,6 +41,8 @@ const mainSkillCategories = [
       { name: 'MySQL', icon: 'devicon-mysql-plain', level: 'secondary' },
       { name: 'SQLite', icon: 'devicon-sqlite-plain', level: 'secondary' },
       { name: 'SQLAlchemy', icon: 'devicon-sqlalchemy-plain', level: 'secondary' },
+      { name: 'Supabase', icon: 'devicon-supabase-plain', level: 'secondary' },
+      { name: 'GORM', icon: 'devicon-go-plain', level: 'secondary' },
     ]
   }
 ];
