@@ -51,14 +51,16 @@
     "title": "Experience",
     "subtitle": "Professional journey focused on building scalable products and driving innovation within startup ecosystems",
     "datafly": {
-      "company": "Datafly Brasil · Lexa IA",
+      "company": "Lexa",
       "role": "Full-Stack Developer",
       "location": "Remote",
-      "stack": "NestJS, Next.js, Node.js, JavaScript, TypeScript, Prisma, Supabase, WhatsApp Business API (official/unofficial), FastAPI, Vue.js, JWT, Docker, LLMs, Microservices Architecture",
+      "stack": "NestJS, Next.js, Node.js, JavaScript, TypeScript, Python, Prisma, Supabase, WhatsApp Business API (official/unofficial), FastAPI, Vue.js, JWT, Docker, Web Scraping, LLMs, Microservices Architecture",
       "highlights": [
-        "Proposed and architected the AI module (lexa-ai) from scratch as an independent microservice, after identifying inefficiency in the CRM-coupled code — creating an isolated, reusable, high-performance service",
-        "Significantly reduced AI response time by refactoring the legacy module, redesigning the message processing architecture into a scalable and efficient solution",
-        "Builds and maintains modules of the Lexa IA CRM, contributing to new features, integrations and fixes with full-stack coverage",
+        "Proposed and architected the AI module (lexa-ai) from scratch as an independent microservice, decoupling the AI from the monolithic CRM — an isolated, reusable and horizontally scalable service",
+        "Cut AI response time from up to 12 minutes down to 3 at most (~75% reduction) by redesigning the message processing architecture, replacing the coupled legacy flow with an efficient asynchronous pipeline",
+        "Designed and built a web scraping system for automated lookup of lawsuits across Brazilian court systems, feeding the AI agents with up-to-date data",
+        "Designed and built an infrastructure layer to manage and monitor all platform services, increasing operational visibility and streamlining deployments",
+        "Works full-stack across the product — from LLM orchestration and WhatsApp Business API integration to building CRM interfaces in Next.js"
       ]
     },
     "dria": {
