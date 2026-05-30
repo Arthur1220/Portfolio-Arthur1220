@@ -103,6 +103,7 @@
     "subtitle": "Soluções de engenharia ponta-a-ponta, integrando tecnologia de ponta em setores tradicionais e infraestrutura descentralizada.",
     "view_all_github": "Repositórios Adicionais no GitHub",
     "repo_soon": "Repo em breve",
+    "load_more": "Carregar mais",
     "project_list": {
       "orbit": {
         "title": "Orbit",
@@ -119,6 +120,30 @@
       "go-chain-turbo": {
         "title": "Go-Chain Turbo",
         "description": "Sistema de alta performance em Go para monitoramento de Smart Contracts em tempo real utilizando WebSockets para baixa latência."
+      },
+      "exlege": {
+        "title": "Exlege — Jurisprudência com IA",
+        "description": "Plataforma de busca e monitoramento de jurisprudência assistida por IA para advogados brasileiros. Backend em Go com pipeline de processamento de decisões judiciais e camada de busca semântica."
+      },
+      "dockyard": {
+        "title": "Dockyard",
+        "description": "Dashboard leve para gerenciamento de containers Docker, com métricas em tempo real, organização hierárquica e autenticação própria. Backend em Go e interface em Vue.js."
+      },
+      "blockchain-consorcio": {
+        "title": "Gestão de Ativos RWA On-chain",
+        "description": "Sistema de gestão de ativos do mundo real (RWA) com auditoria imutável na rede Ethereum. Contratos em Solidity, backend em Go e painel em Vue.js."
+      },
+      "server-motd": {
+        "title": "Server MOTD Dinâmico",
+        "description": "Banner inteligente de login SSH com arte ASCII, métricas do sistema em tempo real e status dos containers Docker — um dashboard de boas-vindas para servidores Linux."
+      },
+      "identity-registry": {
+        "title": "Carteira de Identidade On-chain",
+        "description": "Carteira de identidade digital em blockchain para gerenciamento de credenciais verificáveis. Contratos em Solidity integrados a uma interface Web3 em Vue.js."
+      },
+      "academic-certificate": {
+        "title": "Certificados Acadêmicos On-chain",
+        "description": "Emissão e verificação de certificados acadêmicos em blockchain, garantindo autenticidade imutável. Contratos em Solidity com front-end em Vue.js."
       }
     }
   },

@@ -103,6 +103,7 @@
     "subtitle": "End-to-end engineering solutions, integrating bleeding-edge technology across traditional sectors and decentralized infrastructure.",
     "view_all_github": "Additional Repositories on GitHub",
     "repo_soon": "Repo soon",
+    "load_more": "Load more",
     "project_list": {
       "orbit": {
         "title": "Orbit",
@@ -119,6 +120,30 @@
       "go-chain-turbo": {
         "title": "Go-Chain Turbo",
         "description": "High-performance monitoring system in Go for real-time Smart Contract tracking using WebSockets for low latency."
+      },
+      "exlege": {
+        "title": "Exlege — AI Legal Research",
+        "description": "AI-assisted case-law search and monitoring platform for Brazilian lawyers. Go backend with a court-decision processing pipeline and a semantic search layer."
+      },
+      "dockyard": {
+        "title": "Dockyard",
+        "description": "Lightweight dashboard for managing Docker containers, with real-time metrics, hierarchical organization and built-in authentication. Go backend and Vue.js interface."
+      },
+      "blockchain-consorcio": {
+        "title": "On-chain RWA Asset Management",
+        "description": "Real-world asset (RWA) management system with immutable auditing on the Ethereum network. Solidity contracts, Go backend and a Vue.js dashboard."
+      },
+      "server-motd": {
+        "title": "Dynamic Server MOTD",
+        "description": "Smart SSH login banner with ASCII art, real-time system metrics and Docker container status — a welcome dashboard for Linux servers."
+      },
+      "identity-registry": {
+        "title": "On-chain Identity Wallet",
+        "description": "Blockchain-based digital identity wallet for managing verifiable credentials. Solidity contracts integrated with a Vue.js Web3 interface."
+      },
+      "academic-certificate": {
+        "title": "On-chain Academic Certificates",
+        "description": "Issuance and verification of academic certificates on the blockchain, ensuring immutable authenticity. Solidity contracts with a Vue.js front-end."
       }
     }
   },

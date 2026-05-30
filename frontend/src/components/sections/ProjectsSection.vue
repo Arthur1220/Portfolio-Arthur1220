@@ -1,5 +1,6 @@
 <script setup>
-import { Github, ExternalLink, Code2 } from 'lucide-vue-next';
+import { ref, computed } from 'vue';
+import { Github, ExternalLink, Code2, ChevronDown } from 'lucide-vue-next';
 
 const projects = [
   {
@@ -10,11 +11,18 @@ const projects = [
     liveUrl: 'https://getorbitapp.netlify.app/'
   },
   {
-    id: 'brco-simple',
-    type: 'Freelance | Full-stack',
-    tech: ['Node.js', 'Express', 'Prisma', 'AWS EC2', 'Docker', 'Vue.js'],
-    githubUrl: 'https://github.com/Arthur1220/BRCO-SIMPLE',
-    liveUrl: 'https://brcosimple.netlify.app/'
+    id: 'exlege',
+    type: 'Full-Stack | AI',
+    tech: ['Go', 'Vue.js', 'TypeScript', 'LLMs', 'Docker'],
+    githubUrl: null,
+    liveUrl: null
+  },
+  {
+    id: 'dockyard',
+    type: 'Full-Stack | DevTools',
+    tech: ['Vue.js', 'Go', 'Docker', 'JavaScript'],
+    githubUrl: 'https://github.com/Arthur1220/dockyard',
+    liveUrl: null
   },
   {
     id: 'finance-whatsapp',
@@ -24,13 +32,57 @@ const projects = [
     liveUrl: null
   },
   {
+    id: 'brco-simple',
+    type: 'Freelance | Full-stack',
+    tech: ['Node.js', 'Express', 'Prisma', 'AWS EC2', 'Docker', 'Vue.js'],
+    githubUrl: 'https://github.com/Arthur1220/BRCO-SIMPLE',
+    liveUrl: 'https://brcosimple.netlify.app/'
+  },
+  {
+    id: 'blockchain-consorcio',
+    type: 'Blockchain | RWA',
+    tech: ['Go', 'Vue.js', 'Solidity', 'Ethereum'],
+    githubUrl: 'https://github.com/Arthur1220/Blockchain-consorcio',
+    liveUrl: null
+  },
+  {
     id: 'go-chain-turbo',
     type: 'Blockchain Infrastructure',
     tech: ['Go', 'WebSockets', 'Ethers.js', 'PostgreSQL'],
-    githubUrl: 'https://github.com/Arthur1220/Go-Chain-Turbo',
+    githubUrl: 'https://github.com/Arthur1220/GoChain',
+    liveUrl: null
+  },
+  {
+    id: 'identity-registry',
+    type: 'Blockchain | Web3',
+    tech: ['Solidity', 'Vue.js', 'Ethereum'],
+    githubUrl: 'https://github.com/Arthur1220/IdentityRegistry-blockchain',
+    liveUrl: null
+  },
+  {
+    id: 'academic-certificate',
+    type: 'Blockchain | Web3',
+    tech: ['Solidity', 'Vue.js', 'Python'],
+    githubUrl: 'https://github.com/Arthur1220/AcademicCertificate-blockchain',
+    liveUrl: null
+  },
+  {
+    id: 'server-motd',
+    type: 'DevOps | Shell',
+    tech: ['Bash', 'Linux', 'Docker'],
+    githubUrl: 'https://github.com/Arthur1220/server-motd',
     liveUrl: null
   }
 ];
+
+const PAGE_SIZE = 5;
+const visibleCount = ref(PAGE_SIZE);
+const visibleProjects = computed(() => projects.slice(0, visibleCount.value));
+const hasMore = computed(() => visibleCount.value < projects.length);
+
+function loadMore() {
+  visibleCount.value = Math.min(visibleCount.value + PAGE_SIZE, projects.length);
+}
 </script>
 
 <template>
@@ -41,7 +93,7 @@ const projects = [
       
       <div class="projects-list">
         <div
-          v-for="project in projects"
+          v-for="project in visibleProjects"
           :key="project.id"
           class="project-item"
         >
@@ -80,7 +132,14 @@ const projects = [
           </div>
         </div>
       </div>
-      
+
+      <div v-if="hasMore" class="load-more-wrapper">
+        <button type="button" class="load-more-button" @click="loadMore">
+          <span>{{ $t('projects.load_more') }}</span>
+          <ChevronDown :size="18" />
+        </button>
+      </div>
+
       <div class="cta-wrapper">
         <a href="https://github.com/Arthur1220" target="_blank" class="github-button">
           <span>{{ $t('projects.view_all_github') }}</span>
@@ -235,8 +294,36 @@ const projects = [
   font-style: italic;
 }
 
+.load-more-wrapper {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.load-more-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.load-more-button:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
 .cta-wrapper {
-  margin-top: 5rem;
+  margin-top: 4rem;
   display: flex;
   justify-content: center;
 }
