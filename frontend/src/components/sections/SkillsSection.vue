@@ -1,61 +1,34 @@
 <script setup>
-const mainSkillCategories = [
+const skillCategories = [
   {
-    title: 'languages',
-    skills: [
-      { name: 'Python', icon: 'devicon-python-plain', level: 'primary' },
-      { name: 'JavaScript', icon: 'devicon-javascript-plain', level: 'primary' },
-      { name: 'TypeScript', icon: 'devicon-typescript-plain', level: 'secondary' },
-      { name: 'Go', icon: 'devicon-go-original-wordmark', level: 'exploring' },
-      { name: 'Solidity', icon: 'devicon-solidity-plain', level: 'secondary' },
-      { name: 'SQL', icon: 'devicon-azuresqldatabase-plain', level: 'primary' },
-    ]
+    id: 'backend',
+    skills: ['Node.js', 'TypeScript', 'NestJS', 'Express', 'Go', 'Python', 'Django', 'FastAPI', 'REST APIs', 'Microservices']
   },
   {
-    title: 'frameworks',
-    skills: [
-      { name: 'Django', icon: 'devicon-django-plain', level: 'primary' },
-      { name: 'FastAPI', icon: 'devicon-fastapi-plain', level: 'primary' },
-      { name: 'Vue.js', icon: 'devicon-vuejs-plain', level: 'primary' },
-      { name: 'Node.js', icon: 'devicon-nodejs-plain', level: 'secondary' },
-      { name: 'Prisma', icon: 'devicon-prisma-plain', level: 'secondary' },
-      { name: 'Express.js', icon: 'devicon-express-original', level: 'secondary' },
-      { name: 'Fiber', icon: 'devicon-go-plain', level: 'secondary' },
-    ]
+    id: 'cloud',
+    skills: ['AWS Lambda', 'SQS', 'SNS', 'EventBridge', 'ECS', 'API Gateway', 'DynamoDB', 'S3', 'CloudFront', 'IAM', 'CloudWatch', 'EC2', 'CDK', 'Datadog']
   },
   {
-    title: 'infrastructure',
-    skills: [
-      { name: 'Docker', icon: 'devicon-docker-plain', level: 'primary' },
-      { name: 'Linux', icon: 'devicon-linux-plain', level: 'primary' },
-      { name: 'Git', icon: 'devicon-git-plain', level: 'primary' },
-      { name: 'AWS', icon: 'devicon-amazonwebservices-plain', level: 'secondary' },
-      { name: 'GitHub Actions', icon: 'devicon-githubactions-plain', level: 'secondary' },
-    ]
+    id: 'security',
+    skills: ['JWT', 'IAM', 'Secrets', 'OWASP', 'OIDC']
   },
   {
-    title: 'databases',
-    skills: [
-      { name: 'PostgreSQL', icon: 'devicon-postgresql-plain', level: 'primary' },
-      { name: 'MongoDB', icon: 'devicon-mongodb-plain', level: 'secondary' },
-      { name: 'MySQL', icon: 'devicon-mysql-plain', level: 'secondary' },
-      { name: 'SQLite', icon: 'devicon-sqlite-plain', level: 'secondary' },
-      { name: 'SQLAlchemy', icon: 'devicon-sqlalchemy-plain', level: 'secondary' },
-      { name: 'Supabase', icon: 'devicon-supabase-plain', level: 'secondary' },
-      { name: 'GORM', icon: 'devicon-go-plain', level: 'secondary' },
-    ]
+    id: 'ai',
+    skills: ['OpenAI', 'Gemini', 'Claude', 'Prompt Engineering', 'RAG', 'Evals', 'Pydantic']
+  },
+  {
+    id: 'blockchain',
+    skills: ['Solidity', 'Hardhat', 'OpenZeppelin', 'Polygon', 'EVM', 'go-ethereum']
+  },
+  {
+    id: 'data',
+    skills: ['PostgreSQL', 'DynamoDB', 'MySQL', 'MongoDB','Supabase', 'Prisma', 'GORM', 'SQLAlchemy']
+  },
+  {
+    id: 'infra',
+    skills: ['Docker', 'Docker Compose', 'GitHub Actions', 'Linux', 'Pytest', 'Regression tests', 'Hardhat tests']
   }
 ];
-
-const aiTools = {
-  title: 'tools_ia',
-  skills: [
-    { name: 'GitHub Copilot', icon: 'devicon-github-original', level: 'primary' },
-    { name: 'Claude', icon: 'devicon-anthropic-plain', level: 'primary' },
-    { name: 'Gemini', icon: 'devicon-google-plain', level: 'secondary' },
-    { name: 'Postman', icon: 'devicon-postman-plain', level: 'secondary' },    
-  ]
-};
 </script>
 
 <template>
@@ -65,35 +38,11 @@ const aiTools = {
       <p class="section-subtitle">{{ $t('skills.subtitle') }}</p>
 
       <div class="skills-grid">
-        <div
-          v-for="category in mainSkillCategories"
-          :key="category.title"
-          class="skill-category"
-        >
-          <h3 class="category-title">{{ $t(`skills.${category.title}`) }}</h3>
+        <div v-for="category in skillCategories" :key="category.id" class="skill-category">
+          <h3 class="category-title">{{ $t(`skills.categories.${category.id}.title`) }}</h3>
+          <p class="category-desc">{{ $t(`skills.categories.${category.id}.desc`) }}</p>
           <div class="skills-list">
-            <div
-              v-for="skill in category.skills"
-              :key="skill.name"
-              class="skill-item"
-            >
-              <i :class="skill.icon" class="skill-icon"></i>
-              <span class="skill-name">{{ skill.name }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="skill-category standalone-category">
-        <h3 class="category-title">{{ $t(`skills.${aiTools.title}`) }}</h3>
-        <div class="skills-list standalone-list">
-          <div
-            v-for="skill in aiTools.skills"
-            :key="skill.name"
-            class="skill-item"
-          >
-            <i :class="skill.icon" class="skill-icon"></i>
-            <span class="skill-name">{{ skill.name }}</span>
+            <span v-for="skill in category.skills" :key="skill" class="skill-chip">{{ skill }}</span>
           </div>
         </div>
       </div>
@@ -134,74 +83,51 @@ const aiTools = {
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 3rem 4rem;
-  margin-bottom: 3rem;
+  gap: 1.5rem;
 }
 
 .skill-category {
   display: flex;
   flex-direction: column;
+  padding: 1.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.skill-category:hover {
+  border-color: rgba(var(--color-primary-rgb), 0.6);
 }
 
 .category-title {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: 1.1rem;
+  color: var(--color-heading);
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+.category-desc {
+  font-size: 0.9rem;
   color: var(--color-text-muted);
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--color-border);
-  font-weight: 500;
+  margin-bottom: 1.25rem;
 }
 
 .skills-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem 1.5rem;
-}
-
-.skill-item {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.skill-icon {
-  font-size: 24px;
-  color: var(--color-heading);
-  transition: opacity 0.2s;
-}
-
-.skill-name {
-  font-size: 0.95rem;
+.skill-chip {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
   color: var(--color-text);
-  transition: opacity 0.2s, color 0.2s;
-}
-
-.skill-item:hover .skill-icon,
-.skill-item:hover .skill-name {
-  color: var(--color-primary);
-  opacity: 1;
-  transform: translateY(-1px);
-}
-
-.skill-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  transition: transform 0.2s ease;
-}
-
-.standalone-category {
-  margin-top: 1rem;
-}
-
-.standalone-list {
-  grid-template-columns: repeat(4, 1fr);
 }
 
 @media (max-width: 768px) {
   .skills-grid { grid-template-columns: 1fr; }
-  .standalone-list { grid-template-columns: repeat(2, 1fr); }
 }
 </style>

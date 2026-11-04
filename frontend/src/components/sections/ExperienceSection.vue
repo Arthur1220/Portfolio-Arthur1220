@@ -1,32 +1,59 @@
 <script setup>
-import { Briefcase, Building, MapPin, CheckCircle2, Cpu, Microscope, Presentation, Blocks, ShieldCheck } from 'lucide-vue-next';
+import { Briefcase, Building, MapPin, CheckCircle2 } from 'lucide-vue-next';
+import { useI18n } from 'vue-i18n';
 
+const { t, locale } = useI18n();
+
+// end: null = emprego atual. showDuration: false no freelance, que não foi contínuo.
 const experiences = [
-  { id: 'datafly', period: 'Mar 2026 – presente', type: 'full-time' },
-  { id: 'dria', period: 'Jan 2026 – Fev 2026', type: 'full-time' },
-  { id: 'brco_v2', period: 'Jan 2025 – Mar 2025', type: 'freelance' },
-  { id: 'brco_v1', period: 'Jun 2024 – Ago 2024', type: 'freelance' }
+  { id: 'itau', start: [2026, 7], end: null },
+  { id: 'datafly', start: [2026, 3], end: [2026, 7] },
+  { id: 'dria', start: [2026, 1], end: [2026, 2] },
+  { id: 'brco', start: [2024, 6], end: null, showDuration: false }
 ];
+
+function formatMonth([year, month]) {
+  const date = new Date(year, month - 1, 1);
+  return new Intl.DateTimeFormat(locale.value, { month: 'short', year: 'numeric' })
+    .format(date)
+    .replace('.', '')
+    .replace(' de ', ' ');
+}
+
+function duration(start, end) {
+  const now = new Date();
+  const [endYear, endMonth] = end ?? [now.getFullYear(), now.getMonth() + 1];
+  const total = (endYear - start[0]) * 12 + (endMonth - start[1]) + 1;
+  const years = Math.floor(total / 12);
+  const months = total % 12;
+  const parts = [];
+  if (years) parts.push(`${years} ${t('experience.year', years)}`);
+  if (months) parts.push(`${months} ${t('experience.month', months)}`);
+  return parts.join(' ');
+}
+
+function period(exp) {
+  const range = `${formatMonth(exp.start)} – ${exp.end ? formatMonth(exp.end) : t('experience.present')}`;
+  return exp.showDuration === false ? range : `${range} · ${duration(exp.start, exp.end)}`;
+}
 </script>
 
 <template>
   <section id="experience" class="unified-section">
     <div class="content-wrapper">
       <div class="section-header">
-        <h2 class="section-title">{{ $t('experience.title') }} & {{ $t('research.title') }}</h2>
+        <h2 class="section-title">{{ $t('experience.title') }}</h2>
         <p class="section-subtitle">{{ $t('experience.subtitle') }}</p>
       </div>
 
-      <!-- Experience Block -->
       <div class="sub-section">
-        <h3 class="sub-section-title">{{ $t('experience.title') }}</h3>
         <div class="research-timeline">
           <div v-for="exp in experiences" :key="exp.id" class="research-item">
             <div class="timeline-marker">
               <div class="research-icon"><Briefcase :size="20" /></div>
             </div>
             <div class="research-content">
-              <span class="period" style="text-transform: uppercase;">{{ exp.period }}</span>
+              <span class="period" style="text-transform: uppercase;">{{ period(exp) }}</span>
               <h3 style="margin: 0 0 0.5rem 0; font-size: 1.5rem; color: var(--color-heading);">{{ $t(`experience.${exp.id}.role`) }}</h3>
               
               <div class="company-info" style="display:flex; gap:1.5rem; flex-wrap: wrap; align-items:center; color: var(--color-text-muted); margin-bottom: 1.5rem;">
@@ -53,61 +80,6 @@ const experiences = [
         </div>
       </div>
 
-      <!-- Research Block -->
-      <div class="sub-section" style="margin-top: 6rem;">
-        <h3 class="sub-section-title">{{ $t('research.title') }}</h3>
-        <div class="research-timeline">
-          <!-- Item 1 -->
-          <div class="research-item">
-            <div class="timeline-marker"><div class="research-icon"><Blocks :size="20" /></div></div>
-            <div class="research-content">
-              <span class="period">2025</span>
-              <h3 style="margin: 0 0 1rem 0; font-size: 1.5rem; color: var(--color-heading);">{{ $t('research.project_tcc_title') }}</h3>
-              <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-text); margin-bottom: 1.5rem; opacity: 0.9;">{{ $t('research.project_tcc_desc') }}</p>
-              <div class="tech-tags">
-                <span>Solidity</span><span>Polygon</span><span>Django</span><span>Docker</span>
-              </div>
-              <div class="achievement">
-                <ShieldCheck :size="16" class="text-primary" />
-                <span>{{ $t('research.project_tcc_highlight') }}</span>
-              </div>
-            </div>
-          </div>
-          <!-- Item 2 -->
-          <div class="research-item">
-            <div class="timeline-marker"><div class="research-icon"><Cpu :size="20" /></div></div>
-            <div class="research-content">
-              <span class="period">2023 — 2024</span>
-              <h3 style="margin: 0 0 1rem 0; font-size: 1.5rem; color: var(--color-heading);">{{ $t('research.project1_title') }}</h3>
-              <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-text); margin-bottom: 1.5rem; opacity: 0.9;">{{ $t('research.project1_desc') }}</p>
-              <div class="tech-tags">
-                <span>Python</span><span>Intel RealSense</span><span>SQLAlchemy</span>
-              </div>
-              <div class="achievement">
-                <Presentation :size="16" class="text-primary" />
-                <span>30º Seminário de Iniciação Científica</span>
-              </div>
-            </div>
-          </div>
-          <!-- Item 3 -->
-          <div class="research-item">
-            <div class="timeline-marker"><div class="research-icon"><Microscope :size="20" /></div></div>
-            <div class="research-content">
-              <span class="period">2022 — 2023</span>
-              <h3 style="margin: 0 0 1rem 0; font-size: 1.5rem; color: var(--color-heading);">{{ $t('research.project2_title') }}</h3>
-              <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-text); margin-bottom: 1.5rem; opacity: 0.9;">{{ $t('research.project2_desc') }}</p>
-              <div class="tech-tags">
-                <span>Python</span><span>NumPy</span><span>Tkinter</span>
-              </div>
-              <div class="achievement">
-                <Presentation :size="16" class="text-primary" />
-                <span>29º Seminário de Iniciação Científica</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
     </div>
   </section>
 </template>

@@ -1,23 +1,16 @@
 <script setup>
 import {
-  Database,
-  Layers,
-  Cpu,
-  Blocks,
   DownloadCloud,
   GraduationCap,
-  Globe
+  Globe,
+  Presentation
 } from 'lucide-vue-next';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useResume } from '@/composables/useResume';
 
 const { locale } = useI18n();
-
-const resumeUrl = computed(() => {
-  return locale.value === 'pt'
-    ? '/Curriculo_Arthur_Azevedo_PT.pdf'
-    : '/Curriculo_Arthur_Azevedo_EN.pdf';
-});
+const { resumeUrl } = useResume();
 
 const resumeFilename = computed(() => {
   return `Currículo - Arthur Azevedo (${locale.value.toUpperCase()}).pdf`;
@@ -32,29 +25,7 @@ const resumeFilename = computed(() => {
       <div class="bio-container">
         <p class="bio-text">{{ $t('about.paragraph1') }}</p>
         <p class="bio-text">{{ $t('about.paragraph2') }}</p>
-      </div>
-
-      <div class="specialties-grid">
-        <div class="spec-card">
-          <Blocks class="spec-icon" :size="16" />
-          <h3>{{ $t('about.spec1_title') }}</h3>
-          <p>{{ $t('about.spec1_desc') }}</p>
-        </div>
-        <div class="spec-card">
-          <Database class="spec-icon" :size="16" />
-          <h3>{{ $t('about.spec2_title') }}</h3>
-          <p>{{ $t('about.spec2_desc') }}</p>
-        </div>
-        <div class="spec-card">
-          <Layers class="spec-icon" :size="16" />
-          <h3>{{ $t('about.spec3_title') }}</h3>
-          <p>{{ $t('about.spec3_desc') }}</p>
-        </div>
-        <div class="spec-card">
-          <Cpu class="spec-icon" :size="16" />
-          <h3>{{ $t('about.spec4_title') }}</h3>
-          <p>{{ $t('about.spec4_desc') }}</p>
-        </div>
+        <p class="bio-text bio-highlight">{{ $t('about.paragraph3') }}</p>
       </div>
 
       <div class="education-container">
@@ -70,8 +41,19 @@ const resumeFilename = computed(() => {
             <p class="university">{{ $t('about.education_university') }}</p>
             <div class="edu-badges">
               <span class="edu-badge">2020 — 2025</span>
-              <span class="edu-badge">GPA: 8.3/10</span>
+              <span class="edu-badge">{{ $t('about.education_gpa') }}</span>
             </div>
+            <h5 class="research-label">{{ $t('about.research_title') }}</h5>
+            <ul class="research-list">
+              <li>
+                <Presentation :size="16" class="research-icon" />
+                <span>{{ $t('about.research1') }}</span>
+              </li>
+              <li>
+                <Presentation :size="16" class="research-icon" />
+                <span>{{ $t('about.research2') }}</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -133,49 +115,6 @@ const resumeFilename = computed(() => {
   opacity: 0.9;
 }
 
-/* Specialties */
-.specialties-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 4rem;
-}
-
-.spec-card {
-  text-align: left;
-  padding: 2rem;
-  background-color: transparent;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  transition: border-color 0.2s ease;
-}
-
-.spec-card:hover {
-  border-color: var(--color-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(39, 201, 63, 0.05); /* very subtle var(--color-primary) tint if it's green, or transparent tint */
-}
-
-.spec-icon {
-  opacity: 0.55;
-  color: var(--color-text);
-  margin-bottom: 1.5rem;
-}
-
-.spec-card h3 {
-  font-size: 1.125rem;
-  color: var(--color-heading);
-  margin-bottom: 0.75rem;
-  font-weight: 500;
-}
-
-.spec-card p {
-  font-size: 0.95rem;
-  color: var(--color-text);
-  line-height: 1.6;
-  opacity: 0.8;
-}
-
 /* Education */
 .education-container {
   margin-bottom: 4rem;
@@ -185,6 +124,23 @@ const resumeFilename = computed(() => {
   padding: 2rem;
   border: 1px solid var(--color-border);
   border-radius: 8px;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.edu-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(var(--color-primary-rgb), 0.08);
+}
+
+.edu-card:hover .edu-icon {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+.bio-highlight {
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--color-primary);
 }
 
 .edu-header {
@@ -232,6 +188,37 @@ const resumeFilename = computed(() => {
   border: 1px solid var(--color-border);
   border-radius: 4px;
   color: var(--color-text-muted);
+}
+
+.research-label {
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.research-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.research-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.research-icon {
+  color: var(--color-primary);
+  margin-top: 0.25rem;
+  flex-shrink: 0;
 }
 
 /* Languages */
@@ -308,6 +295,5 @@ const resumeFilename = computed(() => {
 @media (max-width: 600px) {
   .languages-row { flex-direction: column; gap: 1rem; }
   .edu-header { gap: 1rem; }
-  .specialties-grid { grid-template-columns: 1fr; }
 }
 </style>

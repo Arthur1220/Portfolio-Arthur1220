@@ -31,12 +31,12 @@ watch(isMenuOpen, (val) => {
 });
 
 const navLinks = [
-  { href: '#about', label: 'nav.about' },
-  { href: '#experience', label: 'nav.experience' },
-  { href: '#projects', label: 'nav.projects' },
-  { href: '#skills', label: 'nav.skills' },
-  { href: '#guestbook', label: 'nav.guestbook' },
-  { href: '#contact', label: 'nav.contact' }
+  { href: '/#about', label: 'nav.about' },
+  { href: '/#experience', label: 'nav.experience' },
+  { href: '/#cases', label: 'nav.cases' },
+  { href: '/#projects', label: 'nav.projects' },
+  { href: '/#skills', label: 'nav.skills' },
+  { href: '/#contact', label: 'nav.contact' }
 ];
 </script>
 
@@ -44,9 +44,9 @@ const navLinks = [
   <header class="site-header">
     <div class="header-content">
       <div class="header-left">
-        <a href="/" class="logo-link" @click="closeMenu">
+        <RouterLink to="/" class="logo-link" @click="closeMenu">
           <span class="logo-text">AMA</span>
-        </a>
+        </RouterLink>
       </div>
 
       <Transition name="fade">
@@ -55,9 +55,9 @@ const navLinks = [
 
       <nav class="main-nav" :class="{ 'is-open': isMenuOpen }">
         <div class="nav-links-wrapper">
-          <a v-for="link in navLinks" :key="link.href" :href="link.href" class="nav-item" @click="closeMenu">
+          <RouterLink v-for="link in navLinks" :key="link.href" :to="link.href" class="nav-item" @click="closeMenu">
             {{ $t(link.label) }}
-          </a>
+          </RouterLink>
         </div>
 
         <div v-if="isMobile" class="mobile-controls">

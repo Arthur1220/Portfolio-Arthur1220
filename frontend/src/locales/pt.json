@@ -1,167 +1,271 @@
 {
   "nav": {
-    "about": "Sobre Mim",
+    "about": "Sobre",
     "experience": "Experiência",
-    "research": "Pesquisa & Experiência",
+    "cases": "Cases",
     "projects": "Projetos",
-    "guestbook": "Guestbook",
     "skills": "Stack",
     "contact": "Contato"
   },
   "hero": {
-    "greeting": "Desenvolvedor de Software",
+    "greeting": "Engenheiro de Software · Itaú BBA",
     "name": "Arthur Marques Azevedo",
-    "professional_title": "Blockchain - Back-end - Full-stack Developer",
-    "status": "Disponível para oportunidades remotas e híbridas",
-    "location": "Ilhéus-BA (Disponível para mudança)"
+    "professional_title": "Back-end & Cloud (AWS) · IA & LLM",
+    "summary": "Construo APIs e serviços em AWS no Itaú BBA. Como freelancer, criei e mantenho o BRCO, uma calculadora nutricional gratuita em produção, e antes levei IA para produção numa startup jurídica.",
+    "path": "Da iniciação científica na UESC ao back-end no Itaú BBA.",
+    "location": "São Paulo, SP · híbrido",
+    "cta_cases": "Ver cases",
+    "cta_resume": "Currículo"
+  },
+  "stats": {
+    "latency": "menos tempo de resposta da IA (12 min → 3 min)",
+    "accuracy": "de acerto da IA que interpreta mensagens no organizador financeiro",
+    "web3": "da complexidade Web3 abstraída do usuário final",
+    "tests": "testes automatizados no organizador financeiro, com deploy contínuo na AWS"
   },
   "about": {
-    "title": "Sobre Mim",
-    "paragraph1": "Formado em Ciência da Computação, atuo como Desenvolvedor Full-Stack e Engenheiro de IA com experiência em startups de tecnologia — desde a arquitetura de microsserviços e integrações com LLMs via API direta até o deploy de sistemas em nuvem.",
-    "paragraph2": "Histórico comprovado em Back-end (Python, Django, Node.js), Front-end (Vue.js) e Blockchain (Solidity), com base sólida em DevOps, APIs RESTful e bancos de dados relacionais e não relacionais. Perfil orientado a impacto: identifico gargalos arquiteturais, proponho soluções e entrego resultados mensuráveis em ambientes de alta responsabilidade e equipe enxuta.",
-    "spec1_title": "Blockchain & Web3",
-    "spec1_desc": "Implementação de arquiteturas híbridas e contratos inteligentes na L2 Polygon para garantir imutabilidade.",
-    "spec2_title": "Back-end",
-    "spec2_desc": "Construção de APIs RESTful escaláveis utilizando Python (Django/FastAPI) e Node.js com foco em performance.",
-    "spec3_title": "Full-stack",
-    "spec3_desc": "Desenvolvimento de interfaces modernas com Vue.js integradas a sistemas conteinerizados com Docker.",
-    "spec4_title": "IA & Automação",
-    "spec4_desc": "Uso de LLMs e Engenharia de Prompt para otimização de código, documentação e automação de processos.",
-    "education_title": "Formação Acadêmica",
+    "title": "Sobre",
+    "paragraph1": "Sou engenheiro de software com foco em back-end. No Itaú BBA, desenvolvo serviços cloud-native na AWS (Lambda, ECS, API Gateway, DynamoDB), com mensageria assíncrona em SQS e SNS, e integro APIs internas a serviços externos cuidando de credenciais, segredos e políticas de acesso num ambiente regulado.",
+    "paragraph2": "Antes, numa startup jurídica, tirei a IA de dentro de um CRM monolítico e a transformei num microsserviço próprio. Como freelancer, criei e mantenho o BRCO, que leva as equações nacionais de nutrição de caprinos e ovinos para uma calculadora web gratuita. No TCC, arquitetei uma plataforma de rastreabilidade com contratos em Solidity na Polygon e uma carteira custodial que esconde toda a complexidade de Web3 do usuário.",
+    "education_title": "Formação",
     "education_degree": "Bacharel em Ciência da Computação",
     "education_university": "Universidade Estadual de Santa Cruz (UESC)",
+    "education_gpa": "CR 8,3/10",
+    "research_title": "Iniciação científica",
+    "research1": "Visão computacional 3D para estimativa de peso (30º SIC)",
+    "research2": "Software de engenharia nutricional (29º SIC)",
     "lang_pt": "Português",
     "lang_pt_level": "Nativo",
     "lang_en": "Inglês",
-    "lang_en_level": "Avançado (B2)",
-    "download_button": "Ver Currículo Completo"
-  },
-  "research": {
-    "title": "Pesquisa",
-    "subtitle": "Experiência em Iniciação Tecnológica na UESC",
-    "project_tcc_title": "TCC: Rastreabilidade Animal com Blockchain",
-    "project_tcc_desc": "Arquitetura de uma plataforma full-stack para solucionar fraudes no agronegócio através de rastreabilidade imutável. Implementação de arquitetura híbrida (on-chain/off-chain) com registro de hashes na rede Polygon (L2) e desenvolvimento de uma carteira custodial no back-end para abstrair a complexidade Web3.",
-    "project_tcc_highlight": "Cobertura de +95% de testes nos contratos inteligentes.",
-    "project1_title": "Estimativa de Peso via Visão Computacional 3D",
-    "project1_desc": "Desenvolvimento de um sistema em Python para captura de imagens 3D utilizando sensores Intel RealSense e armazenamento de metadados complexos. A solução automatizou a coleta de dados para futuros modelos de regressão.",
-    "project2_title": "Software de Engenharia Nutricional",
-    "project2_desc": "Criação de um aplicativo desktop em Python para automatização de fórmulas nutricionais nacionais. Aplicação rigorosa de conceitos de POO e processamento numérico com NumPy."
+    "lang_en_level": "B2 (EF SET 60/100)",
+    "download_button": "Baixar currículo",
+    "paragraph3": "Meu jeito de trabalhar é achar o gargalo, propor a mudança e medir o resultado. Foi assim que a resposta da IA na Lexa caiu de até 12 minutos para no máximo 3, num time enxuto e com o produto em uso."
   },
   "experience": {
     "title": "Experiência",
-    "subtitle": "Trajetória profissional focada no desenvolvimento de produtos escaláveis e inovação em ecossistemas de startups",
-    "datafly": {
-      "company": "Lexa",
-      "role": "Desenvolvedor Full-Stack",
-      "location": "Remota",
-      "stack": "NestJS, Next.js, Node.js, JavaScript, TypeScript, Python, Prisma, Supabase, WhatsApp Business API (oficial/não oficial), FastAPI, Vue.js, JWT, Docker, Web Scraping, LLMs, Arquitetura de Microsserviços",
+    "subtitle": "Do freelance ao banco corporativo, sempre do lado do back-end.",
+    "present": "hoje",
+    "month": "mês | meses",
+    "year": "ano | anos",
+    "itau": {
+      "company": "Itaú BBA",
+      "role": "Engenheiro de Software Júnior",
+      "location": "São Paulo (híbrido)",
+      "stack": "AWS Lambda, ECS, API Gateway, DynamoDB, S3, IAM, CloudWatch, Datadog",
       "highlights": [
-        "Propôs e arquitetou do zero o módulo de IA (lexa-ai) como microsserviço independente, desacoplando a IA do CRM monolítico — um serviço isolado, reutilizável e escalável horizontalmente",
-        "Reduziu o tempo de resposta da IA de até 12 minutos para no máximo 3 (queda de ~75%) ao redesenhar a arquitetura de processamento de mensagens, substituindo o fluxo legado acoplado por um pipeline assíncrono e eficiente",
-        "Planejou e desenvolveu um sistema de web scraping para busca automatizada de processos em sistemas jurídicos brasileiros, alimentando os agentes de IA com dados atualizados",
-        "Projetou e construiu uma camada de infraestrutura para gerenciar e monitorar todos os serviços da plataforma, ampliando a visibilidade operacional e simplificando os deploys",
-        "Atua full-stack no produto — da orquestração de LLMs e integração com a WhatsApp Business API ao desenvolvimento de interfaces do CRM em Next.js"
+        "Desenvolvo serviços back-end e APIs cloud-native na AWS para negócios de banco corporativo, em contexto regulado e de alta criticidade.",
+        "Integro APIs internas do banco a serviços externos, com gestão segura de credenciais, segredos e políticas de acesso (IAM).",
+        "Participo de refinamento e decisões de arquitetura, definindo com produto e times parceiros os contratos técnicos das entregas.",
+        "Monitoro e sustento aplicações em produção com Datadog e CloudWatch, atuando na resolução de incidentes."
+      ]
+    },
+    "datafly": {
+      "company": "Datafly Brasil / Lexa IA",
+      "role": "Desenvolvedor Full-Stack (foco back-end)",
+      "location": "Remoto",
+      "stack": "NestJS, TypeScript, Prisma, PostgreSQL (Supabase), FastAPI, Docker, WhatsApp Business API, LLMs",
+      "highlights": [
+        "Propus e arquitetei do zero o módulo de IA (lexa-ai) como microsserviço independente, desacoplando a IA do CRM monolítico.",
+        "Reduzi o tempo de resposta da IA de até 12 min para no máximo 3 (~75%), trocando o fluxo acoplado de mensagens por um pipeline assíncrono.",
+        "Construí um scraper que busca processos em sistemas jurídicos brasileiros e alimenta os agentes de IA com dados atualizados.",
+        "Desenvolvi APIs e módulos do CRM em NestJS com Prisma e PostgreSQL, incluindo autenticação JWT e integração com a WhatsApp Business API."
       ]
     },
     "dria": {
       "company": "Dr. IA",
       "role": "AI & LLM Workflow Engineer",
-      "location": "Belo Horizonte, MG · Remota",
+      "location": "Remoto",
       "stack": "LLMs, Engenharia de Prompt, Plataformas de IA Conversacional, WhatsApp Business API, CRM",
       "highlights": [
-        "Geriu carteira ativa com diversos clientes simultâneos (médicos e clínicas), conduzindo o ciclo completo de onboarding — do primeiro contato à ativação do agente de IA em produção",
-        "Atingiu o menor tempo de ativação da equipe desde sua entrada na empresa, em processo que levava meses",
-        "Venceu campanha interna de reativação de clientes inativos, superando toda a equipe — premiado com folga remunerada",
-        "Identificou gap na experiência de onboarding e, por iniciativa própria, criou materiais de apoio que reduziram fricção no processo de adoção",
-        "Documentou do zero os processos da área em documentos internos adotados pela gestão, que seguem em uso após sua saída"
+        "Conduzi uma carteira de vários clientes simultâneos (médicos e clínicas) do primeiro contato até a ativação do agente de IA em produção no WhatsApp.",
+        "Atingi o menor tempo de ativação da equipe desde minha entrada, num processo que costumava levar meses.",
+        "Venci a campanha interna de reativação de clientes inativos, à frente de toda a equipe.",
+        "Por iniciativa própria, criei materiais de apoio que reduziram o atrito no onboarding e documentei do zero os processos da área; a gestão adotou os documentos, que seguem em uso."
       ]
     },
-    "brco_v2": {
-      "company": "Calculadora de Exigências Nutricionais (BRCO)",
-      "role": "Full-stack Web System",
-      "location": "Remota",
-      "stack": "Node.js, Express.js, Prisma, Vue.js, Pinia, Docker, AWS Lightsail, Netlify",
+    "brco": {
+      "company": "Plataforma Nutricional BRCO",
+      "role": "Desenvolvedor Back-end freelancer",
+      "location": "Remoto",
+      "stack": "Node.js, Express, Prisma, Django, Vue.js, Docker, AWS (EC2, Lightsail)",
       "highlights": [
-        "Desenvolvimento do projeto e da arquitetura de uma plataforma web inovadora de acesso livre (BRCO) para cálculos de exigências nutricionais, democratizando o acesso a uma ferramenta antes restrita ao meio acadêmico.",
-        "Construção de uma API RESTful segura com Node.js/Express.js e ORM Prisma, implementando funcionalidade de exportação de relatórios (CSV).",
-        "Deploy da aplicação em ambiente de produção com o back-end conteinerizado (Docker em AWS Lightsail) e o front-end distribuído via Netlify."
+        "Tirei do meio acadêmico as equações nacionais de exigências nutricionais de caprinos e ovinos (BR-CORTE) e as publiquei como calculadora web gratuita.",
+        "Primeira versão em Django com JWT, testes em Pytest e relatórios em PDF; reescrita em Node.js/Express com Prisma, exportação CSV e formulação de dieta de mínimo custo por programação linear.",
+        "Em 2026, endureci a plataforma: testes de regressão que travam o resultado de cada equação (e acharam um erro 500 em produção), login admin com token HMAC no lugar de uma chave exposta no front e banco persistente com migrações no boot."
+      ]
+    }
+  },
+  "cases": {
+    "title": "Cases",
+    "subtitle": "Quatro sistemas contados de ponta a ponta: o problema, a arquitetura e o que deu certo.",
+    "problem": "Problema",
+    "architecture": "Arquitetura",
+    "highlights": "Destaques",
+    "private_code": "Código privado",
+    "code": "Código",
+    "live_guestbook": "Assine on-chain",
+    "brco": {
+      "label": "Freelance · em produção",
+      "title": "BRCO: calculadora de exigências nutricionais",
+      "problem": "Quem formula a nutrição de caprinos e ovinos no Brasil costuma usar tabelas estrangeiras, que não refletem os animais nem as dietas tropicais. Produtores, estudantes e pesquisadores não tinham uma ferramenta gratuita e nacional para calcular exigências e montar uma dieta.",
+      "highlights": [
+        "Três calculadoras sobre as equações nacionais do BR-CORTE: exigências nutricionais, valor energético (NDT) de um alimento e formulação de dieta de mínimo custo por programação linear, com uma segunda tentativa mais flexível quando o modelo ideal não tem solução.",
+        "As equações ficam só no back-end, atrás de validação com Zod, rate limit e helmet; o front HTTPS fala com a API na EC2 por um proxy da Netlify.",
+        "Testes de regressão travam o resultado de cada equação e acharam um erro 500 em produção; o painel admin passou a usar token HMAC no lugar de uma chave exposta no front."
+      ],
+      "metrics": [
+        "3 calculadoras",
+        "28 testes",
+        "dieta por programação linear"
       ]
     },
-    "brco_v1": {
-      "company": "Projeto Freelance",
-      "role": "Desenvolvedor Full-Stack",
-      "location": "Remota",
-      "stack": "Django, Vue.js, JWT, Pytest, Docker, AWS EC2",
+    "organizador": {
+      "label": "Serverless na AWS · IA",
+      "title": "Organizador financeiro no Telegram",
+      "problem": "Anotar gastos num app é chato o bastante para ninguém manter. A ideia é anotar como se fala (\"gastei 45,90 no mercado no nubank\") e deixar o sistema cuidar de fatura, parcela e recorrência.",
       "highlights": [
-        "Implementação da v1 da plataforma nutricional (Django/Vue.js) com autenticação JWT e suíte de testes (Pytest)",
-        "Geração de relatórios PDF, conteinerização com Docker Compose e deploy em AWS EC2"
+        "A IA interpreta e o código executa: a saída do Gemini passa por um contrato Pydantic antes de chegar ao banco, e remoções ou valores altos pedem confirmação por botão.",
+        "Fila FIFO agrupada por usuário: mensagens do mesmo chat são processadas em ordem, reenvios do Telegram são descartados e falhas vão para uma DLQ com alarme.",
+        "Infra em CDK com deploy a cada push via GitHub Actions e OIDC (sem chave da AWS no GitHub); a migração do banco roda numa Lambda e, se falhar, o CloudFormation desfaz o deploy."
+      ],
+      "metrics": [
+        "318 testes",
+        "98% de acerto da IA nos evals",
+        "prompt 42% menor"
+      ]
+    },
+    "tcc": {
+      "label": "Blockchain · TCC",
+      "title": "Rastreabilidade animal com blockchain",
+      "problem": "Fraudes em registros de vacinação e transporte de gado são difíceis de provar, porque os dados ficam em sistemas que podem ser alterados.",
+      "highlights": [
+        "Arquitetura híbrida: só o hash de cada evento crítico vai para a Polygon (L2); o dado completo fica no PostgreSQL.",
+        "Carteira custodial no back-end: o usuário nunca lida com chave privada nem paga gas.",
+        "Banco e blockchain consistentes com transações atômicas, e 95%+ de cobertura de testes nos contratos."
+      ],
+      "metrics": [
+        "95%+ de cobertura",
+        "100% da Web3 abstraída"
+      ]
+    },
+    "lexa": {
+      "label": "Microsserviços · IA",
+      "title": "lexa-ai: IA como microsserviço",
+      "problem": "A IA rodava dentro de um CRM monolítico e chegava a levar 12 minutos para responder uma mensagem de WhatsApp.",
+      "highlights": [
+        "IA isolada num serviço próprio, reutilizável e escalável na horizontal.",
+        "Tempo de resposta de até 12 min para no máximo 3 (~75%).",
+        "Agentes alimentados por um scraper de processos em sistemas jurídicos."
+      ],
+      "metrics": [
+        "~75% mais rápido"
       ]
     }
   },
   "projects": {
-    "title": "Projetos",
-    "subtitle": "Soluções de engenharia ponta-a-ponta, integrando tecnologia de ponta em setores tradicionais e infraestrutura descentralizada.",
-    "view_all_github": "Repositórios Adicionais no GitHub",
-    "repo_soon": "Repo em breve",
-    "load_more": "Carregar mais",
+    "title": "Outros projetos",
+    "subtitle": "Projetos pessoais e freelances, cada um com código ou deploy.",
+    "view_all_github": "Mais repositórios no GitHub",
+    "private_code": "Código privado",
+    "load_more": "Ver mais projetos",
     "project_list": {
       "orbit": {
         "title": "Orbit",
-        "description": "Hub de operações self-hosted para times de desenvolvimento. Monitora endpoints, gerencia variáveis de ambiente com criptografia AES-256 e integra repositórios GitHub em tempo real."
-      },
-      "brco-simple": {
-        "title": "Plataforma Nutricional BRCO",
-        "description": "Desenvolvimento de uma API RESTful para cálculos de exigências nutricionais. Implementação de deploy conteinerizado com Docker em instâncias AWS EC2."
-      },
-      "finance-whatsapp": {
-        "title": "Lembretes Financeiros via IA",
-        "description": "Sistema de automação via WhatsApp integrado ao Gemini AI. Utiliza Celery e Redis para processamento assíncrono de notas e lembretes financeiros."
-      },
-      "go-chain-turbo": {
-        "title": "Go-Chain Turbo",
-        "description": "Sistema de alta performance em Go para monitoramento de Smart Contracts em tempo real utilizando WebSockets para baixa latência."
+        "description": "Painel self-hosted para quem roda vários projetos e ambientes: junta saúde dos serviços, logs, segredos e o GitHub num lugar só, para descobrir que algo caiu antes do usuário.",
+        "highlights": [
+          "Health checks HTTP, TCP, PostgreSQL e Redis, com alerta de anomalia por Z-score sobre o histórico de latência.",
+          "Logs em tempo real dos servidores via SSH, transmitidos por WebSocket e filtráveis por nível.",
+          "Cofre de .env por ambiente com AES-256-GCM e login pelo GitHub, que mostra branches, último commit e PRs abertos."
+        ]
       },
       "exlege": {
-        "title": "Exlege — Jurisprudência com IA",
-        "description": "Plataforma de busca e monitoramento de jurisprudência assistida por IA para advogados brasileiros. Backend em Go com pipeline de processamento de decisões judiciais e camada de busca semântica."
+        "title": "Exlege",
+        "description": "Pesquisa de jurisprudência com IA para advogados: busca em linguagem natural, chat que cita as decisões e alertas quando sai uma decisão nova sobre o tema.",
+        "highlights": [
+          "Coleta diária automática de decisões do STJ, classificadas por área e resumidas em linguagem simples por LLM numa única chamada com saída JSON.",
+          "Busca semântica com embeddings em PostgreSQL + pgvector, filtros por tribunal, área e data e citação ABNT pronta para copiar.",
+          "Dados pessoais (CPF, CNPJ, telefone) mascarados antes de gravar, e deploy blue/green na AWS Lightsail com CI/CD."
+        ]
       },
       "dockyard": {
         "title": "Dockyard",
-        "description": "Dashboard leve para gerenciamento de containers Docker, com métricas em tempo real, organização hierárquica e autenticação própria. Backend em Go e interface em Vue.js."
+        "description": "Painel leve de containers Docker com métricas em tempo real e autenticação própria, em Go e Vue.js."
+      },
+      "finance-whatsapp": {
+        "title": "Lembretes financeiros via WhatsApp",
+        "description": "Notas e lembretes financeiros pelo WhatsApp, com Gemini e processamento assíncrono em Celery e Redis."
+      },
+      "go-chain-turbo": {
+        "title": "Go-Chain Monitor",
+        "description": "Indexador full-stack que acompanha transações ERC-20 de tokens escolhidos (como USDT e WETH) na Ethereum, com volume e grandes carteiras em tempo real.",
+        "highlights": [
+          "Precisão financeira: NUMERIC(80,18) no PostgreSQL e big.Int no Go, para nenhum wei se perder em arredondamento.",
+          "Back-end em Go com arquitetura hexagonal (ports & adapters) e cliente go-ethereum via RPC.",
+          "Migrações automáticas na subida e front em Vue 3 + Pinia organizado em Atomic Design."
+        ]
       },
       "blockchain-consorcio": {
-        "title": "Gestão de Ativos RWA On-chain",
-        "description": "Sistema de gestão de ativos do mundo real (RWA) com auditoria imutável na rede Ethereum. Contratos em Solidity, backend em Go e painel em Vue.js."
-      },
-      "server-motd": {
-        "title": "Server MOTD Dinâmico",
-        "description": "Banner inteligente de login SSH com arte ASCII, métricas do sistema em tempo real e status dos containers Docker — um dashboard de boas-vindas para servidores Linux."
+        "title": "Gestão de ativos RWA on-chain",
+        "description": "Gestão de ativos do mundo real (RWA) com auditoria imutável na Ethereum. Contratos em Solidity, back-end em Go e painel em Vue.js."
       },
       "identity-registry": {
-        "title": "Carteira de Identidade On-chain",
-        "description": "Carteira de identidade digital em blockchain para gerenciamento de credenciais verificáveis. Contratos em Solidity integrados a uma interface Web3 em Vue.js."
+        "title": "Carteira de identidade on-chain",
+        "description": "Carteira de identidade digital em blockchain para credenciais verificáveis. Contratos em Solidity com interface Web3 em Vue.js."
       },
       "academic-certificate": {
-        "title": "Certificados Acadêmicos On-chain",
-        "description": "Emissão e verificação de certificados acadêmicos em blockchain, garantindo autenticidade imutável. Contratos em Solidity com front-end em Vue.js."
+        "title": "Certificados acadêmicos on-chain",
+        "description": "Emissão e verificação de certificados acadêmicos em blockchain. Contratos em Solidity com front-end em Vue.js."
+      },
+      "server-motd": {
+        "title": "Server MOTD dinâmico",
+        "description": "Banner de login SSH com arte ASCII, métricas do sistema em tempo real e status dos containers Docker."
       }
     }
   },
   "skills": {
-    "title": "Stack Técnica",
-    "subtitle": "Linguagens e ferramentas utilizadas em meus fluxos de engenharia.",
-    "languages": "Linguagens",
-    "frameworks": "Frameworks",
-    "infrastructure": "Cloud & Infra",
-    "databases": "Bancos de Dados",
-    "tools_ia": "IA & Produtividade",
-    "legend_primary": "uso diário",
-    "legend_secondary": "conhecimento sólido",
-    "legend_exploring": "explorando"
+    "title": "Stack",
+    "subtitle": "Organizada pelo que eu faço com ela.",
+    "categories": {
+      "backend": {
+        "title": "Back-end",
+        "desc": "APIs REST e microsserviços."
+      },
+      "cloud": {
+        "title": "Cloud & Observabilidade",
+        "desc": "Serverless, mensageria e containers na AWS, com infra como código."
+      },
+      "security": {
+        "title": "Segurança & Acesso",
+        "desc": "Autenticação, autorização e segredos bem guardados."
+      },
+      "ai": {
+        "title": "IA & LLM",
+        "desc": "LLMs em produção, com contrato na saída e evals."
+      },
+      "blockchain": {
+        "title": "Blockchain",
+        "desc": "Contratos e integração back-end ↔ chain."
+      },
+      "data": {
+        "title": "Dados",
+        "desc": "Relacional, NoSQL e ORMs."
+      },
+      "infra": {
+        "title": "Infra & Qualidade",
+        "desc": "Containers, CI/CD e testes que protegem a regra de negócio."
+      }
+    }
+  },
+  "certifications": {
+    "title": "Certificações e cursos",
+    "aws": "AWS Certified AI Practitioner — prova em nov/2026",
+    "itau": "Trilhas Itaú: API Practitioner, Solution Architecture, Desenvolvimento Seguro (OWASP), Segurança da Informação",
+    "go": "Formação Linguagem Go (Alura), 2025",
+    "english": "EF SET — 60/100 (B2), 2025"
   },
   "guestbook": {
-    "title": "Guestbook On-Chain",
-    "subtitle": "Assine sua passagem por aqui. Mensagens registradas permanentemente na rede Amoy (Polygon).",
+    "title": "Guestbook on-chain",
+    "subtitle": "A mesma ideia do TCC, ao vivo: assine com sua carteira e sua mensagem fica registrada na Polygon Amoy (testnet).",
     "view_contract": "Explorar Contrato",
     "placeholder": "Digite sua mensagem para a eternidade...",
     "connect_wallet": "Conectar Carteira",
@@ -172,13 +276,13 @@
     "empty_hint": "Conecte sua carteira Polygon Amoy e seja o primeiro a assinar.",
     "connect_cta": "Conectar Carteira",
     "empty_connected_title": "Nenhuma mensagem ainda.",
-    "empty_connected_hint": "Use o campo acima para registrar sua passagem na blockchain."
+    "empty_connected_hint": "Use o campo acima para registrar sua passagem na blockchain.",
+    "back": "Voltar ao portfólio"
   },
   "contact": {
-    "title": "Contato",
-    "subtitle": "Estou disponível para novas oportunidades em Backend, Blockchain e projetos desafiadores de engenharia. Sinta-se à vontade para entrar em contato.",
-    "email_desc": "arthurmarquesazevedo{'@'}gmail.com",
-    "whatsapp_desc": "Fale comigo agora",
-    "linkedin_desc": "Minha rede profissional"
+    "title": "Vamos conversar?",
+    "subtitle": "Gosto de falar sobre back-end, cloud e IA aplicada. O jeito mais rápido de me achar é por e-mail ou LinkedIn.",
+    "resume_pt": "Currículo (PT)",
+    "resume_en": "Résumé (EN)"
   }
 }

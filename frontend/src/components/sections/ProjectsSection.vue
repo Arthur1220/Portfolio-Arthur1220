@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
-import { Github, ExternalLink, Code2, ChevronDown } from 'lucide-vue-next';
+import { Github, ExternalLink, Lock, ChevronDown, CheckCircle2 } from 'lucide-vue-next';
 
 const projects = [
   {
@@ -13,43 +13,36 @@ const projects = [
   {
     id: 'exlege',
     type: 'Full-Stack | AI',
-    tech: ['Go', 'Vue.js', 'TypeScript', 'LLMs', 'Docker'],
+    tech: ['Go', 'PostgreSQL', 'pgvector', 'RAG', 'Vue.js', 'AWS Lightsail'],
     githubUrl: null,
+    liveUrl: 'https://exlege.pro'
+  },
+  {
+    id: 'go-chain-turbo',
+    type: 'Blockchain | Infra',
+    tech: ['Go', 'Gin', 'go-ethereum', 'PostgreSQL', 'Vue.js', 'Pinia'],
+    githubUrl: 'https://github.com/Arthur1220/GoChain',
     liveUrl: null
   },
   {
     id: 'dockyard',
     type: 'Full-Stack | DevTools',
-    tech: ['Vue.js', 'Go', 'Docker', 'JavaScript'],
+    tech: ['Go', 'Vue.js', 'Docker'],
     githubUrl: 'https://github.com/Arthur1220/dockyard',
     liveUrl: null
   },
   {
     id: 'finance-whatsapp',
-    type: 'Backend | AI Automation',
-    tech: ['Django', 'Celery', 'Redis', 'Gemini AI', 'WhatsApp API', 'Docker'],
+    type: 'Back-end | AI',
+    tech: ['Django', 'Celery', 'Redis', 'Gemini', 'WhatsApp API', 'Docker'],
     githubUrl: 'https://github.com/Arthur1220/Finance-Whatsapp',
     liveUrl: null
-  },
-  {
-    id: 'brco-simple',
-    type: 'Freelance | Full-stack',
-    tech: ['Node.js', 'Express', 'Prisma', 'AWS EC2', 'Docker', 'Vue.js'],
-    githubUrl: 'https://github.com/Arthur1220/BRCO-SIMPLE',
-    liveUrl: 'https://brcosimple.netlify.app/'
   },
   {
     id: 'blockchain-consorcio',
     type: 'Blockchain | RWA',
     tech: ['Go', 'Vue.js', 'Solidity', 'Ethereum'],
     githubUrl: 'https://github.com/Arthur1220/Blockchain-consorcio',
-    liveUrl: null
-  },
-  {
-    id: 'go-chain-turbo',
-    type: 'Blockchain Infrastructure',
-    tech: ['Go', 'WebSockets', 'Ethers.js', 'PostgreSQL'],
-    githubUrl: 'https://github.com/Arthur1220/GoChain',
     liveUrl: null
   },
   {
@@ -75,13 +68,14 @@ const projects = [
   }
 ];
 
-const PAGE_SIZE = 5;
-const visibleCount = ref(PAGE_SIZE);
-const visibleProjects = computed(() => projects.slice(0, visibleCount.value));
-const hasMore = computed(() => visibleCount.value < projects.length);
+// Os três primeiros são os destaques, com mais detalhes; o botão revela o resto de uma vez.
+const FEATURED_COUNT = 3;
+const showAll = ref(false);
+const visibleProjects = computed(() => (showAll.value ? projects : projects.slice(0, FEATURED_COUNT)));
+const hasMore = computed(() => !showAll.value && projects.length > FEATURED_COUNT);
 
 function loadMore() {
-  visibleCount.value = Math.min(visibleCount.value + PAGE_SIZE, projects.length);
+  showAll.value = true;
 }
 </script>
 
@@ -104,25 +98,28 @@ function loadMore() {
             <div class="project-links">
               <a v-if="project.githubUrl" :href="project.githubUrl" target="_blank" class="link-item">
                 <Github :size="16" />
-                <span>Source</span>
+                <span>{{ $t('cases.code') }}</span>
               </a>
               <div v-else class="private-tag">
-                <Github :size="16" />
-                <span>{{ $t('projects.repo_soon') }}</span>
+                <Lock :size="14" />
+                <span>{{ $t('projects.private_code') }}</span>
               </div>
               <a v-if="project.liveUrl" :href="project.liveUrl" target="_blank" class="link-item deploy-link">
                 <ExternalLink :size="16" />
                 <span>Deploy</span>
               </a>
-              <div v-if="!project.liveUrl" class="private-tag">
-                <Code2 :size="16" />
-                <span>Private</span>
-              </div>
             </div>
           </div>
-          
+
           <div class="project-content">
             <p class="project-description">{{ $t(`projects.project_list.${project.id}.description`) }}</p>
+
+            <ul v-if="Array.isArray($tm(`projects.project_list.${project.id}.highlights`))" class="project-highlights">
+              <li v-for="(highlight, idx) in $tm(`projects.project_list.${project.id}.highlights`)" :key="idx">
+                <CheckCircle2 :size="15" class="check" />
+                <span>{{ $rt(highlight) }}</span>
+              </li>
+            </ul>
             
             <div class="tech-stack">
               <span v-for="tech in project.tech" :key="tech" class="tech-badge">
@@ -233,6 +230,30 @@ function loadMore() {
   margin-bottom: 2rem;
 }
 
+.project-highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
+
+.project-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.check {
+  color: var(--color-primary);
+  margin-top: 0.3rem;
+  flex-shrink: 0;
+}
+
 .tech-stack {
   display: flex;
   flex-wrap: wrap;
@@ -291,7 +312,6 @@ function loadMore() {
   font-size: 0.85rem;
   color: var(--color-text-muted);
   opacity: 0.8;
-  font-style: italic;
 }
 
 .load-more-wrapper {

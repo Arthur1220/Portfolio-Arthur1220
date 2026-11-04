@@ -1,5 +1,6 @@
 <script setup>
-import { Mail, Linkedin, Github, MapPin, MessageCircle } from 'lucide-vue-next';
+import { Mail, Linkedin, Github, MapPin, MessageCircle, FileText } from 'lucide-vue-next';
+import { RESUME_PT, RESUME_EN } from '@/composables/useResume';
 </script>
 
 <template>
@@ -27,6 +28,16 @@ import { Mail, Linkedin, Github, MapPin, MessageCircle } from 'lucide-vue-next';
             <MessageCircle :size="20" />
             <span>+55 73 99148-1220</span>
           </a>
+          <div class="resume-row">
+            <a :href="RESUME_PT" target="_blank" class="contact-item">
+              <FileText :size="20" />
+              <span>{{ $t('contact.resume_pt') }}</span>
+            </a>
+            <a :href="RESUME_EN" target="_blank" class="contact-item">
+              <FileText :size="20" />
+              <span>{{ $t('contact.resume_en') }}</span>
+            </a>
+          </div>
           <div class="social-row">
             <a href="https://linkedin.com/in/azevedo-arthur" target="_blank" class="social-icon-link">
               <Linkedin :size="22" />
@@ -104,7 +115,13 @@ import { Mail, Linkedin, Github, MapPin, MessageCircle } from 'lucide-vue-next';
   color: var(--color-primary); 
 }
 
-.social-row { 
+.resume-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.social-row {
   display: flex; 
   gap: 1.5rem; 
   margin-top: 1rem; 
